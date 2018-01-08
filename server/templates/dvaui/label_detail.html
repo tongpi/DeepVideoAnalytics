@@ -5,7 +5,7 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h2>List of objects labeled with {{ object.name }} in set {{ object.set }}</h2>
+            <h2>在{{ object.set }}集合中被标记为{{ object.name }}的标签对象列表</h2>
             <p>{{ object.set }}</p>
         </div>
     </div>
@@ -19,10 +19,10 @@
                 <table class="table dataTables">
                 <thead>
                 <tr>
-                    <th class="text-center">Video / Dataset</th>
-                    <th class="text-center">frame name</th>
-                    <th class="text-center">frame index</th>
-                    <th class="text-center">view</th>
+                    <th class="text-center">视频/数据集</th>
+                    <th class="text-center">帧名称</th>
+                    <th class="text-center">帧索引</th>
+                    <th class="text-center">查看</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,7 +31,7 @@
                         <td>{{ f.video.name }} </td>
                         <td>{{ f.frame.name }} </td>
                         <td>{{ f.frame_index }} </td>
-                        <td class="text-center"><a href="/frames/{{ f.frame.pk }}">view</a></td>
+                        <td class="text-center"><a href="/frames/{{ f.frame.pk }}">查看</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

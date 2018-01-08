@@ -74,7 +74,7 @@
                         <fieldset>
                             <div class="btn-group format-selection">
                                 <button class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
-                                    Format <span class="caret"></span>
+                                    格式化 <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu">
                                     {% for format in available_formats %}
@@ -94,20 +94,20 @@
 
                 {% if post_form %}
                     <button type="button" class="button-form btn btn-primary" data-toggle="modal" data-target="#createModal">
-                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Create
+                      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> 创建
                     </button>
                 {% endif %}
 
                 {% if put_form %}
                     <button type="button" class="button-form btn btn-primary" data-toggle="modal" data-target="#editModal">
-                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Edit
+                      <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> 编辑
                     </button>
                 {% endif %}
 
                 {% if delete_form %}
                     <form class="button-form" action="{{ request.get_full_path }}" data-method="DELETE">
                         <button class="btn btn-danger">
-                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete
+                            <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> 删除
                         </button>
                     </form>
                 {% endif %}
@@ -161,7 +161,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Create</h4>
+        <h4 class="modal-title" id="myModalLabel">创建</h4>
       </div>
       <form action="{{ request.get_full_path }}" method="POST" enctype="multipart/form-data" class="form-horizontal" novalidate>
         <div class="modal-body">
@@ -170,8 +170,8 @@
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="submit" class="btn btn-primary">保存</button>
         </div>
       </form>
     </div>
@@ -184,7 +184,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit</h4>
+        <h4 class="modal-title" id="myModalLabel">编辑</h4>
       </div>
       <form action="{{ request.get_full_path }}" data-method="PUT" enctype="multipart/form-data" class="form-horizontal" novalidate>
         <div class="modal-body">
@@ -193,8 +193,8 @@
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="submit" class="btn btn-primary">保存</button>
         </div>
       </form>
     </div>
@@ -217,8 +217,8 @@
           </fieldset>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button type="submit" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+          <button type="submit" class="btn btn-primary">保存</button>
         </div>
       </form>
     </div>

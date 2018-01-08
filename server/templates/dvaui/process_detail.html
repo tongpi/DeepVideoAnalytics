@@ -5,7 +5,7 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h2>Process {{ object.pk }}</h2>
+            <h2>进程 {{ object.pk }}</h2>
         </div>
     </div>
 </div>
@@ -14,7 +14,7 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="box box-primary">
-            <div class="box-header with-border"><h3>Script</h3></div>
+            <div class="box-header with-border"><h3>脚本</h3></div>
             <div class="box-body text-center">
                 <div style="width:90%;height:500px;margin: auto" id="editor"></div>
             </div>
@@ -22,22 +22,22 @@
     </div>
     <div class="col-lg-6">
         <div class="box box-primary">
-            <div class="box-header with-border"><h3  style="display: inline-block">Tasks</h3>
-                <a class="btn btn-primary pull-right" href="{% url 'process_tasks' object.pk %}" style="margin: 10px auto" > <i class="fa fa-list"></i> All tasks</a>
+            <div class="box-header with-border"><h3  style="display: inline-block">任务</h3>
+                <a class="btn btn-primary pull-right" href="{% url 'process_tasks' object.pk %}" style="margin: 10px auto" > <i class="fa fa-list"></i> 所有任务</a>
             </div>
             <div class="box-body">
             <div class="row text-center">
                 <div class="col-xs-3">
-                    <a class="btn btn-warning btn-block" href="{% url 'process_tasks_status' object.pk 'pending' %}" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ pending_tasks }} pending</a>
+                    <a class="btn btn-warning btn-block" href="{% url 'process_tasks_status' object.pk 'pending' %}" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ pending_tasks }} 暂停</a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="btn btn-primary btn-block" href="{% url 'process_tasks_status' object.pk 'running' %}" style="margin: 10px auto" > <i class="fa fa-gears"></i> {{ running_tasks }} running</a>
+                    <a class="btn btn-primary btn-block" href="{% url 'process_tasks_status' object.pk 'running' %}" style="margin: 10px auto" > <i class="fa fa-gears"></i> {{ running_tasks }} 运行</a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="btn btn-success btn-block" href="{% url 'process_tasks_status' object.pk 'successful' %}" style="margin: 10px auto" > <i class="fa fa-check"></i> {{ successful_tasks }} done</a>
+                    <a class="btn btn-success btn-block" href="{% url 'process_tasks_status' object.pk 'successful' %}" style="margin: 10px auto" > <i class="fa fa-check"></i> {{ successful_tasks }} 完成</a>
                 </div>
                 <div class="col-xs-3">
-                    <a class="btn btn-danger btn-block" href="{% url 'process_tasks_status' object.pk 'failed' %}" style="margin: 10px auto" > <i class="fa fa-close"></i> {{ errored_tasks }} failed</a>
+                    <a class="btn btn-danger btn-block" href="{% url 'process_tasks_status' object.pk 'failed' %}" style="margin: 10px auto" > <i class="fa fa-close"></i> {{ errored_tasks }} 失败</a>
                 </div>
             </div>
             </div>

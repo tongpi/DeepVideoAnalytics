@@ -5,7 +5,7 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h2>Query results</h2>
+            <h2>查询结果</h2>
         </div>
     </div>
 </div>
@@ -18,50 +18,50 @@
         <img class="img-responsive img-bordered"  src="{{ url }}" style="width:80%;margin-left:auto;margin-right:auto" />
     </div>
     <div class="box-footer text-center">
-        <a href="/requery/{{ object.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> Query again </a>
+        <a href="/requery/{{ object.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> 再次查询 </a>
     </div>
     </div>
     </div>
     <div class="col-lg-7">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <a class="btn btn-primary pull-right" href="/process/{{ object.pk }}">View details for process ID {{ object.pk }}</a>
-                <h4 class="pull-left">Process and Tasks</h4>
+                <a class="btn btn-primary pull-right" href="/process/{{ object.pk }}">查看进程ID{{ object.pk }}详情</a>
+                <h4 class="pull-left">进程和任务</h4>
             </div>
             <div class="box-body">
                 <div class="row text-center">
                     <div class="col-xs-3">
-                        <a class="btn btn-warning btn-block" href="{% url 'process_tasks_status' object.pk 'pending' %}" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ pending_tasks }} pending</a>
+                        <a class="btn btn-warning btn-block" href="{% url 'process_tasks_status' object.pk 'pending' %}" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ pending_tasks }} 暂停</a>
                     </div>
                     <div class="col-xs-3">
-                        <a class="btn btn-primary btn-block" href="{% url 'process_tasks_status' object.pk 'running' %}" style="margin: 10px auto" > <i class="fa fa-gears"></i> {{ running_tasks }} running</a>
+                        <a class="btn btn-primary btn-block" href="{% url 'process_tasks_status' object.pk 'running' %}" style="margin: 10px auto" > <i class="fa fa-gears"></i> {{ running_tasks }} 运行</a>
                     </div>
                     <div class="col-xs-3">
-                        <a class="btn btn-success btn-block" href="{% url 'process_tasks_status' object.pk 'successful' %}" style="margin: 10px auto" > <i class="fa fa-check"></i> {{ successful_tasks }} done</a>
+                        <a class="btn btn-success btn-block" href="{% url 'process_tasks_status' object.pk 'successful' %}" style="margin: 10px auto" > <i class="fa fa-check"></i> {{ successful_tasks }} 完成</a>
                     </div>
                     <div class="col-xs-3">
-                        <a class="btn btn-danger btn-block" href="{% url 'process_tasks_status' object.pk 'failed' %}" style="margin: 10px auto" > <i class="fa fa-close"></i> {{ errored_tasks }} failed</a>
+                        <a class="btn btn-danger btn-block" href="{% url 'process_tasks_status' object.pk 'failed' %}" style="margin: 10px auto" > <i class="fa fa-close"></i> {{ errored_tasks }} 失败</a>
                     </div>
                 </div>
             </div>
         </div>
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h4>Regions</h4>
+                <h4>区域</h4>
             </div>
             <div class="box-body">
                 <table class="table dataTables">
                 <thead>
                 <tr>
-                        <th>object name</th>
-                        <th>confidence</th>
-                        <th>type</th>
+                        <th>对象名称</th>
+                        <th>置信度</th>
+                        <th>类型</th>
                         <th>x</th>
                         <th>y</th>
                         <th>w</th>
                         <th>h</th>
-                        <th class="text-center">metadata & bounding box</th>
-                        <th class="text-center">event</th>
+                        <th class="text-center">元数据和边界框</th>
+                        <th class="text-center">事件</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -75,8 +75,8 @@
                         <td>{{ d.y }} </td>
                         <td>{{ d.w }} </td>
                         <td>{{ d.h }} </td>
-                        <td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ d.pk }}">view metadata</button></td>
-                        <td class="text-center"><a  class="btn btn-primary" href="/task_detail/{{ d.event_id }}" >view event</a></td>
+                        <td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ d.pk }}">查看元数据</button></td>
+                        <td class="text-center"><a  class="btn btn-primary" href="/task_detail/{{ d.event_id }}" >查看事件</a></td>
                     </tr>
                     {% endif %}
                 {% endfor %}
@@ -93,19 +93,19 @@
                 <h4 class="modal-title" id="myModalLabel">{{ k.object_name }}</h4>
               </div>
               <div class="modal-body">
-                <h4 class="text-center">Text metadata</h4>
+                <h4 class="text-center">Text 元数据</h4>
                 <textarea rows="10" style="width:100%;">{{ k.text }}</textarea>
-                <h4 class="text-center">JSON metadata</h4>
+                <h4 class="text-center">JSON 元数据</h4>
                 <textarea rows="10" style="width:100%;">{{ k.metadata }}</textarea>
                 {% if not k.full_frame %}
-                <h4 class="text-center" style="margin-bottom:15px;margin-top:20px">Bounding box</h4>
+                <h4 class="text-center" style="margin-bottom:15px;margin-top:20px">边界框</h4>
                 <div style="width: {{ k.w }}px; height: {{ k.h }}px; position: relative;overflow:hidden;margin: auto;">
                   <img src="{{ url }}" id="image" style="position: absolute; top: -{{ k.y }}px; left: -{{ k.x }}px" />
                 </div>
                 {% endif %}
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
               </div>
             </div>
           </div>
@@ -118,7 +118,7 @@
     <div class="col-lg-6">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h4>Results : {{ name_entries.0 }}</h4>
+                <h4>结果 : {{ name_entries.0 }}</h4>
             </div>
         </div>
         {% for d in name_entries.1 %}
@@ -126,7 +126,7 @@
             <div class="col-sm-3 col-xs-6">
                 <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h4>{% if d.result_type == "Region" %} Region {% else %} Frame {% endif %} {{ d.rank }}</h4>
+                    <h4>{% if d.result_type == "Region" %} 区域 {% else %} 帧 {% endif %} {{ d.rank }}</h4>
                     <p>In <a href="/videos/{{ d.video_id }}">Video/Dataset {{ d.video_id }}</a> at {{ d.frame_index }}</p>
                     <p>at {{ d.distance|floatformat }}</p>
                 </div>

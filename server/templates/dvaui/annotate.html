@@ -19,11 +19,11 @@
     <div class="box box-info">
         <div class="box-header text-center" >
             {% if frame %}
-            <h4>Annotate frame <a href="/frames/{{ frame.pk }}">{{ frame.frame_index }}</a> in <a href="/videos/{{ frame.video.pk }}">{{ frame.video.name }}</a> </h4>
-            {% if previous_frame %}<a style="display: inline-block;margin-right:15px" href="/annotate_frame/{{ previous_frame.0.pk }}" class="btn btn-success"><i class="fa fa-backward "></i> Previous</a> {% endif %}
-            <a style="display: inline-block;margin-right:15px" href="/query_frame/{{ frame.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> Query using this frame</a>
-            <a style="display: inline-block;margin-right:15px" type='button' class="btn btn-info" id='btnLoad' ng-click='add_bounding_box();'><i class="fa fa-square"></i>&nbsp;Add bounding box annotation</a>
-            {% if next_frame %}<a style="display: inline-block;margin-right:15px" href="/annotate_frame/{{ next_frame.0.pk }}" class="btn btn-success"><i class="fa fa-forward"></i> Next</a>{% endif %}
+            <h4>标注框架 <a href="/frames/{{ frame.pk }}">{{ frame.frame_index }}</a> in <a href="/videos/{{ frame.video.pk }}">{{ frame.video.name }}</a> </h4>
+            {% if previous_frame %}<a style="display: inline-block;margin-right:15px" href="/annotate_frame/{{ previous_frame.0.pk }}" class="btn btn-success"><i class="fa fa-backward "></i> 上一页</a> {% endif %}
+            <a style="display: inline-block;margin-right:15px" href="/query_frame/{{ frame.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> 使用这个框架查询</a>
+            <a style="display: inline-block;margin-right:15px" type='button' class="btn btn-info" id='btnLoad' ng-click='add_bounding_box();'><i class="fa fa-square"></i>&nbsp;添加边界框标注</a>
+            {% if next_frame %}<a style="display: inline-block;margin-right:15px" href="/annotate_frame/{{ next_frame.0.pk }}" class="btn btn-success"><i class="fa fa-forward"></i> 下一页</a>{% endif %}
             {% endif %}
     </div>
     </div>
@@ -36,45 +36,45 @@
                     <div class="row">
                         <div class="col-xs-1">
                             <div class="form-group">
-                                <label for="top">top</label>
+                                <label for="top">顶部</label>
                                 <input name="top" class="form-control" type="text" required="" placeholder="top" value="{[ box.top]}" disabled="disabled" >
                             </div>
                             <div class="form-group">
-                                <label for="left">left</label>
+                                <label for="left">左侧</label>
                                 <input name="left" class="form-control" type="text" required="" placeholder="top" value="{[ box.left]}" disabled="disabled" >
                             </div>
                         </div>
                         <div class="col-xs-1">
                             <div class="form-group">
-                                <label for="height">height</label>
+                                <label for="height">高度</label>
                                 <input name="height" class="form-control" type="text" required="" placeholder="top" value="{[ box.height*box.scaleY ]}" disabled="disabled" >
                             </div>
                             <div class="form-group">
-                                <label for="width">width</label>
+                                <label for="width">宽度</label>
                                 <input name="width" class="form-control" type="text" required="" placeholder="top" value="{[ box.width*box.scaleX ]}" disabled="disabled" >
                             </div>
                         </div>
                         <div class="col-xs-5">
                             <div class="form-group">
-                                <label for="top">Text metadata (indexed for full text search)</label>
+                                <label for="top">文本元数据</label>
                                 <textarea name="text" id="{[ box.id ]}_text" class="form-control" rows="1" required="" placeholder="text" ></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="top">JSON metadata</label>
+                                <label for="top">JSON元数据</label>
                                 <textarea name="metadata" id="{[ box.id ]}_metadata" class="form-control" rows="1" required="" placeholder="metadata" ></textarea>
                             </div>
                         </div>
                         <div class="col-xs-5">
                             <div class="form-group">
-                                <label for="name" style="font-weight:bold">Name</label>
+                                <label for="name" style="font-weight:bold">名称</label>
                                 <input name="name" class="form-control" value="UI_annotation"  id="{[ box.id ]}_object_name" required="required" />
                             </div>
                             <div class="form-group">
-                                <label for="labels" style="font-weight:bold">Assign labels :</label>
+                                <label for="labels" style="font-weight:bold">指定标签</label>
                                 <textarea name="labels" class="form-control" placeholder="specify multiple by seperating with a comma"  rows="1" id="{[ box.id ]}_tags" ></textarea>
                             </div>
                             <div style="margin-top:26px">
-                                <button ng-click="submit_annotation(box.id)" id="{[ box.id ]}_submit" class="btn btn-primary btn-block">submit</button>
+                                <button ng-click="submit_annotation(box.id)" id="{[ box.id ]}_submit" class="btn btn-primary btn-block">提交</button>
                             </div>
                         </div>
                     </div>
@@ -83,23 +83,23 @@
         </div>
     </div>
         <div style="height:50px;margin-bottom:5px;margin-top:5px">
-            <div> Use mousewheel or touchpad to zoom-in/out/pan</div>
+            <div> 使用鼠标滚轮或触摸板放大/缩小/平移</div>
             <span ng-show="canvas.getActiveObject()">
-                <button id="send-backwards" class="btn btn-info  btn-object-action " ng-click="sendBackwards()"><i class="fa fa-step-backward"></i>&nbsp;&nbsp;Move back</button>
-                <button id="bring-forward" class="btn btn-info  btn-object-action "  ng-click="bringForward()"><i class="fa fa-step-forward"></i>&nbsp;&nbsp;Move forward</button>
-                <button id="send-to-back" class="btn btn-info  btn-object-action "  ng-click="sendToBack()"><i class="fa fa-backward"></i>&nbsp;&nbsp;Send to back</button>
-                <button id="bring-to-front" class="btn btn-info  btn-object-action "  ng-click="bringToFront()"><i class="fa fa-forward"></i>&nbsp;&nbsp;Bring to front</button>
+                <button id="send-backwards" class="btn btn-info  btn-object-action " ng-click="sendBackwards()"><i class="fa fa-step-backward"></i>&nbsp;&nbsp;回退</button>
+                <button id="bring-forward" class="btn btn-info  btn-object-action "  ng-click="bringForward()"><i class="fa fa-step-forward"></i>&nbsp;&nbsp;向前</button>
+                <button id="send-to-back" class="btn btn-info  btn-object-action "  ng-click="sendToBack()"><i class="fa fa-backward"></i>&nbsp;&nbsp;置于底层</button>
+                <button id="bring-to-front" class="btn btn-info  btn-object-action "  ng-click="bringToFront()"><i class="fa fa-forward"></i>&nbsp;&nbsp;置于顶层</button>
                 <span style="display:inline-block" id="color-opacity-controls" ng-show="canvas.getActiveObject()">
-                    <h5 style="text-align: center;display:inline-block">Opacity</h5>
+                    <h5 style="text-align: center;display:inline-block">不透明度</h5>
                     <input value="100" type="range" bind-value-to="opacity" style="margin: 0 0 0 0;width:100px">
                 </span>
                 <button type="button" class="btn  btn-object-action bg-yellow " id="deselect" ng-click="deselect()"><i class="fa fa-minus"></i>&nbsp;&nbsp;Deselect</button>
             </span>
             <span ng-show="canvas.getActiveGroup()">
-                <button type="button" class="btn  btn-danger btn-object-action bg-maroon " id="remove-selected-group" ng-click="removeSelected()"><i class="fa fa-trash"></i>&nbsp;&nbsp;Delete</button>
-                <button type="button" class="btn  btn-object-action " id="deselect_group" ng-click="deselect()"><i class="fa fa-minus"></i>&nbsp;&nbsp;Deselect</button>
+                <button type="button" class="btn  btn-danger btn-object-action bg-maroon " id="remove-selected-group" ng-click="removeSelected()"><i class="fa fa-trash"></i>&nbsp;&nbsp;删除</button>
+                <button type="button" class="btn  btn-object-action " id="deselect_group" ng-click="deselect()"><i class="fa fa-minus"></i>&nbsp;&nbsp;取消选择</button>
             </span>
-            <button type="button" class="btn btn-info pull-right"  id="reset_zoom" ng-click="resetZoom()"><i class="fa fa-refresh"></i>&nbsp;Reset Zoom</button>
+            <button type="button" class="btn btn-info pull-right"  id="reset_zoom" ng-click="resetZoom()"><i class="fa fa-refresh"></i>&nbsp;重置缩放</button>
         </div>
         <div style="margin-bottom:10px">
 
@@ -121,21 +121,21 @@
         <div style="margin-left:auto;margin-right:auto;width:1100px;">
         <div class="box box-info">
         <div class="box-header text-center">
-            <h3>Existing annotations and detections (refresh the page to reload new annotations)</h3>
-            <h4> Show /Hide all <input type="checkbox" ng-checked="{[ visible_all ]}" ng-click="toggle_all()"></h4>
+            <h3>已存在的标注和检测（刷新页面以重新加载新的标注）</h3>
+            <h4>显示/隐藏 全部<input type="checkbox" ng-checked="{[ visible_all ]}" ng-click="toggle_all()"></h4>
         </div>
         <div class="box-body text-center" >
         <table class="table table-bordered">
         <thead><tr>
-            <th>type</th>
-            <th>label / name</th>
-            <th>top</th>
-            <th>left</th>
-            <th>height</th>
-            <th>width</th>
-            <th>full frame</th>
-            <th>visible</th>
-            <th>delete</th>
+            <th>类型</th>
+            <th>标签/名称</th>
+            <th>顶部</th>
+            <th>左侧</th>
+            <th>高度</th>
+            <th>宽度</th>
+            <th>全帧</th>
+            <th>可见</th>
+            <th>删除</th>
         </tr></thead>
         <tbody>
         <tr ng-repeat="box in existing_boxes" >
@@ -147,7 +147,7 @@
             <td class="text-right">{[ box.width*box.scaleX ]}</td>
             <td class="text-center">{[ box.full_frame ]}</td>
             <td class="text-center"><input type="checkbox" ng-model="box.visible" ng-click="toggle_visibility(box.id)"></td>
-            <td class="text-center"><a ng-show="{[ box.annotation ]}" class="btn btn-warning" ng-click="delete_object(box.id,box.pk,box.box_type)"><i class="fa fa-trash"></i> Delete</a></td>
+            <td class="text-center"><a ng-show="{[ box.annotation ]}" class="btn btn-warning" ng-click="delete_object(box.id,box.pk,box.box_type)"><i class="fa fa-trash"></i> 删除</a></td>
         </tr>
         </tbody>
         </table>

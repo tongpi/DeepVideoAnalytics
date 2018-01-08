@@ -15,16 +15,16 @@ if __name__ == '__main__':
             qtype, model_name = k.split('_')[-2:]
             env_mode = None
             if qtype == 'indexer':
-                dm = TrainedModel.objects.filter(name=model_name, model_type=TrainedModel.INDEXER).first()
+                dm = TrainedModel.objects.get(name=model_name, model_type=TrainedModel.INDEXER)
                 queue_name = 'q_indexer_{}'.format(dm.pk)
             elif qtype == 'retriever':
-                dm = Retriever.objects.filter(name=model_name).first()
+                dm = Retriever.objects.get(name=model_name)
                 queue_name = 'q_retriever_{}'.format(dm.pk)
             elif qtype == 'detector':
-                dm = TrainedModel.objects.filter(name=model_name, model_type=TrainedModel.DETECTOR).first()
+                dm = TrainedModel.objects.get(name=model_name, model_type=TrainedModel.DETECTOR)
                 queue_name = 'q_detector_{}'.format(dm.pk)
             elif qtype == 'analyzer':
-                dm = TrainedModel.objects.filter(name=model_name, model_type=TrainedModel.ANALYZER).first()
+                dm = TrainedModel.objects.get(name=model_name, model_type=TrainedModel.ANALYZER)
                 queue_name = 'q_analyzer_{}'.format(dm.pk)
             else:
                 raise ValueError, k

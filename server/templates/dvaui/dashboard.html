@@ -19,45 +19,45 @@
         <div class="inner">
         <form id="image-form" style="width:100%;"  onsubmit="return false;">
             <input type='file'  id='imgfile' style="display:none"/>
-            <a type='button' class="btn btn-primary btn-move" id='btnLoad' ng-click='load_image();'><i class="fa fa-image"></i>&nbsp;&nbsp;Add image</a>
+            <a type='button' class="btn btn-primary btn-move" id='btnLoad' ng-click='load_image();'><i class="fa fa-image"></i>&nbsp;&nbsp;添加图片</a>
         </form>
-        <button type="button" class="btn btn-info  btn-move"  id="reset_zoom" ng-click="resetZoom()"><i class="fa fa-refresh"></i>&nbsp;Reset Zoom</button>
-        <button type="button" class="btn btn-danger  btn-move"  id="clear" ng-click="confirmClear()"><i class="fa fa-trash"></i>&nbsp;&nbsp;Clean editor</button>
-        <button type="button" class="btn btn-warning  btn-move"  id="clear_mask" ng-click="confirmClearMasks()"><i class="fa fa-trash"></i>&nbsp;Clear masks</button>
+        <button type="button" class="btn btn-info  btn-move"  id="reset_zoom" ng-click="resetZoom()"><i class="fa fa-refresh"></i>&nbsp;重置缩放</button>
+        <button type="button" class="btn btn-danger  btn-move"  id="clear" ng-click="confirmClear()"><i class="fa fa-trash"></i>&nbsp;&nbsp;清空编辑器</button>
+        <button type="button" class="btn btn-warning  btn-move"  id="clear_mask" ng-click="confirmClearMasks()"><i class="fa fa-trash"></i>&nbsp;清空蒙版</button>
         <button id="drawing-mode_b"
           ng-click="setFreeDrawingMode(!getFreeDrawingMode(2),2)"
           ng-class="{'btn-inverse': getFreeDrawingMode(2)}" class="btn btn-move btn-warning ">
-          <i class="fa fa-pencil"></i>&nbsp;&nbsp;Exclude </button>
+          <i class="fa fa-pencil"></i>&nbsp;&nbsp;排除 </button>
         <div ng-show="getFreeDrawingMode(1)" class="drawing-mode">
-            <button id="drawing-mode_x" ng-click="setFreeDrawingMode(!getFreeDrawingMode(1),1)" class="btn bg-red btn-move stop_btn"> <i class="fa fa-close"></i>&nbsp;&nbsp;Stop Drawing!</button>
+            <button id="drawing-mode_x" ng-click="setFreeDrawingMode(!getFreeDrawingMode(1),1)" class="btn bg-red btn-move stop_btn"> <i class="fa fa-close"></i>&nbsp;&nbsp;停止绘画！</button>
         </div>
         <div ng-show="getFreeDrawingMode(2)" class="drawing-mode">
-            <button id="drawing-mode_x_2" ng-click="setFreeDrawingMode(!getFreeDrawingMode(2),2)" class="btn btn-warning btn-move stop_btn"> <i class="fa fa-close"></i>&nbsp;&nbsp;Stop Drawing!</button>
+            <button id="drawing-mode_x_2" ng-click="setFreeDrawingMode(!getFreeDrawingMode(2),2)" class="btn btn-warning btn-move stop_btn"> <i class="fa fa-close"></i>&nbsp;&nbsp;停止绘画！</button>
         </div>
         <div id="drawing-mode-wrapper"  class="drawing-mode">
         <div id="drawing-mode-options"  ng-show="getFreeDrawingMode()">
-          <h5 style="text-align: center">Brush width</h5>
+          <h5 style="text-align: center">画笔宽度</h5>
           <input type="range" value="30" min="0" max="150" bind-value-to="drawingLineWidth">
         </div>
         </div>
         <div ng-show="canvas.getActiveGroup()">
-            <button type="button" class="btn  btn-danger btn-object-action bg-maroon btn-move" id="remove-selected-group" ng-click="removeSelected()"><i class="fa fa-trash"></i>&nbsp;&nbsp;Delete</button>
-            <button type="button" class="btn  btn-object-action btn-move" id="deselect_group" ng-click="deselect()"><i class="fa fa-minus"></i>&nbsp;&nbsp;Deselect</button>
+            <button type="button" class="btn  btn-danger btn-object-action bg-maroon btn-move" id="remove-selected-group" ng-click="removeSelected()"><i class="fa fa-trash"></i>&nbsp;&nbsp;删除</button>
+            <button type="button" class="btn  btn-object-action btn-move" id="deselect_group" ng-click="deselect()"><i class="fa fa-minus"></i>&nbsp;&nbsp;取消选择</button>
         </div>
         <div ng-show="canvas.getActiveObject()">
-            <button type="button" class="btn  btn-danger btn-object-action bg-maroon btn-move" id="remove-selected" ng-click="removeSelected()"><i class="fa fa-minus"></i>&nbsp;&nbsp;Delete</button>
-            <button type="button" class="btn  btn-info btn-object-action btn-move" id="duplicate" ng-click="duplicate()"><i class="fa fa-copy"></i>&nbsp;&nbsp;Duplicate</button>
-            <button id="send-backwards" class="btn btn-info  btn-object-action btn-move" ng-click="sendBackwards()"><i class="fa fa-step-backward"></i>&nbsp;&nbsp;Move back</button>
-            <button id="bring-forward" class="btn btn-info  btn-object-action btn-move"  ng-click="bringForward()"><i class="fa fa-step-forward"></i>&nbsp;&nbsp;Move forward</button>
-            <button id="send-to-back" class="btn btn-info  btn-object-action btn-move"  ng-click="sendToBack()"><i class="fa fa-backward"></i>&nbsp;&nbsp;Send to back</button>
-            <button id="bring-to-front" class="btn btn-info  btn-object-action btn-move"  ng-click="bringToFront()"><i class="fa fa-forward"></i>&nbsp;&nbsp;Bring to front</button>
+            <button type="button" class="btn  btn-danger btn-object-action bg-maroon btn-move" id="remove-selected" ng-click="removeSelected()"><i class="fa fa-minus"></i>&nbsp;&nbsp;删除</button>
+            <button type="button" class="btn  btn-info btn-object-action btn-move" id="duplicate" ng-click="duplicate()"><i class="fa fa-copy"></i>&nbsp;&nbsp;复制</button>
+            <button id="send-backwards" class="btn btn-info  btn-object-action btn-move" ng-click="sendBackwards()"><i class="fa fa-step-backward"></i>&nbsp;&nbsp;回退</button>
+            <button id="bring-forward" class="btn btn-info  btn-object-action btn-move"  ng-click="bringForward()"><i class="fa fa-step-forward"></i>&nbsp;&nbsp;向前</button>
+            <button id="send-to-back" class="btn btn-info  btn-object-action btn-move"  ng-click="sendToBack()"><i class="fa fa-backward"></i>&nbsp;&nbsp;置于底层</button>
+            <button id="bring-to-front" class="btn btn-info  btn-object-action btn-move"  ng-click="bringToFront()"><i class="fa fa-forward"></i>&nbsp;&nbsp;置于顶层</button>
             <h5 style="text-align: center">Scale</h5>
             <input value="100" max="200" type="range" bind-value-to="scale">
             <div id="color-opacity-controls" ng-show="canvas.getActiveObject()">
-                <h5 style="text-align: center">Opacity</h5>
+                <h5 style="text-align: center">不透明度</h5>
                 <input value="100" type="range" bind-value-to="opacity">
             </div>
-            <button type="button" class="btn  btn-object-action bg-yellow btn-move" id="deselect" ng-click="deselect()"><i class="fa fa-minus"></i>&nbsp;&nbsp;Deselect</button>
+            <button type="button" class="btn  btn-object-action bg-yellow btn-move" id="deselect" ng-click="deselect()"><i class="fa fa-minus"></i>&nbsp;&nbsp;取消选择</button>
         </div>
     </div>
     </div>
@@ -69,7 +69,7 @@
         </div>
         <div class="m-t row">
             <div class="col-xs-12" style="margin-bottom:15px">
-                <h5 style="font-weight:bold" class="pull-left">Select index > retriever sequence for retrieval</h5>
+                <h5 style="font-weight:bold" class="pull-left">选择索引>检索需要的序列</h5>
                 <div class="pull-right">
                     <a class="btn btn-primary" href="/retrievers/"><i class="fa fa-edit"></i> Create new retriever</a>
                 </div>
@@ -82,18 +82,17 @@
             </select>
             </div>
         </div>
-            <label for="result_count">Results</label>
+            <label for="result_count">结果集</label>
             <input style="display:inline-block; margin-right:10px;width:50px;" type="number" name="result_count"  id="result_count" value="20" class="checkbox text-right index_name">
-            <label for="generate_tags" >Apply Open Images tagger</label>
+            <label for="generate_tags" >应用打开图片标记</label>
             <input type="checkbox" ng-model="generate_tags" class="checkbox" style="display: inline-block;margin-right:5px">
-            <label for="entire_image">Send entire image</label>
+            <label for="entire_image">发送完整图片</label>
             <input style="display:inline-block; margin-right:5px" type="checkbox" ng-model="send_entire_image" class="checkbox">
             <div class="row">
             <div class="col-xs-12" style="text-align:center">
-                <h5 style="font-weight:bold" >Select object detectors</h5>
-                <p>Select textbox to perform OCR (CTPN -> CRNN).
-                   Select face detector to perform (face detection -> facenet -> exact retrieval,
-                    in addition to sequence selected above)
+                <h5 style="font-weight:bold" >选择对象检测器</h5>
+                <p>选择textbox来执行OCR（CTPN - > CRNN）。
+                   选择人脸检测器执行（人脸检测 - > facenet - >精确检索，除了上面选择的序列之外）
                 </p>
             </div>
             <div class="col-xs-12" style="margin-bottom:5px">
@@ -109,7 +108,7 @@
             </div>
         </div>
         <div style="width:70%;margin: 5px auto;text-align: center">
-            <button href="" class="btn btn-primary btn-block" id="search_quick" ng-click="search(false)"><i class="fa fa-search"></i>&nbsp;&nbsp; Search by image</button>
+            <button href="" class="btn btn-primary btn-block" id="search_quick" ng-click="search(false)"><i class="fa fa-search"></i>&nbsp;&nbsp; 搜索图片</button>
         </div>
     </div>
     <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-4 m-t uploadmenu">
@@ -118,26 +117,26 @@
                 <div class="box box-primary">
                     <div class="box-body with_border">
                         <div class="row">
-                            <div class="col-xs-5 text-center"><a class="btn btn-primary" data-toggle="modal" data-target="#allowed" href="#" ><i class="fa fa-upload"></i> Upload video, dataset, etc.</a></div>
-                            <div class="col-xs-7 text-center"><a class="btn btn-primary" data-toggle="modal" data-target="#ytdisclaimer" href="#" ><i class="fa fa-film"></i> Submit Youtube, video, other URLs</a></div>
+                            <div class="col-xs-5 text-center"><a class="btn btn-primary" data-toggle="modal" data-target="#allowed" href="#" ><i class="fa fa-upload"></i> 上传视频数据集等</a></div>
+                            <div class="col-xs-7 text-center"><a class="btn btn-primary" data-toggle="modal" data-target="#ytdisclaimer" href="#" ><i class="fa fa-film"></i> 提交YouTube，视频，其他urls</a></div>
                         </div>
                         <div class="row m-t">
-                            <div class="col-xs-5 text-center"><a class="btn btn-primary" data-toggle="modal" data-target="#awscreds" href="#" ><i class="fa fa-cloud-download"></i> Import from S3, GCS </a></div>
-                            <div class="col-xs-7 text-center"><a class="btn btn-primary" href="/external" ><i class="fa fa-globe"></i> External models, datasets, scripts</a></div>
+                            <div class="col-xs-5 text-center"><a class="btn btn-primary" data-toggle="modal" data-target="#awscreds" href="#" ><i class="fa fa-cloud-download"></i> 从S3，GCS导入</a></div>
+                            <div class="col-xs-7 text-center"><a class="btn btn-primary" href="/external" ><i class="fa fa-globe"></i> 外部模型，数据集，脚本</a></div>
                         </div>
                         <div class="row m-t">
-                            <div class="col-xs-5 text-center"><a class="btn btn-success" href="/stored_process/"><i class="fa fa-play"></i> Run DVAPQL script</a></div>
-                            <div class="col-xs-7 text-center"><a class="btn btn-primary" href="/process/"><i class="fa fa-list"></i> Monitor running processes</a></div>
+                            <div class="col-xs-5 text-center"><a class="btn btn-success" href="/stored_process/"><i class="fa fa-play"></i> 运行DVAPQL脚本</a></div>
+                            <div class="col-xs-7 text-center"><a class="btn btn-primary" href="/process/"><i class="fa fa-list"></i> 监视运行的进程</a></div>
                         </div>
                         <div class="modal fade" tabindex="-1" role="dialog" id="allowed">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span></button><h4 class="modal-title">Upload video / dataset or list of images or exported zip file.</h4></div>
+                                    <span aria-hidden="true">&times;</span></button><h4 class="modal-title">上传视频/数据集或图像列表或导出的zip文件。</h4></div>
                                 <div class="modal-body">
-                                <p>An .mp4 video file or multiple images in a single zip file <a href="https://github.com/AKSHAYUBHAT/DeepVideoAnalytics/blob/master/tests/exampledataset.zip" target="_blank">(example of a zip file)</a> or json/gz file containing list of image urls, s3/gcs paths
-                                    <a href="https://github.com/AKSHAYUBHAT/DeepVideoAnalytics/blob/master/tests/ci/framelist.json" target="_blank">(example of a json or gz file)</a>  or an exported ".dva_export.zip".</p>
+                                <p>一个.mp4视频文件或一个包含多个图像的zip文件 <a href="https://github.com/AKSHAYUBHAT/DeepVideoAnalytics/blob/master/tests/exampledataset.zip" target="_blank">(一个zip压缩文件的例子)</a> 或包含图像urls的json / gz文件，s3 / gcs路径
+                                    <a href="https://github.com/AKSHAYUBHAT/DeepVideoAnalytics/blob/master/tests/ci/framelist.json" target="_blank">（一个json或gz文件的例子）</a>  或 一个导出的“.dva_export.zip”。</p>
                                 <form role="form"  method="post" enctype="multipart/form-data" action="#" >
                                     <div class="form-group">
                                     <input id="id_name" name="name" class="form-control" type="text" required="" placeholder="provide a name">
@@ -145,13 +144,13 @@
                                     <div class="row">
                                     <div class="col-xs-10 col-xs-offset-1">
                                         <div class="form-group text-center">
-                                        <label for="id_file" >Video (.mp4) or zip file:</label>
+                                        <label for="id_file" >视频(.mp4) 或 zip文件:</label>
                                         <input style="margin: 10px auto 10px" id="id_file" name="file" class="btn bg-blue btn-file form-control" type="file" required="">
                                         </div>
                                     </div>
                                     </div>
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-primary btn-block">Upload</button>
+                                    <button type="submit" class="btn btn-primary btn-block">上传</button>
                                 </form>
                             </div>
                             </div>
@@ -159,9 +158,9 @@
                         </div>
                         <div class="modal fade" tabindex="-1" role="dialog" id="ytdisclaimer">
                         <div class="modal-dialog" role="document"><div class="modal-content">
-                            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">Submit Youtube url</h4></div>
-                            <div class="modal-body"><p> <span style="font-weight:bold">Legal disclaimer:</span>Its your responsibility to abide by laws governing <a target="_blank" href="https://www.youtube.com/static?template=terms">Youtube TOS</a> in your jurisdiction. We use <a target="_blank" href="https://rg3.github.io/youtube-dl/">youtube-dl</a> to process urls.</p>
-                                <form role="form"  method="post" action="/youtube" >
+                            <div class="modal-header"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button><h4 class="modal-title">提交 Youtube url</h4></div>
+                            <div class="modal-body"><p> <span style="font-weight:bold">法律免责声明：</span>您有责任遵守管辖您的司法管辖区 <a target="_blank" href="https://www.youtube.com/static?template=terms">Youtube服务条款</a>的法律。我们使用<a target="_blank" href="https://rg3.github.io/youtube-dl/">youtube-dl</a> 来处理网址。</p>
+						<form role="form"  method="post" action="/youtube" >
                                 <div class="form-group">
                                     <input id="id_ytname" name="name" class="form-control" type="text" required="" placeholder="provide a name">
                                 </div>
@@ -170,7 +169,7 @@
                                 </div>
                                 <div class="form-group">
                                 {% csrf_token %}
-                                <button type="submit" class="btn btn-primary btn-block">submit</button>
+                                <button type="submit" class="btn btn-primary btn-block">提交</button>
                                 </div>
                         </form>
 
@@ -182,22 +181,22 @@
                         <div class="modal-dialog" role="document"><div class="modal-content">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span></button><h4 class="modal-title">Import bulk files from AWS S3</h4></div>
+                                    <span aria-hidden="true">&times;</span></button><h4 class="modal-title">从AWS S3导入批量文件</h4></div>
                             <div class="modal-body" style="text-align:left">
-                                <p>We suggest setting AWS authentication credentials using one of following methods.</p>
+                                <p>我们建议使用以下方法之一设置AWS认证凭证。</p>
                                     <ul>
-                                        <li>In an aws config file.</li>
-                                        <li>Via Environment variables inside your docker-compose .yml</li>
-                                        <li>Using IAM Roles (instance metadata discovery service) when running DVA on AWS.</li>
+                                        <li>在aws配置文件中。</li>
+                                        <li>使用docker-compose中的.yml中的环境变量</li>
+                                        <li>在AWS上运行DVA时使用IAM角色（实例元数据发现服务）。</li>
                                     </ul>
-                                <p>We do not provide a method to enter AWS credentials via web interface.</p>
+                                <p>我们不提供通过Web接口输入AWS凭证的方法。</p>
                                 <form role="form"  method="post" action="/import_s3" >
                                 <div class="form-group">
                                     <textarea id="id_s3_key" rows="2" name="key" class="form-control" type="text" required="" placeholder="S3 or GCS paths e.g. s3://bucket_name/key (.mp4, .zip, .json, .gz or .dva_export.zip) with one per line"></textarea>
                                 </div>
                                 <div class="form-group">
                                     {% csrf_token %}
-                                <button type="submit" class="btn btn-primary btn-block">Import</button>
+                                <button type="submit" class="btn btn-primary btn-block">导入</button>
                                 </div>
                                 </form>
                             </div></div>
@@ -209,26 +208,26 @@
                     <div class="box-header with-border">
                         <div class="row">
                             <div class="col-xs-3 text-center">
-                                <h4 style="margin: 18px auto">Task status</h4>
+                                <h4 style="margin: 18px auto">任务状态</h4>
                             </div>
                             <div class="col-xs-offset-6 col-xs-3 text-center">
-                                <a class="btn btn-primary" href="{% url 'tasks' %}" style="margin: 10px auto" > <i class="fa fa-list"></i> All tasks</a>
+                                <a class="btn btn-primary" href="{% url 'tasks' %}" style="margin: 10px auto" > <i class="fa fa-list"></i> 所有任务</a>
                             </div>
                         </div>
                     </div>
                     <div class="box-body">
                         <div class="row text-center">
                             <div class="col-xs-3">
-                                <a class="btn btn-warning" href="/tasks/pending/" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ pending_tasks }} pending</a>
+                                <a class="btn btn-warning" href="/tasks/pending/" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ pending_tasks }} 暂停</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn btn-primary" href="/tasks/running/" style="margin: 10px auto" > <i class="fa fa-gears"></i> {{ running_tasks }} running</a>
+                                <a class="btn btn-primary" href="/tasks/running/" style="margin: 10px auto" > <i class="fa fa-gears"></i> {{ running_tasks }} 运行</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn btn-success" href="/tasks/successful/" style="margin: 10px auto" > <i class="fa fa-check"></i> {{ successful_tasks }} done</a>
+                                <a class="btn btn-success" href="/tasks/successful/" style="margin: 10px auto" > <i class="fa fa-check"></i> {{ successful_tasks }} 完成</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn btn-danger" href="/tasks/failed/" style="margin: 10px auto" > <i class="fa fa-close"></i> {{ errored_tasks }} failed</a>
+                                <a class="btn btn-danger" href="/tasks/failed/" style="margin: 10px auto" > <i class="fa fa-close"></i> {{ errored_tasks }} 失败</a>
                             </div>
                         </div>
                     </div>
@@ -240,48 +239,48 @@
                                 <h4 style="margin-top:18px">Objects</h4>
                             </div>
                             <div class="col-xs-9 text-center">
-                                <a class="btn btn-success" href="/stored_process/#shortcuts" style="margin: 10px auto" > <i class="fa fa-plus"></i> Import/Apply model, Create training set, Train model</a>
+                                <a class="btn btn-success" href="/stored_process/#shortcuts" style="margin: 10px auto" > <i class="fa fa-plus"></i> 导入/应用模型，创建训练集，训练模型</a>
                             </div>
                         </div>
                     </div>
                     <div class="box-body">
                         <div class="row">
                             <div class="col-xs-3">
-                                <a class="btn" href="/videos/" style="margin: 10px auto" > <i class="fa fa-video-camera"></i> {{ video_count }} video / datasets</a>
+                                <a class="btn" href="/videos/" style="margin: 10px auto" > <i class="fa fa-video-camera"></i> {{ video_count }} 视频/数据组</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/videos/" style="margin: 10px auto" > <i class="fa fa-picture-o"></i> {{ frame_count }} frames</a>
+                                <a class="btn" href="/videos/" style="margin: 10px auto" > <i class="fa fa-picture-o"></i> {{ frame_count }} 帧</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/queries/" style="margin: 10px auto" > <i class="fa fa-search"></i> {{ query_count }} queries</a>
+                                <a class="btn" href="/queries/" style="margin: 10px auto" > <i class="fa fa-search"></i> {{ query_count }} 查询</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/indexes/" style="margin: 10px auto" > <i class="fa fa-list"></i> {{ index_entries_count }} indexes</a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <a class="btn" href="/models/" style="margin: 10px auto" > <i class="fa fa-play"></i> {{ models_count }} deep models</a>
-                            </div>
-                            <div class="col-xs-3">
-                                <a class="btn" href="/tasks/" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ task_events_count }}  tasks </a>
-                            </div>
-                            <div class="col-xs-3">
-                                <a class="btn" href="/process/" style="margin: 10px auto" > <i class="fa fa-list"></i> {{ process_count }} processes</a>
-                            </div>
-                            <div class="col-xs-3">
-                                <a class="btn" href="/stored_process/" style="margin: 10px auto" > <i class="fa fa-newspaper-o"></i> {{ script_count }} scripts</a>
+                                <a class="btn" href="/indexes/" style="margin: 10px auto" > <i class="fa fa-list"></i> {{ index_entries_count }} 索引</a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-3">
-                                <a class="btn" href="/training_sets/" style="margin: 10px auto" > <i class="fa fa-circle"></i> {{ training_set_count }} training sets</a>
+                                <a class="btn" href="/models/" style="margin: 10px auto" > <i class="fa fa-play"></i> {{ models_count }} 深度模型/a>
+                            </div>
+                            <div class="col-xs-3">
+                                <a class="btn" href="/tasks/" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ task_events_count }}  任务 </a>
+                            </div>
+                            <div class="col-xs-3">
+                                <a class="btn" href="/process/" style="margin: 10px auto" > <i class="fa fa-list"></i> {{ process_count }} 进程</a>
+                            </div>
+                            <div class="col-xs-3">
+                                <a class="btn" href="/stored_process/" style="margin: 10px auto" > <i class="fa fa-newspaper-o"></i> {{ script_count }} 脚本</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <a class="btn" href="/training_sets/" style="margin: 10px auto" > <i class="fa fa-circle"></i> {{ training_set_count }} 训练集</a>
                             </div>
                             <div class="col-xs-3">
                                 <a class="btn" href="/retrievers/" style="margin: 10px auto" > <i class="fa fa-backward"></i> {{ retriever_counts }}  retrievers </a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/external/" style="margin: 10px auto" > <i class="fa fa-globe"></i> {{ external_server_count }} external servers</a>
+                                <a class="btn" href="/external/" style="margin: 10px auto" > <i class="fa fa-globe"></i> {{ external_server_count }} 外部服务器</a>
                             </div>
                             <div class="col-xs-3">
                                 <a class="btn" href="/management/" style="margin: 10px auto" > <i class="fa fa-gears"></i> {{ worker_count }} workers</a>
@@ -297,14 +296,14 @@
     <div class="col-lg-12" ng-show="results_available()" >
     <div class="box">
     <div class="box-header box-primary text-center">
-        <h3>Retrieval results for query image</h3>
+        <h3>查询图像的检索结果</h3>
     </div>
     </div>
     </div>
     <div class="col-lg-6" ng-repeat="(name, entries) in results">
     <div class="box">
     <div class="box-header">
-        <h4>Results: {[ name ]} </h4>
+        <h4>结果集: {[ name ]} </h4>
     </div>
     </div>
         <div class="row">
@@ -329,7 +328,7 @@
     <div class="col-lg-12" ng-show="results_available()" >
     <div class="box">
     <div class="box-header box-primary text-center">
-        <h3>Detections, annotations and retrieval results with regions as query</h3>
+        <h3>检索，标注和检索结果与区域作为查询</h3>
     </div>
     </div>
         <div class="row">
@@ -337,7 +336,7 @@
             <div class="box box-primary">
                 <div class="box-header with-border text-center">
                     <h4 style="display:inline-block" class="pull-left">{[ item.region_type ]}</h4>
-                    <h4 style="display:inline-block" >Object name: {[ item.object_name ]}</h4>
+                    <h4 style="display:inline-block" >对象名称：{[ item.object_name ]}</h4>
                     <h4 style="display:inline-block" class="pull-right">Confidence: {[ item.confidence ]}</h4>
                 </div>
                 <div class="box-body">
@@ -354,13 +353,13 @@
                 </div>
                     <div class="row">
                     <div class="col-lg-12" ng-repeat="(rname, rentries) in item.results">
-                        <h4>Results (using above bounding box region as query): {[ rname ]} </h4>
+                        <h4>结果集（使用上面的边界框区域作为查询）：{[ rname ]} </h4>
                         <div class="row">
                         <div ng-repeat="ritem in rentries" class="col-lg-3 col-sm-3 col-xs-6" >
                             <div class="clearfix" ng-if="$index % 4 == 0"></div>
                             <div class="box">
                                 <div class="box-header with-border">
-                                    <p class=""> {[ ritem.rank ]} : {[ ritem.result_type ]} in <a href="/videos/{[ ritem.video_id ]}"> Video/Dataset {[ ritem.video_id]}</a> at {[ ritem.frame_index ]}</p>
+                                    <p class=""> {[ ritem.rank ]} : {[ ritem.result_type ]} in <a href="/videos/{[ ritem.video_id ]}"> 视频/数据组 {[ ritem.video_id]}</a> at {[ ritem.frame_index ]}</p>
                                 </div>
                                 <div class="box-body" style="height:220px">
                                     <a href="/frames/{[ ritem.frame_id ]}"><img class="img-responsive img-bordered-sm" style="max-height:200px;margin-left:auto;margin-right:auto"  ng-src="{[ ritem.url ]}">
@@ -380,7 +379,7 @@
         <div class="box">
         <div class="box-body"><div class="row">
             <div class="col-lg-10 text-center"><textarea rows="1"  style="width:95%;margin: auto" placeholder="comma separated list of labels"></textarea></div>
-            <div class="col-lg-2 text-center"><a ng-click="label_selected" class="btn btn-primary" >Label selected</a></div>
+            <div class="col-lg-2 text-center"><a ng-click="label_selected" class="btn btn-primary" >已选择的标签</a></div>
         </div></div>
         </div>
     </div>

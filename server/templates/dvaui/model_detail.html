@@ -6,7 +6,7 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h2>Custom Detector {{ object.name }} trained using {{ object.algorithm }} with {{ object.boxes_count }} boxes on {{ object.frames_count }} images </h2>
+            <h2>在{{object.frames_count}}图像上使用{{object.algorithm}}和{{object.boxes_count}}框对自定义检测器{{object.name}}进行训练</h2>
         </div>
     </div>
 </div>
@@ -18,24 +18,24 @@
     <div class="row">
         <div class="col-md-6">
             <div class="box box-primary">
-            <div class="box-header with-border"><h3>Arguments</h3></div>
+            <div class="box-header with-border"><h3>参数</h3></div>
             <div class="box-body">
                 <textarea class="form-control" readonly="readonly"  rows="10">{{ object.arguments }}</textarea>
             </div>
             <div class="box-footer">
-                <a href="{{ MEDIA_URL }}exports/{{ object.pk }}.dva_detector.zip" class="btn btn-primary" ><i class="fa fa-download"></i> Download trained model</a>
+                <a href="{{ MEDIA_URL }}exports/{{ object.pk }}.dva_detector.zip" class="btn btn-primary" ><i class="fa fa-download"></i> 下载训练模型</a>
             </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="box box-primary">
-            <div class="box-header with-border"><h3>Class distribution</h3></div>
+            <div class="box-header with-border"><h3>类别分布</h3></div>
             <div class="box-body">
                 <table class="table dataTables-dict">
                     <thead>
                         <tr>
-                            <th>Object</th>
-                            <th>Count</th>
+                            <th>对象</th>
+                            <th>数量</th>
                         </tr>
                     </thead>
                     <tbody>

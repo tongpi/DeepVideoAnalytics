@@ -5,7 +5,7 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h2>List of past queries <span style="font-size:12pt;float:right">click on query image to view results</span></h2>
+            <h2>历史查询列表 <span style="font-size:12pt;float:right">点击查询图片查看结果</span></h2>
         </div>
     </div>
 </div>
@@ -18,17 +18,17 @@
                     <div class="col-sm-3 col-xs-6">
                     <div class="box {% if v.results_available %} box-success {% else %} box-warning {% endif %}">
                     <div class="box-header with-border">
-                        <h4 class="text-center">Created at {{ v.created }}</h4>
-                        <h4 class="text-center">{% if v.results_available %} results available {% else %} waiting for results {% endif %}</h4>
+                        <h4 class="text-center">创建于 {{ v.created }}</h4>
+                        <h4 class="text-center">{% if v.results_available %} 结果可用 {% else %} 等待结果 {% endif %}</h4>
                     </div>
                     <div class="box-body" style="min-height:300px">
                         <a href="/queries/{{ v.pk }}">
                             <img  class="img-responsive img-bordered" src="{{ MEDIA_URL }}queries/{{ v.pk }}.png" style="max-height:200px;max-width:80%;margin-left:auto;margin-right:auto"/>
-                            <h4 class="text-center">{% if v.results_available %} <a  class="btn btn-success" href="/queries/{{ v.pk }}"><i class="fa fa-list"></i> View results</a> {% else %} <a class="btn btn-warning btwn disabled">waiting</a>{% endif %}</h4>
+                            <h4 class="text-center">{% if v.results_available %} <a  class="btn btn-success" href="/queries/{{ v.pk }}"><i class="fa fa-list"></i> 查看结果</a> {% else %} <a class="btn btn-warning btwn disabled">等待中</a>{% endif %}</h4>
                         </a>
                     </div>
                     <div class="box-footer text-center">
-                        <a href="/requery/{{ v.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> Query again using image</a>
+                        <a href="/requery/{{ v.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> 使用图片再次查询</a>
                     </div>
                     </div>
                     </div>
