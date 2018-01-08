@@ -6,7 +6,7 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h2>Full text search & OCR annotations</h2>
+            <h2>全文检索和OCR标注</h2>
         </div>
     </div>
 </div>
@@ -25,18 +25,18 @@
                         {% endif %}
                     </div>
                     <div class="row" style="margin-top:10px">
-                        <div class="col-md-1 form-group"><label for="regions" class="form-group text-center">Regions<input type="checkbox" checked="checked"  class=""  id="regions" name="regions"/></label></div>
-                        <div class="col-md-1 form-group"><label for="labels" class="form-group text-center">Labels<input type="checkbox" checked="checked"  class=""  id="labels" name="labels"/></label></div>
-                        <div class="col-md-1 form-group"><label for="frames" class="form-group text-center">Frames<input type="checkbox" checked="checked"  class="" id="frames" name="frames"/></label></div>
+                        <div class="col-md-1 form-group"><label for="regions" class="form-group text-center">区域<input type="checkbox" checked="checked"  class=""  id="regions" name="regions"/></label></div>
+                        <div class="col-md-1 form-group"><label for="labels" class="form-group text-center">标签<input type="checkbox" checked="checked"  class=""  id="labels" name="labels"/></label></div>
+                        <div class="col-md-1 form-group"><label for="frames" class="form-group text-center">帧<input type="checkbox" checked="checked"  class="" id="frames" name="frames"/></label></div>
                         <div class="col-md-6 form-group">
                             <select class="js-example-basic-single" id="video_pk" name="video_pk" style="width:100%">
-                                <option value="" selected="selected">Search all videos/datasets</option>
+                                <option value="" selected="selected">搜索所有视频/数据集</option>
                             {% for v in videos %}
                                 <option value="{{ v.pk }}">{{ v.name }}</option>
                             {% endfor %}
                             </select>
                         </div>
-                        <div class="text-center col-md-3 form-group"><button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i> Search</button></div>
+                        <div class="text-center col-md-3 form-group"><button type="submit" class="btn btn-primary btn-block"><i class="fa fa-search"></i> 搜索</button></div>
 
                     </div>
                     {% csrf_token %}
@@ -49,13 +49,13 @@
                     <input type="hidden" name="offset" value="{{ next }}" />
                     <div class="row">
                         <div class="col-md-4">
-                            <h4>Query: {{ q }} </h4>
+                            <h4>查询： {{ q }} </h4>
                         </div>
                         <div class="col-md-2"><h4>{{ offset }} to {{ limit }}</h4></div>
-                        <div class="col-md-1 form-group"><label for="regions" class="form-group text-center">Regions<input type="checkbox" checked="checked"  class=""  id="regions" name="regions"/></label></div>
-                        <div class="col-md-1 form-group"><label for="labels" class="form-group text-center">Labels<input type="checkbox" checked="checked"  class=""  id="labels" name="labels"/></label></div>
-                        <div class="col-md-1 form-group"><label for="frames" class="form-group text-center">Frames<input type="checkbox" checked="checked"  class="" id="frames" name="frames"/></label></div>
-                        <div class="col-md-3 text-center form-group"><button style="margin-top:10px" type="submit" class="btn btn-primary"><i class="fa fa-forward"></i> Next {{ delta }}</button></div>
+                        <div class="col-md-1 form-group"><label for="regions" class="form-group text-center">区域<input type="checkbox" checked="checked"  class=""  id="regions" name="regions"/></label></div>
+                        <div class="col-md-1 form-group"><label for="labels" class="form-group text-center">标签<input type="checkbox" checked="checked"  class=""  id="labels" name="labels"/></label></div>
+                        <div class="col-md-1 form-group"><label for="frames" class="form-group text-center">帧<input type="checkbox" checked="checked"  class="" id="frames" name="frames"/></label></div>
+                        <div class="col-md-3 text-center form-group"><button style="margin-top:10px" type="submit" class="btn btn-primary"><i class="fa fa-forward"></i> 下{{ delta }}个</button></div>
                     </div>
                     {% csrf_token %}
                     </form>
@@ -69,16 +69,16 @@
             {% if results %}
                 {% if results.regions_meta or results.regions_name %}
                 <div class="box box-primary">
-                    <div class="box-header"><h4>Results: regions metadata text</h4></div>
+                    <div class="box-header"><h4>结果集：区域文本元数据</h4></div>
                     <div class="box-body">
                     <table class="table dataTables">
                     <thead>
                     <tr>
-                        <th class="text-center">Video</th>
-                        <th class="text-center">Frame index</th>
-                        <th class="text-center">Object name</th>
-                        <th class="text-center">Text</th>
-                        <th class="text-center">details</th>
+                        <th class="text-center">视频</th>
+                        <th class="text-center">帧索引</th>
+                        <th class="text-center">对象名称</th>
+                        <th class="text-center">文本</th>
+                        <th class="text-center">详情</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -88,7 +88,7 @@
                             <td>{{ r.frame.frame_index }}</td>
                             <td>{{ r.object_name }}</td>
                             <td>{{ r.text }}</td>
-                            <td class="text-center"><a href="/frames/{{ r.frame.pk }}">details</a></td>
+                            <td class="text-center"><a href="/frames/{{ r.frame.pk }}">详情</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -96,16 +96,16 @@
                     </div>
                 </div>
                 <div class="box box-primary">
-                    <div class="box-header"><h4>Results: regions object name</h4></div>
+                    <div class="box-header"><h4>区域对象名称</h4></div>
                     <div class="box-body">
                     <table class="table dataTables">
                     <thead>
                     <tr>
-                        <th class="text-center">Video</th>
-                        <th class="text-center">Frame index</th>
-                        <th class="text-center">Object name</th>
-                        <th class="text-center">Text</th>
-                        <th class="text-center">details</th>
+                        <th class="text-center">视频</th>
+                        <th class="text-center">帧索引</th>
+                        <th class="text-center">对象名称</th>
+                        <th class="text-center">文本</th>
+                        <th class="text-center">详情</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -115,7 +115,7 @@
                             <td>{{ r.frame.frame_index }}</td>
                             <td>{{ r.object_name }}</td>
                             <td>{{ r.text }}</td>
-                            <td class="text-center"><a href="/frames/{{ r.frame.pk }}">details</a></td>
+                            <td class="text-center"><a href="/frames/{{ r.frame.pk }}">详情</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -125,15 +125,15 @@
                 {% endif %}
                 {% if results.labels %}
                 <div class="box box-primary">
-                    <div class="box-header"><h4>Results: labels</h4></div>
+                    <div class="box-header"><h4>结果集: 标签</h4></div>
                     <div class="box-body">
                     <table class="table dataTables">
                     <thead>
                     <tr>
-                        <th class="text-center">Label</th>
-                        <th class="text-center">Set</th>
-                        <th class="text-center">Text</th>
-                        <th class="text-center">Details</th>
+                        <th class="text-center">标签</th>
+                        <th class="text-center">集合</th>
+                        <th class="text-center">文本</th>
+                        <th class="text-center">详情</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -142,7 +142,7 @@
                             <td>{{ l.name }}</td>
                             <td>{{ l.set }}</td>
                             <td>{{ l.text }}</td>
-                            <td class="text-center"><a href="/label_detail/{{ l.pk }}"> labeled objects</a></td>
+                            <td class="text-center"><a href="/label_detail/{{ l.pk }}"> 标记对象</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -157,9 +157,9 @@
                     <table class="table dataTables">
                     <thead>
                     <tr>
-                        <th class="text-center">Name</th>
-                        <th class="text-center">Directory</th>
-                        <th class="text-center">details</th>
+                        <th class="text-center">名称</th>
+                        <th class="text-center">目录</th>
+                        <th class="text-center">详情</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -167,7 +167,7 @@
                         <tr>
                             <td>{{ f.name }}</td>
                             <td>{{ f.subdir }}</td>
-                            <td class="text-center"><a href="/frames/{{ f.pk }}">details</a></td>
+                            <td class="text-center"><a href="/frames/{{ f.pk }}">详情</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -181,8 +181,8 @@
                     <thead>
                     <tr>
                         <th class="text-center">Name</th>
-                        <th class="text-center">Directory</th>
-                        <th class="text-center">details</th>
+                        <th class="text-center">目录</th>
+                        <th class="text-center">详情</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -190,7 +190,7 @@
                         <tr>
                             <td>{{ f.name }}</td>
                             <td>{{ f.subdir }}</td>
-                            <td class="text-center"><a href="/frames/{{ f.pk }}">details</a></td>
+                            <td class="text-center"><a href="/frames/{{ f.pk }}">详情</a></td>
                         </tr>
                     {% endfor %}
                     </tbody>

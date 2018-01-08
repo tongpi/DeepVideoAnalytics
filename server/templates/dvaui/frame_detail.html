@@ -19,17 +19,17 @@
     <div class="col-lg-6">
         <div class="box box-primary">
         <div class="box-header with-borders text-center">
-            {% if previous_frame %}<a href="/frames/{{ previous_frame.0.pk }}" class="btn btn-success pull-left"><i class="fa fa-backward "></i> Previous</a> {% endif %}
+            {% if previous_frame %}<a href="/frames/{{ previous_frame.0.pk }}" class="btn btn-success pull-left"><i class="fa fa-backward "></i> 上一页</a> {% endif %}
 
-            <a href="/query_frame/{{ object.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> Query using this frame</a>
-            {% if next_frame %}<a href="/frames/{{ next_frame.0.pk }}" class="btn btn-success pull-right"><i class="fa fa-forward"></i> Next</a>{% endif %}
+            <a href="/query_frame/{{ object.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> 使用帧查询</a>
+            {% if next_frame %}<a href="/frames/{{ next_frame.0.pk }}" class="btn btn-success pull-right"><i class="fa fa-forward"></i> 下一页</a>{% endif %}
         </div>
         <div class="box-body">
             <img src="{{ url }}" style="width:100%" />
         </div>
         <div class="box-footer">
-            <div class="text-center"><a href="/annotate_frame/{{ object.pk }}/" class="btn btn-warning"><i class="fa fa-edit"></i> Add & edit annotations for bouding box</a></div>
-            <h4 class="text-center" style="margin-top:15px"> Or assign metadata & labels to entire frame/image below</h4>
+            <div class="text-center"><a href="/annotate_frame/{{ object.pk }}/" class="btn btn-warning"><i class="fa fa-edit"></i> 添加和编辑边界框的标注</a></div>
+            <h4 class="text-center" style="margin-top:15px"> 或者为下面的整个帧/图片指定元数据和标签</h4>
             <form action="/annotate_entire_frame/{{ object.pk }}/" method="post">
                 <div class="row">
                 <div class="col-sm-6"><div class="form-group">
@@ -41,9 +41,9 @@
                     <textarea class="form-control" rows="2" placeholder="metadata" name="metadata"></textarea>
                 </div></div>
                 <div class="col-sm-12">
-                    <label style="font-weight:bold">Name</label>
+                    <label style="font-weight:bold">名称</label>
                     <input type="text" class="form-control" placeholder="optional otherwise frame_metadata is used" name="object_name" id="object_name" />
-                    <label style="font-weight:bold">Assign tags/labels</label>
+                    <label style="font-weight:bold">指定标签</label>
                     <textarea class="form-control" name="tags" id="tags" rows="2" placeholder="you can seperate multiple labels using a comma" style="width:100%"></textarea>
                 </div>
                 <div class="col-sm-4 col-sm-offset-4" style="margin-top:15px">
@@ -54,7 +54,7 @@
                         <input type="hidden" name="h" value="0" />
                         <input type="hidden" name="w" value="0" />
                         <input type="hidden" name="high_level" value="true" />
-                        <div class="text-center"><button id="submit" class="btn btn-primary form-control">Submit</button></div>
+                        <div class="text-center"><button id="submit" class="btn btn-primary form-control">提交</button></div>
                     </div>
                 </div>
                 </div>
@@ -64,16 +64,16 @@
     </div>
     <div class="col-lg-6">
         <div class="box box-primary">
-            <div class="box-header"><h4> Annotations for entire frame / image</h4></div>
+            <div class="box-header"><h4> 整个帧/图片的标注</h4></div>
             <div class="box-body">
                 {% if annotation_list %}
                 <table class="table">
                 <thead>
                 <tr>
-                        <th>Annotation</th>
-                        <th>User</th>
-                        <th>Metadata</th>
-                        <th>Delete</th>
+                        <th>标注</th>
+                        <th>用户</th>
+                        <th>元数据</th>
+                        <th>删除</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -82,8 +82,8 @@
                     <tr>
                         <td>{{ d.object_name }} </td>
                         <td>{{ d.user }} </td>
-                        <td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ d.pk }}">view metadata</button></td>
-                        <td class="text-center"><button type="button" class="btn btn-danger" onclick="delete_annotation({{ d.pk }})" ><i class="fa fa-trash"></i> delete</button></td>
+                        <td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ d.pk }}">查看元数据</button></td>
+                        <td class="text-center"><button type="button" class="btn btn-danger" onclick="delete_annotation({{ d.pk }})" ><i class="fa fa-trash"></i> 删除</button></td>
                     </tr>
                     {% endif %}
                 {% endfor %}
@@ -95,19 +95,19 @@
             </div>
         </div>
         <div class="box box-primary">
-            <div class="box-header"><h4>Annotations for bounding boxes</h4></div>
+            <div class="box-header"><h4>边界框标注</h4></div>
             <div class="box-body">
                 {% if annotation_list %}
                 <table class="table">
                 <thead>
                 <tr>
-                        <th>Annotation</th>
-                        <th>User</th>
+                        <th>标注</th>
+                        <th>用户</th>
                         <th>x</th>
                         <th>y</th>
                         <th>w</th>
                         <th>h</th>
-                        <th>metadata</th>
+                        <th>元数据</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -120,7 +120,7 @@
                         <td>{{ d.y }} </td>
                         <td>{{ d.w }} </td>
                         <td>{{ d.h }} </td>
-                        <td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ d.pk }}">view metadata</button></td>
+                        <td class="text-center"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#{{ d.pk }}">查看元数据</button></td>
                     </tr>
                     {% endif %}
                 {% endfor %}
@@ -130,13 +130,13 @@
                 </div>
             </div>
             <div class="box box-primary">
-            <div class="box-header"><h4>Detections</h4></div>
+            <div class="box-header"><h4>检测器</h4></div>
             <div class="box-body">
                 <table class="table">
                 <thead>
                 <tr>
-                        <th>object</th>
-                        <th>confidence</th>
+                        <th>对象</th>
+                        <th>置信度</th>
                         <th>x</th>
                         <th>y</th>
                         <th>w</th>
@@ -163,7 +163,7 @@
 <div class="row">
     <div class="box box-primary">
         <div class="box-header">
-            <h3>Detected objects:</h3>
+            <h3>被检测对象：</h3>
         </div>
     </div>
     <div class="row">
@@ -183,8 +183,8 @@
             {% endif %}
         </div>
         <div class="box-footer text-center">
-            <h5>Confidence: {{ d.confidence|floatformat }}</h5>
-            <a href="/query_detection/{{ d.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> Query using this detection</a>
+            <h5>置信度: {{ d.confidence|floatformat }}</h5>
+            <a href="/query_detection/{{ d.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> 使用此检测进行查询</a>
         </div>
     </div>
     </div>
@@ -203,23 +203,23 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Annotation : {{ k.object_name }}</h4>
+        <h4 class="modal-title" id="myModalLabel">标注 : {{ k.object_name }}</h4>
       </div>
       <div class="modal-body">
-        <h4 class="text-center">Text metadata</h4>
+        <h4 class="text-center">Text 元数据</h4>
         <textarea rows="10" style="width:100%;">{{ k.text }}</textarea>
-        <h4 class="text-center">JSON metadata</h4>
+        <h4 class="text-center">JSON 元数据</h4>
         <textarea rows="10" style="width:100%;">{{ k.metadata }}</textarea>
         {% if not k.full_frame %}
-        <h4 class="text-center" style="margin-bottom:15px;margin-top:20px">Bounding box</h4>
+        <h4 class="text-center" style="margin-bottom:15px;margin-top:20px">边界框</h4>
         <div style="width: {{ k.w }}px; height: {{ k.h }}px; position: relative;overflow:hidden;margin: auto;">
           <img src="{{ url }}" id="image" style="position: absolute; top: -{{ k.y }}px; left: -{{ k.x }}px" />
         </div>
         {% endif %}
       </div>
       <div class="modal-footer">
-       <button type="button" class="btn btn-danger pull-left" onclick="delete_annotation({{ k.pk }})" ><i class="fa fa-trash"></i> delete</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       <button type="button" class="btn btn-danger pull-left" onclick="delete_annotation({{ k.pk }})" ><i class="fa fa-trash"></i> 删除</button>
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
       </div>
     </div>
   </div>

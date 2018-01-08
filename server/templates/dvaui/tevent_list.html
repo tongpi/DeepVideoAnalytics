@@ -9,19 +9,19 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h2>List of Tasks, Operations & Queues</h2>
+            <h2>任务、操作和队列列表</h2>
             <h3>{{ header }}</h3>
             {% if is_paginated %}
                 <div class="pagination text-center" style="width:100%">
                     <span class="page-links">
                         {% if page_obj.has_previous %}
-                            <a class="btn btn-info" style="float:left" href=".?page={{ page_obj.previous_page_number }}"><i class="fa fa-backward"></i>  Go back</a>
+                            <a class="btn btn-info" style="float:left" href=".?page={{ page_obj.previous_page_number }}"><i class="fa fa-backward"></i>  返回</a>
                         {% endif %}
                         <span class="page-current " style="font-size:24pt;font-weight:bold">
                             {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                         </span>
                         {% if page_obj.has_next %}
-                            <a class="btn btn-info" style="float:right" href=".?page={{ page_obj.next_page_number }}">Load more  <i class="fa fa-forward"></i></a>
+                            <a class="btn btn-info" style="float:right" href=".?page={{ page_obj.next_page_number }}">加载更多  <i class="fa fa-forward"></i></a>
                         {% endif %}
                     </span>
                 </div>
@@ -35,7 +35,7 @@
     <div class="col-lg-12">
         <div class="box">
             <div class="box-header with-border">
-                <h3>Tasks</h3>
+                <h3>任务列表</h3>
             </div>
             <div class="box-body">
                 <form method="post">
@@ -43,18 +43,18 @@
                 <table class="table dataTables">
                     <thead>
                     <tr>
-                        <th>Process</th>
-                        <th>Video</th>
-                        <th>Operation</th>
-                        <th>Queue</th>
-                        <th>created</th>
-                        <th>started</th>
+                        <th>进程</th>
+                        <th>视频</th>
+                        <th>操作</th>
+                        <th>队列</th>
+                        <th>已创建时长</th>
+                        <th>已开始时长</th>
                         <th>created ts</th>
                         <th>started ts</th>
-                        <th>duration</th>
-                        <th class="text-center">status and details</th>
-                        <th class="text-center">retry task</th>
-                        <th class="text-center">mark as failed</th>
+                        <th>运行时长</th>
+                        <th class="text-center">状态和详情</th>
+                        <th class="text-center">重试任务</th>
+                        <th class="text-center">标记为失败</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -71,19 +71,19 @@
                             <td class="text-right">{{ e.duration|floatformat }}</td>
                             <td>
                                 {% if e.errored %}
-                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-danger btn-block">{% if e.imported %}Imported{% endif %} Failed</a>
+                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-danger btn-block">{% if e.imported %}导入{% endif %} 失败</a>
                                 {% elif e.duration < 0 and not e.started %}
-                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-warning btn-block">{% if e.imported %}Imported{% endif %} Pending</a>
+                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-warning btn-block">{% if e.imported %}导入{% endif %} 暂停</a>
                                 {% elif e.duration < 0 and e.started and not e.completed%}
-                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-primary btn-block">{% if e.imported %}Imported{% endif %} Running</a>
+                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-primary btn-block">{% if e.imported %}导入{% endif %} 正在进行中</a>
                                 {% elif e.completed%}
-                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-success btn-block">{% if e.imported %}Imported{% endif %} Completed</a>
+                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-success btn-block">{% if e.imported %}导入{% endif %} 完成</a>
                                 {% else %}
-                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-info btn-block">Unknown</a>
+                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-info btn-block">未知</a>
                                 {% endif %}
                             </td>
-                            <td class="text-center"><button class="btn btn-warning" name="pk" formaction="/retry/" type="submit" value="{{ e.pk }}">Retry</button></td>
-                            <td class="text-center"><button class="btn btn-warning" name="pk" formaction="/failed/"  type="submit" value="{{ e.pk }}" >Mark as failed</button></td>
+                            <td class="text-center"><button class="btn btn-warning" name="pk" formaction="/retry/" type="submit" value="{{ e.pk }}">请重试</button></td>
+                            <td class="text-center"><button class="btn btn-warning" name="pk" formaction="/failed/"  type="submit" value="{{ e.pk }}" >标记为失败</button></td>
                         </tr>
                     {% endfor %}
                     </tbody>

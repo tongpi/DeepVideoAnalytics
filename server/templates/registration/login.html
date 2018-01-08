@@ -9,15 +9,14 @@
 <div class="middle-box text-center loginscreen">
         <div>
         {% if form.errors %}
-        <p>Your username and password didn't match. Please try again.</p>
+        <p>您的用户名和密码不匹配。请重试。</p>
         {% endif %}
 
         {% if next %}
             {% if user.is_authenticated %}
-            <p>Your account doesn't have access to this page. To proceed,
-            please login with an account that has access.</p>
+            <p>您的帐户无权访问此页面。继续，请使用有权访问的帐户登录。</p>
             {% else %}
-            <h3>Please login to see this page.</h3>
+            <h3>查看此页面，请登录。</h3>
             {% endif %}
         {% endif %}
 
@@ -33,12 +32,16 @@
             <span style="display: inline-block">{{ form.password }}</span>
         </div>
 
-        <div><button type="submit" class="btn btn-primary block full-width" style="margin-top: 10px;margin-bottom: 15px; width:250px;">Login</button></div>
+        <div><button type="submit" class="btn btn-primary block full-width" style="margin-top: 10px;margin-bottom: 15px; width:250px;">登录</button></div>
         <input type="hidden" class="" name="next" value="{{ next }}" />
-{#        <div><a style="margin-top:15px" href="{% url 'password_reset' %}">Forgot password?</a></div>#}
+{#        <div><a style="margin-top:15px" href="{% url 'password_reset' %}">忘记密码？</a></div>#}
         </form>
+<<<<<<< HEAD
         <h4 style="margin-top:25px">If you did NOT change the SUPERUSER/SUPERPASS environment variables while launching, then the default username is "admin" and password is "super".</h4>
         <h4 style="margin-top:25px">Currently we recommend manual creation of users via shell.</h4>
+=======
+        <h4 style="margin-top:25px">目前我们推荐通过shell手动创建用户。</h4>
+>>>>>>> 0db32bf7f196686a2c3db43989f8661b16d7c9d8
         </div>
 </div>
 </section>

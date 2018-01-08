@@ -7,7 +7,7 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h2>List of configured external servers, datasets, models & scripts</h2>
+            <h2>配置的外部服务器，数据集，模型和脚本的列表</h2>
         </div>
     </div>
 </div>
@@ -20,9 +20,9 @@
                     <table class="table table-bordered" width="100%">
                         <thead>
                         <tr>
-                            <th>Folder name</th>
-                            <th>Git repo URL</th>
-                            <th>Pull</th>
+                            <th>文件夹名称</th>
+                            <th>Git存储库URL</th>
+                            <th>拉取</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -30,7 +30,7 @@
                                 <tr>
                                     <td>{{ server.name }}</td>
                                     <td><a target="_blank" href="{{ server.url }}" >{{ server.url }}</a></td>
-                                    <td class="text-center"><form action="/pull_external" method="post">{% csrf_token %}<input type="hidden" name="server_pk" value="{{ server.pk }}"/><button type="submit" class="btn btn-primary"> Load / Refresh </button></form></td>
+                                    <td class="text-center"><form action="/pull_external" method="post">{% csrf_token %}<input type="hidden" name="server_pk" value="{{ server.pk }}"/><button type="submit" class="btn btn-primary"> 加载/刷新 </button></form></td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -43,16 +43,16 @@
         <div class="col-lg-12">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h4>Available models, datasets and tempaltes</h4>
+                    <h4>可用的模型，数据集和模板</h4>
                 </div>
             <div class="box-body">
                 <table class="table dataTables" width="100%">
                     <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Server</th>
-                        <th>Description</th>
-                        <th>Run script</th>
+                        <th>名称</th>
+                        <th>服务器</th>
+                        <th>描述</th>
+                        <th>运行脚本</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -61,7 +61,7 @@
                                 <td>{{ s.name }}</td>
                                 <td><a target="_blank" href="{{ s.server.url }}">{{ s.server.name }}</a></td>
                                 <td>{{ s.description }}</td>
-                                <td><a href={% url 'stored_process_detail' s.pk %}>Edit & Run</a></td>
+                                <td><a href={% url 'stored_process_detail' s.pk %}>编辑和运行</a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

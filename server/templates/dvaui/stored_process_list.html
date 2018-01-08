@@ -5,18 +5,18 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h2>Launch new DVAPQL process or use / create a template</h2>
+            <h2>启动新的DVAPQL进程或使用/创建一个新的模板</h2>
             {% if is_paginated %}
                 <div class="pagination text-center" style="width:100%">
                     <span class="page-links">
                         {% if page_obj.has_previous %}
-                            <a class="btn btn-info" style="float:left" href=".?page={{ page_obj.previous_page_number }}"><i class="fa fa-backward"></i>  Go back</a>
+                            <a class="btn btn-info" style="float:left" href=".?page={{ page_obj.previous_page_number }}"><i class="fa fa-backward"></i>  返回</a>
                         {% endif %}
                         <span class="page-current " style="font-size:24pt;font-weight:bold">
                             {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
                         </span>
                         {% if page_obj.has_next %}
-                            <a class="btn btn-info" style="float:right" href=".?page={{ page_obj.next_page_number }}">Load more  <i class="fa fa-forward"></i></a>
+                            <a class="btn btn-info" style="float:right" href=".?page={{ page_obj.next_page_number }}">加载更多  <i class="fa fa-forward"></i></a>
                         {% endif %}
                     </span>
                 </div>
@@ -31,7 +31,7 @@
             <form method="post" action="/submit_process">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h4>Launch a processing or query task specified using DVAPQL</h4>
+                    <h4>使用DVAPQL运行一个指定的处理或查询任务</h4>
                 </div>
                 <div class="box-body">
                     <div class="row">
@@ -43,7 +43,7 @@
                 </div>
                 <div class="box-footer text-center">
                     {% csrf_token %}
-                    <button class="btn btn-primary" type="submit">Submit & launch</button>
+                    <button class="btn btn-primary" type="submit">提交并启动</button>
                 </div>
             </div>
             </form>
@@ -51,19 +51,19 @@
         <div class="col-lg-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h4>Stored process templates
-                        <a class="btn btn-success" href="/external" style="float: right" > <i class="fa fa-globe"></i> Import scripts from external server</a>
+                    <h4>存储进行模板列表
+                        <a class="btn btn-success" href="/external" style="float: right" > <i class="fa fa-globe"></i> 从外部服务器导入脚本</a>
                     </h4>
                 </div>
                 <div class="box-body">
                     <table class="table dataTables">
                     <thead>
                     <tr>
-                        <th class="text-center">User</th>
-                        <th class="text-center">Name</th>
-                        <th class="text-center">Since</th>
-                        <th class="text-center">Created</th>
-                        <th class="text-center">Details</th>
+                        <th class="text-center">用户</th>
+                        <th class="text-center">名称</th>
+                        <th class="text-center">时长</th>
+                        <th class="text-center">创建时间</th>
+                        <th class="text-center">详情</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -74,7 +74,7 @@
                             <td class="text-center">{{ p.created|timesince}}</td>
                             <td class="text-center">{{ p.created }}</td>
                             <td class="text-center">
-                            <a href="/stored_process/{{ p.pk }}">details</a>
+                            <a href="/stored_process/{{ p.pk }}">详情</a>
                             </td>
                         </tr>
                     {% endfor %}
@@ -88,8 +88,8 @@
     <div class="col-lg-12" id="shortcuts">
         <div class="box box-primary">
             <div class="box-header with-border text-center">
-                <h2>Shortcut for processing videos, creating training sets, models etc</h2>
-                <h4>Following forms auto-generate a DVAPQL query and executes it using selected values</h4>
+                <h2>快速处理视频、创建训练集、模板等</h2>
+                <h4>在以下表格中根据选定值可自动创建一个DVAPQL查询并执行</h4>
             </div>
         </div>
     </div>
@@ -97,14 +97,14 @@
         <div class="box box-primary">
             <form action="/shortcuts" method="POST">
             <div class="box-header with-border">
-                <h4>Index frames/regions, detect objects, perform analysis</h4>
+                <h4>索引帧/区域，检测对象，执行分析</h4>
             </div>
             <div class="box-body">
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="row">
                             <div class="col-lg-6"><div class="form-group">
-                                <label for="excluded_videos">Select model</label>
+                                <label for="excluded_videos">选择模型</label>
                                 <select class="js-example-basic-single" id="apply_model_pk" name="model_pk" style="width:100%">
                                 {% for k in models %}
                                     <option value="{{ k.pk }}">{{ k.get_model_type_display }} : {{ k.name }}</option>
@@ -113,17 +113,17 @@
                         </div></div>
                         <div class="col-lg-2"><div class="form-group"><label>Frame batch size<input type="number" class="form-control" name="frames_batch_size"></label></div></div>
                         <div class="col-lg-2"><div class="form-group"><label>Segment batch size<input type="number" class="form-control" name="segments_batch_size"></label></div></div>
-                        <div class="col-lg-2"><div class="form-group"><label>Target
+                        <div class="col-lg-2"><div class="form-group"><label>目标
                             <select class="js-example-basic-single" id="apply_target" name="target" style="width:100%">
-                                <option value="frames" selected="selected">Frames</option>
-                                <option value="regions">Regions</option>
+                                <option value="frames" selected="selected">帧</option>
+                                <option value="regions">区域</option>
                             </select>
                         </label>
                         </div>
                         </div>
                         </div>
                         <div class="form-group">
-                            <label for="frame_video_name">Video</label>
+                            <label for="frame_video_name">视频</label>
                             <select class="js-example-basic-multiple" multiple="multiple" id="apply_video_pk" name="video_pk" class="form-control" style="width:100%">
                             {% for v in videos %}
                                 <option value="{{ v.pk }}">{{ v.name }}</option>
@@ -143,7 +143,7 @@
             <div class="box-footer text-center">
                 <div class="form-group">
                     {% csrf_token %}
-                    <button class="btn btn-primary" name="op" value="apply" type="submit" style="display:inline-block;margin-right:12px">Apply model</button>
+                    <button class="btn btn-primary" name="op" value="apply" type="submit" style="display:inline-block;margin-right:12px">应用模型</button>
                 </div>
             </div>
             </form>
@@ -153,18 +153,18 @@
         <form action="/shortcuts" method="post">
         <div class="box box-primary">
             <div class="box-header with-border">
-                <h4>Create new retriever</h4>
+                <h4>创建新的检索器</h4>
             </div>
             <div class="box-body">
                     <div class="row">
                         <div class="col-lg-12 form-group">
-                            <label for="name">name</label>
+                            <label for="name">名称</label>
                             <input name="name" class="form-control" placeholder="name" required="required" type="text" >
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-6 form-group">
-                            <label for="selected">Indexer</label>
+                            <label for="selected">索引器</label>
                             <select class="js-example-basic" id="selected_indexers" name="indexer_shasum"  style="width:100%">
                             {% for i in indexers %}
                                 <option value="{{ i.shasum }}">{{ i.name }}</option>
@@ -173,12 +173,12 @@
                         </div>
                         <div class="col-lg-6 form-group">
 
-                            <label for="selected">Approximator</label>
+                            <label for="selected">相似器</label>
                             <select class="js-example-basic" id="selected_approximators" name="approximator_shasum"  style="width:100%">
                             {% for v in approximators %}
                                 <option value="{{ v.shasum }}">{{ v.name }}</option>
                             {% endfor %}
-                                <option value=""> None / Exact</option>
+                                <option value=""> 无/精确</option>
                             </select>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                     </div>
             </div>
             <div class="box-footer text-center">
-                {% csrf_token %}<button name="op" value="create_retriever" class="btn btn-primary">Create new retriever</button>
+                {% csrf_token %}<button name="op" value="create_retriever" class="btn btn-primary">创建新的检索器</button>
             </div>
         </div>
         </form>
@@ -201,7 +201,7 @@
         <div class="col-lg-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h4>Create training set for training index approximation</h4>
+                    <h4>创建训练索引近似值的训练集</h4>
                 </div>
                 <div class="box-body">
                 </div>
@@ -210,7 +210,7 @@
         <div class="col-lg-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h4>Train an LOPQ approximator</h4>
+                    <h4>训练一个LOPQ相似器</h4>
                 </div>
                 <div class="box-body">
                 </div>
@@ -221,7 +221,7 @@
         <div class="col-lg-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h4>Create training set for training object detector</h4>
+                    <h4>创建训练对象检测器的训练集</h4>
                 </div>
                 <div class="box-body">
                 </div>
@@ -230,7 +230,7 @@
         <div class="col-lg-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h4>Train a YOLO detector</h4>
+                    <h4>训练一个YOLO检测器</h4>
                 </div>
                 <div class="box-body">
                 </div>
