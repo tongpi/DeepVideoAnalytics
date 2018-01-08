@@ -5,6 +5,7 @@
      container_name: dva-pg
      volumes:
       - dvapgdata:/var/lib/postgresql/data
+      - /home/yangzhanku/model/dva_model:/root/DVA/configs/custom_defaults
      env_file:
        - ./common.env
    rabbit:
@@ -14,6 +15,7 @@
        - ./common.env
      volumes:
        - dvarabbit:/var/lib/rabbitmq
+       - /home/yangzhanku/model/dva_model:/root/DVA/configs/custom_defaults
    redis:
      image: bitnami/redis:latest
      container_name: dva-redis
@@ -21,6 +23,7 @@
        - ../common.env
      volumes:
        - dvaredis:/bitnami
+       - /home/yangzhanku/model/dva_model:/root/DVA/configs/custom_defaults
    dva:
      image: akshayubhat/dva-auto:gpu
      container_name: webserver
@@ -45,14 +48,15 @@
        - INIT_PROCESS=/root/DVA/configs/custom_defaults/init_process.json
      command: bash -c "git pull && sleep 10 && ./start_container.py"
      ports:
-       - "127.0.0.1:8000:80"
-       - "127.0.0.1:8888:8888"
+       - "8000:80"
+       - "9999:8888"
      depends_on:
        - db
        - rabbit
        - redis
      volumes:
        - dvadata:/root/media
+       - /home/yangzhanku/model/dva_model:/root/DVA/configs/custom_defaults
  volumes:
   dvapgdata:
   dvadata:
