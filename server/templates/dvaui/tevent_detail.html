@@ -9,8 +9,8 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h3>Task {{ object.pk }} running {{ object.operation }} on {{ object.queue }} under <a href="/process/{{ object.parent_process_id }}"> process {{ object.parent_process_id }}</a></h3>
-            <h4>Video: {% if object.video %}<a href="/videos/{{ object.video_id }}">{{ object.video.name }}</a>{% endif %}</h4>
+            <h3>任务{{ object.pk }}在<a href="/process/{{ object.parent_process_id }}">进程 { object.parent_process_id }}</a>下的{{ object.queue }}上运行{{ object.operation }}</h3>
+            <h4>视频: {% if object.video %}<a href="/videos/{{ object.video_id }}">{{ object.video.name }}</a>{% endif %}</h4>
         </div>
     </div>
 </div>
@@ -19,25 +19,25 @@
 <div class="row">
     <div class="col-lg-6">
         <div class="box">
-            <div class="box-header with-border"><h3>Details</h3></div>
+            <div class="box-header with-border"><h3>详情</h3></div>
             <div class="box-body">
             <div class="row">
                 <div class="col-lg-8">
-                    <h4>Task id: {{ object.task_id }}</h4>
-                    <h4>Submitted: {{ object.created|timesince }}</h4>
-                    <h4>Execution time: {{  object.duration|floatformat}}</h4>
+                    <h4>任务 id: {{ object.task_id }}</h4>
+                    <h4>创建时间: {{ object.created|timesince }}</h4>
+                    <h4>执行时间: {{  object.duration|floatformat}}</h4>
                 </div>
                 <div class="col-lg-4">
                 {% if object.errored %}
-                    <a href="#" class="btn btn-danger btn-block">{% if e.imported %}Imported{% endif %} Failed</a>
+                    <a href="#" class="btn btn-danger btn-block">{% if e.imported %}Imported{% endif %}失败</a>
                 {% elif object.duration < 0 and not object.started %}
-                    <a href="#" class="btn btn-warning btn-block">{% if e.imported %}Imported{% endif %} Pending</a>
+                    <a href="#" class="btn btn-warning btn-block">{% if e.imported %}Imported{% endif %}暂停</a>
                 {% elif object.duration < 0 and object.started and not object.completed%}
-                    <a href="#" class="btn btn-primary btn-block">{% if e.imported %}Imported{% endif %} Running</a>
+                    <a href="#" class="btn btn-primary btn-block">{% if e.imported %}Imported{% endif %}运行</a>
                 {% elif object.completed%}
-                    <a href="#" class="btn btn-success btn-block">{% if e.imported %}Imported{% endif %} Completed</a>
+                    <a href="#" class="btn btn-success btn-block">{% if e.imported %}Imported{% endif %}完成</a>
                 {% else %}
-                    <a href="#" class="btn btn-disabled btn-block">Unknown</a>
+                    <a href="#" class="btn btn-disabled btn-block">未知</a>
                 {% endif %}
                 </div>
             </div>
@@ -47,7 +47,7 @@
                     <textarea rows="5" style="width:90%;margin: auto" contenteditable="false">{{ object.arguments }}</textarea>
                 </div>
                 <div class="col-lg-12">
-                    <h4>Error message</h4>
+                    <h4>错误信息</h4>
                     <textarea rows="5" style="width:90%;margin: auto" contenteditable="false">{{ object.error_message }}</textarea>
                 </div>
             </div>
@@ -58,7 +58,7 @@
     <div class="col-lg-6">
         <div class="box">
             <div class="box-header with-border">
-                <h3>Exception</h3>
+                <h3>异常</h3>
             </div>
             <div class="box-body">
                     <textarea style="width: 90%;margin: auto;height: 400px;" class="textarea form-control disabled">{{ celery_task.traceback }}</textarea>
