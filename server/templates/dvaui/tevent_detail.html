@@ -9,7 +9,7 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h3>任务{{ object.pk }}在<a href="/process/{{ object.parent_process_id }}">进程 { object.parent_process_id }}</a>下的{{ object.queue }}上运行{{ object.operation }}</h3>
+            <h3>任务{{ object.pk }}在<a href="/process/{{ object.parent_process_id }}">进程{{object.parent_process_id }}</a>下的{{ object.queue }}上运行{{ object.operation }}</h3>
             <h4>视频: {% if object.video %}<a href="/videos/{{ object.video_id }}">{{ object.video.name }}</a>{% endif %}</h4>
         </div>
     </div>

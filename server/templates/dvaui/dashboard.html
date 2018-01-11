@@ -51,10 +51,10 @@
             <button id="bring-forward" class="btn btn-info  btn-object-action btn-move"  ng-click="bringForward()"><i class="fa fa-step-forward"></i>&nbsp;&nbsp;向前</button>
             <button id="send-to-back" class="btn btn-info  btn-object-action btn-move"  ng-click="sendToBack()"><i class="fa fa-backward"></i>&nbsp;&nbsp;置于底层</button>
             <button id="bring-to-front" class="btn btn-info  btn-object-action btn-move"  ng-click="bringToFront()"><i class="fa fa-forward"></i>&nbsp;&nbsp;置于顶层</button>
-            <h5 style="text-align: center">比例</h5>
+            <h5 style="text-align: center">缩放</h5>
             <input value="100" max="200" type="range" bind-value-to="scale">
             <div id="color-opacity-controls" ng-show="canvas.getActiveObject()">
-                <h5 style="text-align: center">不透明度</h5>
+                <h5 style="text-align: center">透明度</h5>
                 <input value="100" type="range" bind-value-to="opacity">
             </div>
             <button type="button" class="btn  btn-object-action bg-yellow btn-move" id="deselect" ng-click="deselect()"><i class="fa fa-minus"></i>&nbsp;&nbsp;取消选择</button>
@@ -69,9 +69,9 @@
         </div>
         <div class="m-t row">
             <div class="col-xs-12" style="margin-bottom:15px">
-                <h5 style="font-weight:bold" class="pull-left">选择索引>检索需要的序列</h5>
+                <h5 style="font-weight:bold" class="pull-left">选择索引 > 检索需要的序列</h5>
                 <div class="pull-right">
-                    <a class="btn btn-primary" href="/retrievers/"><i class="fa fa-edit"></i> Create new retriever</a>
+                    <a class="btn btn-primary" href="/retrievers/"><i class="fa fa-edit"></i> 创建新的检索器</a>
                 </div>
             </div>
             <div class="col-xs-12">
@@ -283,7 +283,7 @@
                                 <a class="btn" href="/external/" style="margin: 10px auto" > <i class="fa fa-globe"></i> {{ external_server_count }} 外部服务器</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/management/" style="margin: 10px auto" > <i class="fa fa-gears"></i> {{ worker_count }} workers</a>
+                                <a class="btn" href="/management/" style="margin: 10px auto" > <i class="fa fa-gears"></i> {{ worker_count }} 工作进程</a>
                             </div>
                         </div>
                     </div>
@@ -391,7 +391,7 @@
 {% block page_js %}
     <script>
         var annotation_mode = false;
-        var status = "Please add image to search or upload.";
+        var status = "请添加需要搜索或上传的图片。";
         var payload = "{{ payload }}";
         var csrf_token = "{% csrf_token %}";
         {% if initial_url %}
