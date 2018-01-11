@@ -51,7 +51,7 @@
             <button id="bring-forward" class="btn btn-info  btn-object-action btn-move"  ng-click="bringForward()"><i class="fa fa-step-forward"></i>&nbsp;&nbsp;向前</button>
             <button id="send-to-back" class="btn btn-info  btn-object-action btn-move"  ng-click="sendToBack()"><i class="fa fa-backward"></i>&nbsp;&nbsp;置于底层</button>
             <button id="bring-to-front" class="btn btn-info  btn-object-action btn-move"  ng-click="bringToFront()"><i class="fa fa-forward"></i>&nbsp;&nbsp;置于顶层</button>
-            <h5 style="text-align: center">Scale</h5>
+            <h5 style="text-align: center">比例</h5>
             <input value="100" max="200" type="range" bind-value-to="scale">
             <div id="color-opacity-controls" ng-show="canvas.getActiveObject()">
                 <h5 style="text-align: center">不透明度</h5>
@@ -117,7 +117,7 @@
                 <div class="box box-primary">
                     <div class="box-body with_border">
                         <div class="row">
-                            <div class="col-xs-5 text-center"><a class="btn btn-primary" data-toggle="modal" data-target="#allowed" href="#" ><i class="fa fa-upload"></i> 上传视频数据集等</a></div>
+                            <div class="col-xs-5 text-center"><a class="btn btn-primary" data-toggle="modal" data-target="#allowed" href="#" ><i class="fa fa-upload"></i> 上传视频，数据集等</a></div>
                             <div class="col-xs-7 text-center"><a class="btn btn-primary" data-toggle="modal" data-target="#ytdisclaimer" href="#" ><i class="fa fa-film"></i> 提交YouTube，视频，其他urls</a></div>
                         </div>
                         <div class="row m-t">
@@ -236,7 +236,7 @@
                     <div class="box-header with-border">
                         <div class="row">
                             <div class="col-xs-3 text-center">
-                                <h4 style="margin-top:18px">Objects</h4>
+                                <h4 style="margin-top:18px">对象面板</h4>
                             </div>
                             <div class="col-xs-9 text-center">
                                 <a class="btn btn-success" href="/stored_process/#shortcuts" style="margin: 10px auto" > <i class="fa fa-plus"></i> 导入/应用模型，创建训练集，训练模型</a>
@@ -246,7 +246,7 @@
                     <div class="box-body">
                         <div class="row">
                             <div class="col-xs-3">
-                                <a class="btn" href="/videos/" style="margin: 10px auto" > <i class="fa fa-video-camera"></i> {{ video_count }} 视频/数据组</a>
+                                <a class="btn" href="/videos/" style="margin: 10px auto" > <i class="fa fa-video-camera"></i> {{ video_count }} 视频/数据集</a>
                             </div>
                             <div class="col-xs-3">
                                 <a class="btn" href="/videos/" style="margin: 10px auto" > <i class="fa fa-picture-o"></i> {{ frame_count }} 帧</a>
@@ -260,7 +260,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-3">
-                                <a class="btn" href="/models/" style="margin: 10px auto" > <i class="fa fa-play"></i> {{ models_count }} 深度模型/a>
+                                <a class="btn" href="/models/" style="margin: 10px auto" > <i class="fa fa-play"></i> {{ models_count }} 深度模型</a>
                             </div>
                             <div class="col-xs-3">
                                 <a class="btn" href="/tasks/" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ task_events_count }}  任务 </a>
@@ -277,7 +277,7 @@
                                 <a class="btn" href="/training_sets/" style="margin: 10px auto" > <i class="fa fa-circle"></i> {{ training_set_count }} 训练集</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/retrievers/" style="margin: 10px auto" > <i class="fa fa-backward"></i> {{ retriever_counts }}  retrievers </a>
+                                <a class="btn" href="/retrievers/" style="margin: 10px auto" > <i class="fa fa-backward"></i> {{ retriever_counts }}  检索器 </a>
                             </div>
                             <div class="col-xs-3">
                                 <a class="btn" href="/external/" style="margin: 10px auto" > <i class="fa fa-globe"></i> {{ external_server_count }} 外部服务器</a>
@@ -414,7 +414,7 @@
     <script type="text/javascript" src={% static 'vision/pf-segmentation.js' %}></script>
     <script type="text/javascript" src={% static 'vision/compatibility.js' %}></script>
     <script type="text/javascript" src={% static 'vision/dat.gui.min.js' %}></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script src="https://code.angularjs.org/1.2.5/angular.min.js"></script>
     <script src={% static 'app/utils.js' %}></script>
     <script src={% static 'app/app_config.js' %}></script>
     <script src={% static 'app/controller.js' %}></script>
