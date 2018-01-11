@@ -33,18 +33,18 @@
             <form action="/annotate_entire_frame/{{ object.pk }}/" method="post">
                 <div class="row">
                 <div class="col-sm-6"><div class="form-group">
-                    <label for="metadat_json">Metadata Text</label>
+                    <label for="metadat_json">元数据 Text</label>
                     <textarea class="form-control" rows="2" placeholder="text" name="text"></textarea>
                 </div></div>
                 <div class="col-sm-6"><div class="form-group">
-                    <label for="metadat_json">Metadata JSON</label>
+                    <label for="metadat_json">元数据 JSON</label>
                     <textarea class="form-control" rows="2" placeholder="metadata" name="metadata"></textarea>
                 </div></div>
                 <div class="col-sm-12">
                     <label style="font-weight:bold">名称</label>
-                    <input type="text" class="form-control" placeholder="optional otherwise frame_metadata is used" name="object_name" id="object_name" />
+                    <input type="text" class="form-control" placeholder="可选的，否则使用frame_metadata" name="object_name" id="object_name" />
                     <label style="font-weight:bold">指定标签</label>
-                    <textarea class="form-control" name="tags" id="tags" rows="2" placeholder="you can seperate multiple labels using a comma" style="width:100%"></textarea>
+                    <textarea class="form-control" name="tags" id="tags" rows="2" placeholder="您可以使用逗号分隔多个标签" style="width:100%"></textarea>
                 </div>
                 <div class="col-sm-4 col-sm-offset-4" style="margin-top:15px">
                     <div class="form-group">

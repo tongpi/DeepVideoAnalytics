@@ -225,7 +225,7 @@
                 <tbody>
                 {% for f in frame_list %}
                     <tr>
-                        <td>{% if object.dataset %} image {% else %} video frame {% endif %}</td>
+                        <td>{% if object.dataset %} 图片 {% else %} 视频帧 {% endif %}</td>
                         <td class="text-left">{% if object.dataset %}  {{ f.name }} {% endif %}</td>
                         <td class="text-right"> 100.0 %</td>
                         <td class="text-right">{% widthratio object.height 1 object.width %}</td>
@@ -282,7 +282,7 @@
             <h4>给整个视频指定标签</h4>
             <form role="form"  method="post" action="/assign_video_labels" >
                     <div class="form-group">
-                        <input id="labels" style="margin:10px auto" name="labels" class="form-control" type="text-area" rows="3" width="80%" required="" placeholder="provide a single label name, or a comma separated list">
+                        <input id="labels" style="margin:10px auto" name="labels" class="form-control" type="text-area" rows="3" width="80%" required="" placeholder="提供单个标签名称或逗号分隔名称列表">
                     </div>
                         <input name="video_pk" class="form-control" type="hidden" value="{{ object.pk }}">
                     <div class="form-group">

@@ -139,7 +139,7 @@
                                     <a href="https://github.com/AKSHAYUBHAT/DeepVideoAnalytics/blob/master/tests/ci/framelist.json" target="_blank">（一个json或gz文件的例子）</a>  或 一个导出的“.dva_export.zip”。</p>
                                 <form role="form"  method="post" enctype="multipart/form-data" action="#" >
                                     <div class="form-group">
-                                    <input id="id_name" name="name" class="form-control" type="text" required="" placeholder="provide a name">
+                                    <input id="id_name" name="name" class="form-control" type="text" required="" placeholder="填写一个名称">
                                     </div>
                                     <div class="row">
                                     <div class="col-xs-10 col-xs-offset-1">
@@ -162,10 +162,10 @@
                             <div class="modal-body"><p> <span style="font-weight:bold">法律免责声明：</span>您有责任遵守管辖您的司法管辖区 <a target="_blank" href="https://www.youtube.com/static?template=terms">Youtube服务条款</a>的法律。我们使用<a target="_blank" href="https://rg3.github.io/youtube-dl/">youtube-dl</a> 来处理网址。</p>
 						<form role="form"  method="post" action="/youtube" >
                                 <div class="form-group">
-                                    <input id="id_ytname" name="name" class="form-control" type="text" required="" placeholder="provide a name">
+                                    <input id="id_ytname" name="name" class="form-control" type="text" required="" placeholder="填写一个名称">
                                 </div>
                                 <div class="form-group">
-                                    <input id="id_yturl" name="url" class="form-control" type="text" required="" placeholder="url of youtube video">
+                                    <input id="id_yturl" name="url" class="form-control" type="text" required="" placeholder="youtube视频网址">
                                 </div>
                                 <div class="form-group">
                                 {% csrf_token %}
