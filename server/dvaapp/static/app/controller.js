@@ -56,13 +56,13 @@ function addAccessors($scope) {
   };
 
   $scope.confirmClear = function() {
-    if (confirm('Remove everything including images. Are you sure?')) {
+    if (confirm('删除所有内容，包括图像。您确定吗？')) {
       canvas.clear();
     }
   };
 
   $scope.confirmClearMasks = function() {
-    if (confirm('Remove all masks. Are you sure?')) {
+    if (confirm('清空所有蒙版。您确定吗？')) {
         canvas.forEachObject(function(obj){
             if (!obj.isType('image')){
                 obj.remove()
@@ -219,9 +219,9 @@ function addAccessors($scope) {
     canvas.isDrawingMode = !!value;
     canvas.freeDrawingBrush.color = mode == 1 ? 'green': 'red';
     if (value && mode == 1){
-        $scope.status = "Highlight regions of interest"
+        $scope.status = "感兴趣的区域高亮"
     }else if(value){
-        $scope.status = "Highlight regions to exclude"
+        $scope.status = "要排除的区域高亮"
     }
     if(canvas.isDrawingMode){
         //yax.show();
@@ -490,7 +490,7 @@ $scope.search = function (approximate) {
 };
 
 $scope.delete_object = function(box_id,pk,object_type){
-    if (confirm('Confirm delete')){
+    if (confirm('确定删除吗？')){
         $.ajax({
         type: "POST",
         url: '/delete',
