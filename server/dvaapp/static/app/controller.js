@@ -451,7 +451,7 @@ $scope.search = function (approximate) {
     $scope.clear_results();
     $scope.setFreeDrawingMode(false,$scope.current_mode);
     $scope.check_movement();
-    $scope.status = "Search started. Wait or view results later on past queries page.";
+    $scope.status = "搜索已启动。稍后在之前的可视化查询页面上等待或查看结果。";
     if(canvas.isDrawingMode){
         canvas.isDrawingMode = false;
         canvas.deactivateAll().renderAll();
