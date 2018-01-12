@@ -52,7 +52,7 @@
         {% if not video.dataset %}
         <div class="box">
         <div class="box-header with-border" >
-            <h3>Video</h3>
+            <h3>视频</h3>
             {%  if object.youtube_video %}<a href="{{ object.url }}" target="_blank">{{ object.url }}</a>{% endif %}
         </div>
         <div class="box-body" style="text-align:center">
@@ -145,7 +145,7 @@
             <div class="row m-t" style="margin-top:25px">
                 <div class="col-sm-3"><div class="form-group"><label for="bucket">S3 Bucket <input name="bucket" type="text" placeholder="bucket" required="required" class="form-control" /></label></div></div>
                 <div class="col-sm-3"><div class="form-group"><label for="key">S3 Key <input name="key" type="text" placeholder="key_prefix" required="required" class="form-control" /></label></div></div>
-                <div class="col-sm-3"><div class="form-group"><label for="region">Region <input name="region" type="text" placeholder="region" required="required" value="us-east-1" class="form-control" /></label></div></div>
+                <div class="col-sm-3"><div class="form-group"><label for="region">区域 <input name="region" type="text" placeholder="region" required="required" value="us-east-1" class="form-control" /></label></div></div>
                 <div class="col-sm-3">{% csrf_token %}
                     <input type="hidden" value="{{ object.pk }}" name="video_id">
                     <input type="hidden" value="s3" name="export_method">
@@ -282,7 +282,7 @@
             <h4>给整个视频指定标签</h4>
             <form role="form"  method="post" action="/assign_video_labels" >
                     <div class="form-group">
-                        <input id="labels" style="margin:10px auto" name="labels" class="form-control" type="text-area" rows="3" width="80%" required="" placeholder="提供单个标签名称或逗号分隔名称列表">
+                        <input id="labels" style="margin:10px auto" name="labels" class="form-control" type="text-area" rows="3" width="80%" required="" placeholder="提供单个标签名称或逗号分隔的多个标签名称">
                     </div>
                         <input name="video_pk" class="form-control" type="hidden" value="{{ object.pk }}">
                     <div class="form-group">
