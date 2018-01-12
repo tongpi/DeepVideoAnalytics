@@ -25,7 +25,7 @@
        - dvaredis:/bitnami
        - /home/yangzhanku/model/dva_model:/root/DVA/configs/custom_defaults
    dva:
-     image: akshayubhat/dva-auto:gpu
+     image: gds/dva-gpu:v1
      container_name: webserver
      env_file:
        - ./common.env
