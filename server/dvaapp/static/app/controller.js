@@ -219,9 +219,9 @@ function addAccessors($scope) {
     canvas.isDrawingMode = !!value;
     canvas.freeDrawingBrush.color = mode == 1 ? 'green': 'red';
     if (value && mode == 1){
-        $scope.status = "感兴趣的区域高亮"
+        $scope.status = "感兴趣的区域高亮。"
     }else if(value){
-        $scope.status = "要排除的区域高亮"
+        $scope.status = "要排除的区域高亮。"
     }
     if(canvas.isDrawingMode){
         //yax.show();
@@ -478,7 +478,7 @@ $scope.search = function (approximate) {
             'csrfmiddlewaretoken':$(csrf_token).val()
         },
         success: function (response) {
-            $scope.status = "Search Completed";
+            $scope.status = "搜索完成。";
             $scope.alert_status = false;
             console.log(response);
             $scope.results = response.results;
@@ -536,7 +536,7 @@ $scope.submit_annotation = function(box_id){
         dataType: 'json',
         async: true,
         success: function (response) {
-            $scope.status = "Submitted annotations";
+            $scope.status = "请提交标注。";
             $scope.alert_status = false;
             var frame_level = $('#'+box.id+'_frame_level');
             if(frame_level.prop('checked')){

@@ -162,11 +162,11 @@
 {% block page_js %}
     <script src={% static 'jsoneditor/jsoneditor.min.js' %}></script>
     <script>
-        var status = "Please add bounding box to annotate.";
+        var status = "请给边界框添加标注。";
         var payload = "{{ payload }}";
         var existing = JSON.parse('{{ existing|safe }}');
         var csrf_token = "{% csrf_token %}";
-        var alert_status = "add bounding box";
+        var alert_status = "添加边界框";
         var annotation_mode = true;
         {% if initial_url %}
             var initial_url="{{ initial_url }}";
