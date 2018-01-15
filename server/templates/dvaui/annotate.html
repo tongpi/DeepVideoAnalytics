@@ -19,11 +19,11 @@
     <div class="box box-info">
         <div class="box-header text-center" >
             {% if frame %}
-            <h4>标注框架 <a href="/frames/{{ frame.pk }}">{{ frame.frame_index }}</a> in <a href="/videos/{{ frame.video.pk }}">{{ frame.video.name }}</a> </h4>
-            {% if previous_frame %}<a style="display: inline-block;margin-right:15px" href="/annotate_frame/{{ previous_frame.0.pk }}" class="btn btn-success"><i class="fa fa-backward "></i> 上一页</a> {% endif %}
-            <a style="display: inline-block;margin-right:15px" href="/query_frame/{{ frame.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> 使用这个框架查询</a>
+            <h4>标注帧 <a href="/frames/{{ frame.pk }}">{{ frame.frame_index }}</a> in <a href="/videos/{{ frame.video.pk }}">{{ frame.video.name }}</a> </h4>
+            {% if previous_frame %}<a style="display: inline-block;margin-right:15px" href="/annotate_frame/{{ previous_frame.0.pk }}" class="btn btn-success"><i class="fa fa-backward "></i> 上一帧</a> {% endif %}
+            <a style="display: inline-block;margin-right:15px" href="/query_frame/{{ frame.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> 使用这个帧查询</a>
             <a style="display: inline-block;margin-right:15px" type='button' class="btn btn-info" id='btnLoad' ng-click='add_bounding_box();'><i class="fa fa-square"></i>&nbsp;添加边界框标注</a>
-            {% if next_frame %}<a style="display: inline-block;margin-right:15px" href="/annotate_frame/{{ next_frame.0.pk }}" class="btn btn-success"><i class="fa fa-forward"></i> 下一页</a>{% endif %}
+            {% if next_frame %}<a style="display: inline-block;margin-right:15px" href="/annotate_frame/{{ next_frame.0.pk }}" class="btn btn-success"><i class="fa fa-forward"></i> 下一帧</a>{% endif %}
             {% endif %}
     </div>
     </div>
@@ -57,11 +57,11 @@
                         <div class="col-xs-5">
                             <div class="form-group">
                                 <label for="top">文本元数据</label>
-                                <textarea name="text" id="{[ box.id ]}_text" class="form-control" rows="1" required="" placeholder="text" ></textarea>
+                                <textarea name="text" id="{[ box.id ]}_text" class="form-control" rows="1" required="" placeholder="文本" ></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="top">JSON元数据</label>
-                                <textarea name="metadata" id="{[ box.id ]}_metadata" class="form-control" rows="1" required="" placeholder="metadata" ></textarea>
+                                <textarea name="metadata" id="{[ box.id ]}_metadata" class="form-control" rows="1" required="" placeholder="元数据" ></textarea>
                             </div>
                         </div>
                         <div class="col-xs-5">
@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="labels" style="font-weight:bold">指定标签</label>
-                                <textarea name="labels" class="form-control" placeholder="specify multiple by seperating with a comma"  rows="1" id="{[ box.id ]}_tags" ></textarea>
+                                <textarea name="labels" class="form-control" placeholder="指定多个标签使用逗号分隔。"  rows="1" id="{[ box.id ]}_tags" ></textarea>
                             </div>
                             <div style="margin-top:26px">
                                 <button ng-click="submit_annotation(box.id)" id="{[ box.id ]}_submit" class="btn btn-primary btn-block">提交</button>
@@ -162,11 +162,11 @@
 {% block page_js %}
     <script src={% static 'jsoneditor/jsoneditor.min.js' %}></script>
     <script>
-        var status = "Please add bounding box to annotate.";
+        var status = "请给边界框添加标注。";
         var payload = "{{ payload }}";
         var existing = JSON.parse('{{ existing|safe }}');
         var csrf_token = "{% csrf_token %}";
-        var alert_status = "add bounding box";
+        var alert_status = "添加边界框";
         var annotation_mode = true;
         {% if initial_url %}
             var initial_url="{{ initial_url }}";

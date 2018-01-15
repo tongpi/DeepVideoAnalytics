@@ -51,7 +51,7 @@
                         <div class="col-md-4">
                             <h4>查询： {{ q }} </h4>
                         </div>
-                        <div class="col-md-2"><h4>{{ offset }} to {{ limit }}</h4></div>
+                        <div class="col-md-2"><h4>{{ offset }} 到 {{ limit }}</h4></div>
                         <div class="col-md-1 form-group"><label for="regions" class="form-group text-center">区域<input type="checkbox" checked="checked"  class=""  id="regions" name="regions"/></label></div>
                         <div class="col-md-1 form-group"><label for="labels" class="form-group text-center">标签<input type="checkbox" checked="checked"  class=""  id="labels" name="labels"/></label></div>
                         <div class="col-md-1 form-group"><label for="frames" class="form-group text-center">帧<input type="checkbox" checked="checked"  class="" id="frames" name="frames"/></label></div>
@@ -152,7 +152,7 @@
                 {% endif %}
                 {% if results.frames_name or results.frames_subdir %}
                 <div class="box box-primary">
-                    <div class="box-header"><h4>Results: frame names</h4></div>
+                    <div class="box-header"><h4>结果集：帧名称</h4></div>
                     <div class="box-body">
                     <table class="table dataTables">
                     <thead>
@@ -175,12 +175,12 @@
                     </div>
                 </div>
                 <div class="box box-primary">
-                    <div class="box-header"><h4>Results: frame subdirs</h4></div>
+                    <div class="box-header"><h4>结果集：帧的子目录</h4></div>
                     <div class="box-body">
                     <table class="table dataTables">
                     <thead>
                     <tr>
-                        <th class="text-center">Name</th>
+                        <th class="text-center">名称</th>
                         <th class="text-center">目录</th>
                         <th class="text-center">详情</th>
                     </tr>

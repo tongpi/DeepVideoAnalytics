@@ -50,7 +50,7 @@
                 {% for v in video_list %}
                 {% if not v.query %}
                     <tr>
-                        <td>{%  if v.dataset and v.query %} Query {% elif v.dataset %} Dataset {% else %}Video {% endif %}</td>
+                        <td>{%  if v.dataset and v.query %} 查询 {% elif v.dataset %} 数据集 {% else %} 视频 {% endif %}</td>
                         <td>{{ v.name }} </td>
                         <td class="text-right">{{ v.length_in_seconds }} </td>
                         <td class="text-right">{{ v.frames }} </td>
