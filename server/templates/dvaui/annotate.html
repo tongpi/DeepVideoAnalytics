@@ -57,11 +57,11 @@
                         <div class="col-xs-5">
                             <div class="form-group">
                                 <label for="top">文本元数据</label>
-                                <textarea name="text" id="{[ box.id ]}_text" class="form-control" rows="1" required="" placeholder="text" ></textarea>
+                                <textarea name="text" id="{[ box.id ]}_text" class="form-control" rows="1" required="" placeholder="文本" ></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="top">JSON元数据</label>
-                                <textarea name="metadata" id="{[ box.id ]}_metadata" class="form-control" rows="1" required="" placeholder="metadata" ></textarea>
+                                <textarea name="metadata" id="{[ box.id ]}_metadata" class="form-control" rows="1" required="" placeholder="元数据" ></textarea>
                             </div>
                         </div>
                         <div class="col-xs-5">
@@ -71,7 +71,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="labels" style="font-weight:bold">指定标签</label>
-                                <textarea name="labels" class="form-control" placeholder="specify multiple by seperating with a comma"  rows="1" id="{[ box.id ]}_tags" ></textarea>
+                                <textarea name="labels" class="form-control" placeholder="指定多个标签使用逗号分隔。"  rows="1" id="{[ box.id ]}_tags" ></textarea>
                             </div>
                             <div style="margin-top:26px">
                                 <button ng-click="submit_annotation(box.id)" id="{[ box.id ]}_submit" class="btn btn-primary btn-block">提交</button>
