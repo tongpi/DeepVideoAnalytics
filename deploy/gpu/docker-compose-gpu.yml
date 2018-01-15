@@ -5,7 +5,6 @@
      container_name: dva-pg
      volumes:
       - dvapgdata:/var/lib/postgresql/data
-      - /home/yangzhanku/model/dva_model:/root/DVA/configs/custom_defaults
      env_file:
        - ./common.env
    rabbit:
@@ -15,7 +14,6 @@
        - ./common.env
      volumes:
        - dvarabbit:/var/lib/rabbitmq
-       - /home/yangzhanku/model/dva_model:/root/DVA/configs/custom_defaults
    redis:
      image: bitnami/redis:latest
      container_name: dva-redis
@@ -23,7 +21,6 @@
        - ../common.env
      volumes:
        - dvaredis:/bitnami
-       - /home/yangzhanku/model/dva_model:/root/DVA/configs/custom_defaults
    dva:
      image: gds/dva-gpu:v1
      container_name: webserver
@@ -56,7 +53,6 @@
        - redis
      volumes:
        - dvadata:/root/media
-       - /home/yangzhanku/model/dva_model:/root/DVA/configs/custom_defaults
  volumes:
   dvapgdata:
   dvadata:
