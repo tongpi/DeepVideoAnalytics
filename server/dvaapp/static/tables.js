@@ -17,7 +17,7 @@ function InitializeTables(){
 }
 
 function setLanguage(){
-	language: {  
+	 {  
       "sProcessing": "处理中...",  
       "sLengthMenu": "显示 _MENU_ 条记录",  
       "sZeroRecords": "没有匹配记录",  
