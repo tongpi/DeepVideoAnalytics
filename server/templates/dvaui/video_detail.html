@@ -21,14 +21,13 @@
                     <th class="text-center">高度</th>
                     <th class="text-center">宽度</th>
                     <th class="text-center">创建时间</th>
-                    <th class="text-center">youtube</th>
-
+					<th class="text-center">查看</th>
                 </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td>{%  if object.dataset and object.query %} 查询 {% elif object.dataset %} 数据集 {% else %}视频 {% endif %}</td>
-                        <td>{{ object.name }} </td>
+                        <td>{{ object.name }}</td>
                         <td class="text-right">{{ object.length_in_seconds }} </td>
                         <td class="text-right">{{ object.frames }} </td>
                         <td class="text-right">{{ object.segments }} </td>
@@ -37,7 +36,7 @@
                         <td class="text-right">{{ object.height }} </td>
                         <td class="text-right">{{ object.width }} </td>
                         <td class="text-center">{{ object.created }}</td>
-                        <td class="text-center">{% if object.youtube_video %}<a href="{{ object.url }}" target="_blank">youtube link</a>{% endif %}</td>
+						<td class="text-center">{% if object.youtube_video %}<a href="{{ object.url }}" target="_blank">查看</a>{% endif %}</td>
                     </tr>
                 </tbody>
                 </table>
