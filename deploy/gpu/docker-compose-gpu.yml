@@ -22,8 +22,8 @@
      volumes:
        - dvaredis:/bitnami
    dva:
-     image: gds/dva-gpu:v2
-     container_name: webserver
+     image: gds/dva-devgpu:v1
+     container_name: devWebserver
      env_file:
        - ./common.env
      environment:
