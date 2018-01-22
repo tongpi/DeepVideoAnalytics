@@ -39,8 +39,8 @@ elif sys.platform == 'darwin':
     DEV_ENV = True
     DEBUG = True
 else:
-    DEBUG = False
-    DEV_ENV = False
+    DEBUG = True
+    DEV_ENV = True
 
 if 'ALLOWED_HOSTS' in os.environ:
     ALLOWED_HOSTS = [k.strip() for k in os.environ['ALLOWED_HOSTS'].split(',') if k.strip()]
@@ -92,7 +92,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-	'django.middleware.locale.LocaleMiddleware',
 ]
 
 if DEV_ENV and DEBUG:
