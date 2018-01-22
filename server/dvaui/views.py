@@ -982,7 +982,7 @@ def deprecate_current_app(func):
     """
     @functools.wraps(func)
     def inner(*args, **kwargs):
-	    if 'current_app' in kwargs:
+        if 'current_app' in kwargs:
             warnings.warn(
                 "Passing `current_app` as a keyword argument is deprecated. "
                 "Instead the caller of `{0}` should set "
