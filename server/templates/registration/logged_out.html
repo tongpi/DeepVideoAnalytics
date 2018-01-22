@@ -1,5 +1,11 @@
-{% extends "dvaui/base.html" %}
+{% extends "admin/base.html" %}
 {% load i18n %}
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
 
 {% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></div>{% endblock %}
 
@@ -10,3 +16,6 @@
 <p><a href="{% url 'accounts:logout' %}">{% trans 'Log in again' %}</a></p>
 
 {% endblock %}
+
+
+
