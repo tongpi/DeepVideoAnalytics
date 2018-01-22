@@ -977,7 +977,8 @@ def shortcuts(request):
         raise NotImplementedError("Only POST allowed")
 		
 def deprecate_current_app(func):
-    """
+    print("here errored test2")
+	"""
     Handle deprecation of the current_app parameter of the views.
     """
     @functools.wraps(func)
@@ -1001,7 +1002,7 @@ def logout(request, next_page=None,
            template_name='registration/logged_out.html',
            redirect_field_name=REDIRECT_FIELD_NAME,
            extra_context=None):
-	print " here errored test1 "
+	print("here errored test1")
     warnings.warn(
         'The logout() view is superseded by the class-based LogoutView().',
         RemovedInDjango21Warning, stacklevel=2
