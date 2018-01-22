@@ -64,7 +64,7 @@ urlpatterns = [
 	url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^accounts/login/$', auth_views.login, name='login'),
     #url(r'^accounts/logout/$', auth_views.logout, name='logout'),
-	url(r'^accounts/relogout/$', include(views.logout, namespace='admin')),
+	url(r'^accounts/relogout/$', include('views.logout', namespace='logout')),
 	url(r'^password_reset/$', auth_views.password_reset, name='password_reset'),
     url(r'^accounts/profile/$', views.index, name='profile'),
 ]
