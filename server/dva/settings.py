@@ -78,7 +78,8 @@ INSTALLED_APPS = [
                      'django_filters',
                      'crispy_forms',
                      'rest_framework.authtoken',
-                     'django_celery_beat'
+                     'django_celery_beat',
+					 'accounts',
                  ] + (['dvap', ] if DVA_PRIVATE_ENABLE else [])+ (['debug_toolbar'] if DEV_ENV and DEBUG else [])
 
 
