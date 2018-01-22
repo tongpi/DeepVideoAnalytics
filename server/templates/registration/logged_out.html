@@ -1,15 +1,8 @@
-{% extends "./base.html" %}
+{% extends "dvaui/base.html" %}
 {% load i18n %}
-{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
-
-{% block branding %}
-{% endblock %}
-
-{% block nav-global %}{% endblock %}
-
 {% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></div>{% endblock %}
 
-{% block content %}
+{% block page_content %}
 
 <p>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
 
