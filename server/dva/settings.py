@@ -40,7 +40,7 @@ elif sys.platform == 'darwin':
     DEBUG = True
 else:
     DEBUG = True
-    DEV_ENV = True
+    DEV_ENV = False
 
 if 'ALLOWED_HOSTS' in os.environ:
     ALLOWED_HOSTS = [k.strip() for k in os.environ['ALLOWED_HOSTS'].split(',') if k.strip()]
