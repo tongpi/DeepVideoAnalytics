@@ -25,6 +25,8 @@ from django_celery_results.models import TaskResult
 from rest_framework.authtoken.models import Token
 import logging
 import defaults
+from django.contrib.auth.views import LogoutView
+from django.contrib.auth import REDIRECT_FIELD_NAME
 
 try:
     from django.contrib.postgres.search import SearchVector
@@ -972,8 +974,42 @@ def shortcuts(request):
             raise NotImplementedError(request.POST.get('op'))
     else:
         raise NotImplementedError("Only POST allowed")
+		
+def deprecate_current_app(func):
+    """
+    Handle deprecation of the current_app parameter of the views.
+    """
+    @functools.wraps(func)
+    def inner(*args, **kwargs):
+        if 'current_app' in kwargs:
+            warnings.warn(
+                "Passing `current_app` as a keyword argument is deprecated. "
+                "Instead the caller of `{0}` should set "
+                "`request.current_app`.".format(func.__name__),
+                RemovedInDjango20Warning
+            )
+            current_app = kwargs.pop('current_app')
+            request = kwargs.get('request', None)
+            if request and current_app is not None:
+                request.current_app = current_app
+        return func(*args, **kwargs)
+    return inner
 
-
+@deprecate_current_app
+def logout(request, next_page=None,
+           template_name='registration/logged_out.html',
+           redirect_field_name=REDIRECT_FIELD_NAME,
+           extra_context=None):
+    warnings.warn(
+        'The logout() view is superseded by the class-based LogoutView().',
+        RemovedInDjango21Warning, stacklevel=2
+    )
+    return LogoutView.as_view(
+        next_page=next_page,
+        template_name=template_name,
+        redirect_field_name=redirect_field_name,
+        extra_context=extra_context,
+    )(request)
 
 # @user_passes_test(user_check)
 # def index_video(request):
