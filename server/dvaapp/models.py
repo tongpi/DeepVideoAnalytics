@@ -24,11 +24,11 @@ JSONEncoder.default = JSONEncoder_new
 
 
 class Worker(models.Model):
-    queue_name = models.CharField(max_length=500, default="")
-    host = models.CharField(max_length=500, default="")
+    queue_name = models.CharField(max_length=500, default="", verbose_name="队列名称")
+    host = models.CharField(max_length=500, default="", verbose_name="主机地址")
     pid = models.IntegerField()
     alive = models.BooleanField(default=True)
-    created = models.DateTimeField('date created', auto_now_add=True)
+    created = models.DateTimeField('date created', auto_now_add=True, verbose_name="创建时间")
 
 
 class DVAPQL(models.Model):
