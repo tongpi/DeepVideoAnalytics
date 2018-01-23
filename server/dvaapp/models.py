@@ -645,19 +645,19 @@ class DeletedVideo(models.Model):
 
 
 class ManagementAction(models.Model):
-    parent_task = models.CharField(max_length=500, default="")
+    parent_task = models.CharField(max_length=500, default="", verbose_name="父任务")
     op = models.CharField(max_length=500, default="")
-    host = models.CharField(max_length=500, default="")
+    host = models.CharField(max_length=500, default="", verbose_name="主机")
     message = models.TextField(verbose_name="信息")
-    created = models.DateTimeField('date created', auto_now_add=True)
+    created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
     ping_index = models.IntegerField(null=True)
 
 
 class SystemState(models.Model):
     created = models.DateTimeField('date created', auto_now_add=True)
-    tasks = models.IntegerField(default=0)
-    pending_tasks = models.IntegerField(default=0, verbose_name="已暂停任务")
-    completed_tasks = models.IntegerField(default=0,verbose_name="已完成任务")
+    tasks = models.IntegerField(default=0, verbose_name="任务数量")
+    pending_tasks = models.IntegerField(default=0, verbose_name="已暂停任务数量")
+    completed_tasks = models.IntegerField(default=0,verbose_name="已完成任务数量")
     processes = models.IntegerField(default=0, verbose_name="进程数量")
     pending_processes = models.IntegerField(default=0, verbose_name="已暂停进程数量")
     completed_processes = models.IntegerField(default=0, verbose_name="已完成进程数量")
