@@ -29,7 +29,7 @@ class Worker(models.Model):
     host = models.CharField(max_length=500, default="", verbose_name="主机地址")
     pid = models.IntegerField()
     alive = models.BooleanField(default=True)
-    created = models.DateTimeField('date created', auto_now_add=True, verbose_name="创建时间")
+    created = models.DateTimeField('date created', auto_now_add=True)
 
 
 class DVAPQL(models.Model):
