@@ -60,11 +60,10 @@ urlpatterns = [
     url(r'^expire_token', views.expire_token, name='expire_token'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     url(r'^login/$', auth_views.login, name='login'),
-    #url(r'^logout/$', auth_views.logout, name='logout'),
-	url(r'^logout/$', auth_views.logout, name='logout'),
+    url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^accounts/login/$', auth_views.login, name='login'),
     #url(r'^accounts/logout/$', auth_views.logout, name='logout'),
-	url(r'^accounts/relogout/$', views.logout, name='logout'),
+	url(r'^accounts/logout/$', views.logout, name='logout'),
     url(r'^password_reset/$', auth_views.password_reset, name='password_reset'),
     url(r'^accounts/profile/$', views.index, name='profile'),
 ]
