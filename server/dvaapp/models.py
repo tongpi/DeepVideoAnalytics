@@ -36,21 +36,21 @@ class DVAPQL(models.Model):
     SCHEDULE = 'S'
     PROCESS = 'V'
     QUERY = 'Q'
-    TYPE_CHOICES = ((SCHEDULE, 'Schedule'), (PROCESS, 'Process'), (QUERY, 'Query'))
-    process_type = models.CharField(max_length=1, choices=TYPE_CHOICES, default=QUERY, )
+    TYPE_CHOICES = ((SCHEDULE, 'Schedule'), (PROCESS, 'Process'), (QUERY, '查询'))
+    process_type = models.CharField(max_length=1, choices=TYPE_CHOICES, default=QUERY, verbose_name="进程类型")
     created = models.DateTimeField('date created', auto_now_add=True)
-    user = models.ForeignKey(User, null=True, related_name="submitter")
-    script = JSONField(blank=True, null=True)
-    results_metadata = models.TextField(default="")
-    results_available = models.BooleanField(default=False)
-    completed = models.BooleanField(default=False)
+    user = models.ForeignKey(User, null=True, related_name="submitter", verbose_name="用户")
+    script = JSONField(blank=True, null=True, verbose_name="脚本")
+    results_metadata = models.TextField(default="", verbose_name="元数据结果集")
+    results_available = models.BooleanField(default=False, verbose_name="有效的结果集")
+    completed = models.BooleanField(default=False, verbose_name="已完成")
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
 
 class Video(models.Model):
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
     name = models.CharField(max_length=500,default="", verbose_name="名称")
-    length_in_seconds = models.IntegerField(default=0)
+    length_in_seconds = models.IntegerField(default=0, verbose_name="时长（秒）")
     height = models.IntegerField(default=0, verbose_name="高度")
     width = models.IntegerField(default=0, verbose_name="宽度")
     metadata = models.TextField(default="", verbose_name="元数据")
@@ -62,8 +62,8 @@ class Video(models.Model):
     uploader = models.ForeignKey(User,null=True, verbose_name="上传者")
     segments = models.IntegerField(default=0, verbose_name="段数量")
     url = models.TextField(default="", verbose_name="网址")
-    youtube_video = models.BooleanField(default=False)
-    parent_process = models.ForeignKey(DVAPQL,null=True)
+    youtube_video = models.BooleanField(default=False, verbose_name="youtube视频")
+    parent_process = models.ForeignKey(DVAPQL,null=True , verbose_name="父进程")
 
     def __unicode__(self):
         return u'{}'.format(self.name)
@@ -627,8 +627,8 @@ class TubeLabel(models.Model):
 
 
 class VideoLabel(models.Model):
-    video = models.ForeignKey(Video)
-    label = models.ForeignKey(Label)
+    video = models.ForeignKey(Video, verbose_name="视频")
+    label = models.ForeignKey(Label, verbose_name="标签")
     event = models.ForeignKey(TEvent, null=True)
 
 
