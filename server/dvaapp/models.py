@@ -42,7 +42,7 @@ class DVAPQL(models.Model):
     user = models.ForeignKey(User, null=True, related_name="submitter", verbose_name="用户")
     script = JSONField(blank=True, null=True, verbose_name="脚本")
     results_metadata = models.TextField(default="", verbose_name="元数据结果集")
-    results_available = models.BooleanField(default=False, verbose_name="有效的结果集")
+    results_available = models.BooleanField(default=False, verbose_name="结果集有效")
     completed = models.BooleanField(default=False, verbose_name="已完成")
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
@@ -288,16 +288,16 @@ class Retriever(models.Model):
 
 
 class Frame(models.Model):
-    video = models.ForeignKey(Video)
+    video = models.ForeignKey(Video, verbose_name="视频名称")
     event = models.ForeignKey(TEvent,null=True)
-    frame_index = models.IntegerField()
-    name = models.CharField(max_length=200,null=True)
+    frame_index = models.IntegerField(verbose_name="帧索引")
+    name = models.CharField(max_length=200,null=True, verbose_name="名称")
     subdir = models.TextField(default="") # Retains information if the source is a dataset for labeling
-    h = models.IntegerField(default=0)
-    w = models.IntegerField(default=0)
-    t = models.FloatField(null=True) # time in seconds for keyframes
-    keyframe = models.BooleanField(default=False) # is this a key frame for a video?
-    segment_index = models.IntegerField(null=True)
+    h = models.IntegerField(default=0, verbose_name="高度")
+    w = models.IntegerField(default=0, verbose_name="宽度")
+    t = models.FloatField(null=True, verbose_name="时长（秒）") # time in seconds for keyframes
+    keyframe = models.BooleanField(default=False, verbose_name="关键帧") # is this a key frame for a video?
+    segment_index = models.IntegerField(null=True, verbose_name="段索引")
 
     class Meta:
         unique_together = (("video", "frame_index"),)
@@ -472,18 +472,18 @@ class QueryRegionResults(models.Model):
 
 
 class IndexEntries(models.Model):
-    video = models.ForeignKey(Video)
-    features_file_name = models.CharField(max_length=100)
-    entries_file_name = models.CharField(max_length=100)
-    algorithm = models.CharField(max_length=100)
-    indexer = models.ForeignKey(TrainedModel, null=True)
-    indexer_shasum = models.CharField(max_length=40)
-    approximator_shasum = models.CharField(max_length=40, null=True)
-    detection_name = models.CharField(max_length=100)
-    count = models.IntegerField()
-    approximate = models.BooleanField(default=False)
-    contains_frames = models.BooleanField(default=False)
-    contains_detections = models.BooleanField(default=False)
+    video = models.ForeignKey(Video, verbose_name="视频名称")
+    features_file_name = models.CharField(max_length=100, verbose_name="特征文件名称")
+    entries_file_name = models.CharField(max_length=100, verbose_name="条目文件名称")
+    algorithm = models.CharField(max_length=100, verbose_name="算法")
+    indexer = models.ForeignKey(TrainedModel, null=True, verbose_name="索引器")
+    indexer_shasum = models.CharField(max_length=40, verbose_name="索引器 shasum")
+    approximator_shasum = models.CharField(max_length=40, null=True, verbose_name="相似器 shasum")
+    detection_name = models.CharField(max_length=100, verbose_name="索引对象")
+    count = models.IntegerField(verbose_name="", verbose_name="数量")
+    approximate = models.BooleanField(default=False, verbose_name="相似")
+    contains_frames = models.BooleanField(default=False, verbose_name="包含帧")
+    contains_detections = models.BooleanField(default=False, verbose_name="包含检测")
     created = models.DateTimeField('date created', auto_now_add=True)
     event = models.ForeignKey(TEvent, null=True)
 
@@ -544,10 +544,10 @@ class Tube(models.Model):
 
 
 class Label(models.Model):
-    name = models.CharField(max_length=200)
-    set = models.CharField(max_length=200,default="")
-    metadata = JSONField(blank=True,null=True)
-    text = models.TextField(null=True,blank=True)
+    name = models.CharField(max_length=200, verbose_name="名称")
+    set = models.CharField(max_length=200,default="", verbose_name="集合名称")
+    metadata = JSONField(blank=True,null=True, verbose_name="元数据")
+    text = models.TextField(null=True,blank=True, verbose_name="文本")
     created = models.DateTimeField('date created', auto_now_add=True)
 
     class Meta:
@@ -558,11 +558,11 @@ class Label(models.Model):
 
 
 class FrameLabel(models.Model):
-    video = models.ForeignKey(Video,null=True)
-    frame_index = models.IntegerField(default=-1)
-    segment_index = models.IntegerField(null=True)
-    frame = models.ForeignKey(Frame)
-    label = models.ForeignKey(Label)
+    video = models.ForeignKey(Video,null=True, verbose_name="视频名称")
+    frame_index = models.IntegerField(default=-1, verbose_name="帧索引")
+    segment_index = models.IntegerField(null=True, verbose_name="段索引")
+    frame = models.ForeignKey(Frame, verbose_name="帧")
+    label = models.ForeignKey(Label, verbose_name="标签")
     event = models.ForeignKey(TEvent,null=True)
 
     def clean(self):
@@ -627,18 +627,18 @@ class TubeLabel(models.Model):
 
 
 class VideoLabel(models.Model):
-    video = models.ForeignKey(Video, verbose_name="视频")
+    video = models.ForeignKey(Video, verbose_name="视频名称")
     label = models.ForeignKey(Label, verbose_name="标签")
     event = models.ForeignKey(TEvent, null=True)
 
 
 class DeletedVideo(models.Model):
-    name = models.CharField(max_length=500,default="")
-    description = models.TextField(default="")
-    uploader = models.ForeignKey(User,null=True,related_name="user_uploader")
-    url = models.TextField(default="")
-    deleter = models.ForeignKey(User,related_name="user_deleter",null=True)
-    original_pk = models.IntegerField()
+    name = models.CharField(max_length=500,default="", verbose_name="名称")
+    description = models.TextField(default="", verbose_name="描述")
+    uploader = models.ForeignKey(User,null=True,related_name="user_uploader", verbose_name="上传人")
+    url = models.TextField(default="", verbose_name="网址")
+    deleter = models.ForeignKey(User,related_name="user_deleter",null=True, verbose_name="删除人")
+    original_pk = models.IntegerField(verbose_name="原始主键")
 
     def __unicode__(self):
         return u'Deleted {}'.format(self.name)
@@ -648,7 +648,7 @@ class ManagementAction(models.Model):
     parent_task = models.CharField(max_length=500, default="")
     op = models.CharField(max_length=500, default="")
     host = models.CharField(max_length=500, default="")
-    message = models.TextField()
+    message = models.TextField(verbose_name="信息")
     created = models.DateTimeField('date created', auto_now_add=True)
     ping_index = models.IntegerField(null=True)
 
@@ -656,13 +656,13 @@ class ManagementAction(models.Model):
 class SystemState(models.Model):
     created = models.DateTimeField('date created', auto_now_add=True)
     tasks = models.IntegerField(default=0)
-    pending_tasks = models.IntegerField(default=0)
-    completed_tasks = models.IntegerField(default=0)
-    processes = models.IntegerField(default=0)
-    pending_processes = models.IntegerField(default=0)
-    completed_processes = models.IntegerField(default=0)
-    queues = JSONField(blank=True,null=True)
-    hosts = JSONField(blank=True,null=True)
+    pending_tasks = models.IntegerField(default=0, verbose_name="已暂停任务")
+    completed_tasks = models.IntegerField(default=0,verbose_name="已完成任务")
+    processes = models.IntegerField(default=0, verbose_name="进程数量")
+    pending_processes = models.IntegerField(default=0, verbose_name="已暂停进程数量")
+    completed_processes = models.IntegerField(default=0, verbose_name="已完成进程数量")
+    queues = JSONField(blank=True,null=True, verbose_name="队列")
+    hosts = JSONField(blank=True,null=True, verbose_name="主机")
 
 
 class QueryRegionIndexVector(models.Model):
