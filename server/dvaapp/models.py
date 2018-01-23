@@ -26,9 +26,9 @@ JSONEncoder.default = JSONEncoder_new
 
 class Worker(models.Model):
     queue_name = models.CharField(max_length=500, default="", verbose_name="队列名称")
-    host = models.CharField(max_length=500, default="", verbose_name="主机地址")
+    host = models.CharField(max_length=500, default="", verbose_name="主机")
     pid = models.IntegerField()
-    alive = models.BooleanField(default=True)
+    alive = models.BooleanField(default=True, verbose_name="激活")
     created = models.DateTimeField('date created', auto_now_add=True)
 
 
@@ -49,19 +49,19 @@ class DVAPQL(models.Model):
 
 class Video(models.Model):
     id = models.UUIDField(default=uuid.uuid4, editable=False, primary_key=True)
-    name = models.CharField(max_length=500,default="")
+    name = models.CharField(max_length=500,default="", verbose_name="名称")
     length_in_seconds = models.IntegerField(default=0)
-    height = models.IntegerField(default=0)
-    width = models.IntegerField(default=0)
-    metadata = models.TextField(default="")
-    frames = models.IntegerField(default=0)
+    height = models.IntegerField(default=0, verbose_name="高度")
+    width = models.IntegerField(default=0, verbose_name="宽度")
+    metadata = models.TextField(default="", verbose_name="元数据")
+    frames = models.IntegerField(default=0, verbose_name="帧数量")
     created = models.DateTimeField('date created', auto_now_add=True)
-    description = models.TextField(default="")
-    uploaded = models.BooleanField(default=False)
-    dataset = models.BooleanField(default=False)
-    uploader = models.ForeignKey(User,null=True)
-    segments = models.IntegerField(default=0)
-    url = models.TextField(default="")
+    description = models.TextField(default="", verbose_name="描述")
+    uploaded = models.BooleanField(default=False, verbose_name="已上传")
+    dataset = models.BooleanField(default=False, verbose_name="数据集")
+    uploader = models.ForeignKey(User,null=True, verbose_name="上传者")
+    segments = models.IntegerField(default=0, verbose_name="段数量")
+    url = models.TextField(default="", verbose_name="网址")
     youtube_video = models.BooleanField(default=False)
     parent_process = models.ForeignKey(DVAPQL,null=True)
 
