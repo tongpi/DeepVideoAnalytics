@@ -480,7 +480,7 @@ class IndexEntries(models.Model):
     indexer_shasum = models.CharField(max_length=40, verbose_name="索引器 shasum")
     approximator_shasum = models.CharField(max_length=40, null=True, verbose_name="相似器 shasum")
     detection_name = models.CharField(max_length=100, verbose_name="索引对象")
-    count = models.IntegerField(verbose_name="", verbose_name="数量")
+    count = models.IntegerField(verbose_name="数量")
     approximate = models.BooleanField(default=False, verbose_name="相似")
     contains_frames = models.BooleanField(default=False, verbose_name="包含帧")
     contains_detections = models.BooleanField(default=False, verbose_name="包含检测")
