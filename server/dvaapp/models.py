@@ -36,8 +36,8 @@ class DVAPQL(models.Model):
     SCHEDULE = 'S'
     PROCESS = 'V'
     QUERY = 'Q'
-    TYPE_CHOICES = ((SCHEDULE, 'Schedule'), (PROCESS, 'Process'), (QUERY, '查询'))
-    process_type = models.CharField(max_length=1, choices=TYPE_CHOICES, default=QUERY, verbose_name="进程类型")
+    TYPE_CHOICES = ((SCHEDULE, '执行计划'), (PROCESS, '进程'), (QUERY, '查询'))
+    process_type = models.CharField(max_length=1, choices=TYPE_CHOICES, default=QUERY, verbose_name="处理类型")
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
     user = models.ForeignKey(User, null=True, related_name="submitter", verbose_name="用户")
     script = JSONField(blank=True, null=True, verbose_name="脚本")
@@ -427,9 +427,9 @@ class QueryRegion(models.Model):
     REGION_TYPES = (
         (ANNOTATION, '标注'),
         (DETECTION, '检测'),
-        (POLYGON, 'Polygon'),
-        (SEGMENTATION, 'Segmentation'),
-        (TRANSFORM, 'Transform'),
+        (POLYGON, '多边形'),
+        (SEGMENTATION, '分割'),
+        (TRANSFORM, '变换'),
     )
     region_type = models.CharField(max_length=1,choices=REGION_TYPES,db_index=True, verbose_name="区域类型")
     query = models.ForeignKey(DVAPQL, verbose_name="查询")
@@ -530,17 +530,17 @@ class Tube(models.Model):
     A tube is a collection of sequential frames / regions that track a certain object
     or describe a specific scene
     """
-    video = models.ForeignKey(Video,null=True)
-    frame_level = models.BooleanField(default=False)
-    start_frame_index = models.IntegerField()
-    end_frame_index = models.IntegerField()
-    start_frame = models.ForeignKey(Frame,null=True,related_name="start_frame")
-    end_frame = models.ForeignKey(Frame,null=True,related_name="end_frame")
-    start_region = models.ForeignKey(Region,null=True,related_name="start_region")
-    end_region = models.ForeignKey(Region,null=True,related_name="end_region")
+    video = models.ForeignKey(Video,null=True, verbose_name="视频")
+    frame_level = models.BooleanField(default=False, verbose_name="帧级别")
+    start_frame_index = models.IntegerField(verbose_name="开始索引")
+    end_frame_index = models.IntegerField(verbose_name="结束索引")
+    start_frame = models.ForeignKey(Frame,null=True,related_name="start_frame", verbose_name="开始帧")
+    end_frame = models.ForeignKey(Frame,null=True,related_name="end_frame", verbose_name="结束帧")
+    start_region = models.ForeignKey(Region,null=True,related_name="start_region", verbose_name="开始区域")
+    end_region = models.ForeignKey(Region,null=True,related_name="end_region", verbose_name="结束区域")
     text = models.TextField(default="", verbose_name="文本")
     metadata = JSONField(blank=True,null=True, verbose_name="元数据")
-    source = models.ForeignKey(TEvent,null=True)
+    source = models.ForeignKey(TEvent,null=True, verbose_name="资源")
 
 
 class Label(models.Model):
@@ -678,20 +678,20 @@ class TrainingSet(models.Model):
     LOPQINDEX = 'A'
     CLASSIFICATION = 'C'
     TRAIN_TASK_TYPES = (
-        (DETECTION, 'Detection'),
-        (INDEXING, 'Indexing'),
-        (CLASSIFICATION, 'Classication')
+        (DETECTION, '检测'),
+        (INDEXING, '索引'),
+        (CLASSIFICATION, '分类')
     )
     IMAGES = 'I'
     VIDEOS = 'V'
     INSTANCE_TYPES = (
-        (IMAGES, 'images'),
-        (VIDEOS, 'videos'),
+        (IMAGES, '图像'),
+        (VIDEOS, '视频'),
     )
     event = models.ForeignKey(TEvent)
-    training_task_type = models.CharField(max_length=1,choices=TRAIN_TASK_TYPES,db_index=True,default=DETECTION)
-    instance_type = models.CharField(max_length=1,choices=INSTANCE_TYPES,db_index=True,default=IMAGES)
-    count = models.IntegerField(null=True)
-    name = models.CharField(max_length=500,default="")
-    built = models.BooleanField(default=False)
+    training_task_type = models.CharField(max_length=1,choices=TRAIN_TASK_TYPES,db_index=True,default=DETECTION, verbose_name="训练任务类型")
+    instance_type = models.CharField(max_length=1,choices=INSTANCE_TYPES,db_index=True,default=IMAGES, verbose_name="实例类型")
+    count = models.IntegerField(null=True, verbose_name="数量")
+    name = models.CharField(max_length=500,default="", verbose_name="名称")
+    built = models.BooleanField(default=False, verbose_name="已创建")
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
