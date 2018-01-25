@@ -5,11 +5,8 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h4>Details for <a href="/videos/{{ object.video_id }}">{{ object.video.name }}</a>
-                {% if object.video.dataset %} file named: {{ object.name }} in directory {{ object.subdir }} {% else %} at {{ object.frame_index }}
-                <a href="/segments/by_index/{{ object.video_id }}/{{ object.segment_index }}"> in Segment {{ object.segment_index }} </a>
-                {% endif %}
-            </h4>
+            <h4>视频<a href="/videos/{{ object.video_id }}">{{ object.video.name }} </a>{% if object.video.dataset %}在目录 {{ object.subdir }}下的文件{{ object.name }}{% else %}在<a href="/segments/by_index/{{ object.video_id }}/{{ object.segment_index }}"> 段{{ object.segment_index }} 下的帧{{ object.frame_index }} {% endif %}的详情
+			</h4>
         </div>
     </div>
 </div>
