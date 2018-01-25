@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+﻿# -*- coding: utf-8 -*-
 import functools
 import warnings
 from django.utils.deprecation import (
@@ -462,7 +462,7 @@ def index(request, query_pk=None, frame_pk=None, detection_pk=None):
         for r in Retriever.objects.all():
             if  i.shasum and r.indexer_shasum == i.shasum:
                 context['indexer_retrievers'].append(('{} > {} retriever {} (pk:{})'.format(i.name,
-                                                      r.get_algorithm_display().decode('utf-8'),r.name,r.pk),
+                                                      r.get_algorithm_display().decode('utf-8').encode('utf-8'),r.name,r.pk),
                                                       '{}_{}'.format(i.pk,r.pk)))
     if query_pk:
         previous_query = DVAPQL.objects.get(pk=query_pk)
