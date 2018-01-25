@@ -76,9 +76,9 @@
             </div>
             <div class="col-xs-12">
             <select class="js-example-basic-multiple" multiple="multiple" id="indexer_list" style="width:100%">
-            <!--{% for index_name,irtuple in indexer_retrievers %}
-                <option value="{{ irtuple }}" selected="selected">{{ index_name }}</option>
-            {% endfor %}-->
+            {% for index_name,irtuple in indexer_retrievers %}
+                <option value="{{ irtuple }}" >{{ index_name }}</option>
+            {% endfor %}
             </select>
             </div>
         </div>
