@@ -53,13 +53,13 @@ class StoredDVAPQL(models.Model):
     SCHEDULE = 'S'
     PROCESS = 'V'
     QUERY = 'Q'
-    TYPE_CHOICES = ((SCHEDULE, 'Schedule'), (PROCESS, 'Process'), (QUERY, 'Query'))
-    process_type = models.CharField(max_length=1, choices=TYPE_CHOICES, default=QUERY,db_index=True)
-    created = models.DateTimeField('date created', auto_now_add=True)
-    creator = models.ForeignKey(User, null=True, related_name="script_creator")
-    name = models.CharField(max_length=300,default="")
-    description = models.TextField(blank=True,default="")
-    server = models.ForeignKey(ExternalServer,null=True)
-    script = JSONField(blank=True, null=True)
+    TYPE_CHOICES = ((SCHEDULE, '执行计划'), (PROCESS, '过程'), (QUERY, '查询'))
+    process_type = models.CharField(max_length=1, choices=TYPE_CHOICES, default=QUERY,db_index=True, verbose_name="处理类型")
+    created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True, )
+    creator = models.ForeignKey(User, null=True, related_name="script_creator", verbose_name="创建人")
+    name = models.CharField(max_length=300,default="", verbose_name="名称")
+    description = models.TextField(blank=True,default="", verbose_name="描述")
+    server = models.ForeignKey(ExternalServer,null=True, verbose_name="服务器")
+    script = JSONField(blank=True, null=True, verbose_name="脚本")
 
 

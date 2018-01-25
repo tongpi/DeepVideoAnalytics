@@ -292,7 +292,7 @@ class Frame(models.Model):
     event = models.ForeignKey(TEvent,null=True)
     frame_index = models.IntegerField(verbose_name="帧索引")
     name = models.CharField(max_length=200,null=True, verbose_name="名称")
-    subdir = models.TextField(default="") # Retains information if the source is a dataset for labeling
+    subdir = models.TextField(default="", verbose_name="子目录") # Retains information if the source is a dataset for labeling
     h = models.IntegerField(default=0, verbose_name="高度")
     w = models.IntegerField(default=0, verbose_name="宽度")
     t = models.FloatField(null=True, verbose_name="时长（秒）") # time in seconds for keyframes
@@ -667,7 +667,7 @@ class SystemState(models.Model):
 
 class QueryRegionIndexVector(models.Model):
     event = models.ForeignKey(TEvent)
-    query_region = models.ForeignKey(QueryRegion)
+    query_region = models.ForeignKey(QueryRegion, verbose_name="被查询区域")
     vector = models.BinaryField()
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
 
