@@ -53,7 +53,7 @@ class StoredDVAPQL(models.Model):
     SCHEDULE = 'S'
     PROCESS = 'V'
     QUERY = 'Q'
-    TYPE_CHOICES = ((SCHEDULE, '执行计划'), (PROCESS, '过程'), (QUERY, '查询'))
+    TYPE_CHOICES = ((SCHEDULE, '执行计划'), (PROCESS, '进程'), (QUERY, '查询'))
     process_type = models.CharField(max_length=1, choices=TYPE_CHOICES, default=QUERY,db_index=True, verbose_name="处理类型")
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True, )
     creator = models.ForeignKey(User, null=True, related_name="script_creator", verbose_name="创建人")
