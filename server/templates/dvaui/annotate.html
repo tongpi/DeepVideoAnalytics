@@ -19,7 +19,7 @@
     <div class="box box-info">
         <div class="box-header text-center" >
             {% if frame %}
-            <h4>标注帧 <a href="/frames/{{ frame.pk }}">{{ frame.frame_index }}</a> in <a href="/videos/{{ frame.video.pk }}">{{ frame.video.name }}</a> </h4>
+            <h4><a href="/videos/{{ frame.video.pk }}">{{ frame.video.name }}</a> 的标注帧 <a href="/frames/{{ frame.pk }}">{{ frame.frame_index }}</a></h4>
             {% if previous_frame %}<a style="display: inline-block;margin-right:15px" href="/annotate_frame/{{ previous_frame.0.pk }}" class="btn btn-success"><i class="fa fa-backward "></i> 上一帧</a> {% endif %}
             <a style="display: inline-block;margin-right:15px" href="/query_frame/{{ frame.pk }}/" class="btn btn-info"><i class="fa fa-search"></i> 使用这个帧查询</a>
             <a style="display: inline-block;margin-right:15px" type='button' class="btn btn-info" id='btnLoad' ng-click='add_bounding_box();'><i class="fa fa-square"></i>&nbsp;添加边界框标注</a>
@@ -56,12 +56,12 @@
                         </div>
                         <div class="col-xs-5">
                             <div class="form-group">
-                                <label for="top">文本元数据</label>
-                                <textarea name="text" id="{[ box.id ]}_text" class="form-control" rows="1" required="" placeholder="文本" ></textarea>
+                                <label for="top">元数据（文本格式）</label>
+                                <textarea name="text" id="{[ box.id ]}_text" class="form-control" rows="1" required="" placeholder="" ></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="top">JSON元数据</label>
-                                <textarea name="metadata" id="{[ box.id ]}_metadata" class="form-control" rows="1" required="" placeholder="元数据" ></textarea>
+                                <label for="top">元数据（JSON格式）</label>
+                                <textarea name="metadata" id="{[ box.id ]}_metadata" class="form-control" rows="1" required="" placeholder="" ></textarea>
                             </div>
                         </div>
                         <div class="col-xs-5">
@@ -93,7 +93,7 @@
                     <h5 style="text-align: center;display:inline-block">不透明度</h5>
                     <input value="100" type="range" bind-value-to="opacity" style="margin: 0 0 0 0;width:100px">
                 </span>
-                <button type="button" class="btn  btn-object-action bg-yellow " id="deselect" ng-click="deselect()"><i class="fa fa-minus"></i>&nbsp;&nbsp;Deselect</button>
+                <button type="button" class="btn  btn-object-action bg-yellow " id="deselect" ng-click="deselect()"><i class="fa fa-minus"></i>&nbsp;&nbsp;取消选择</button>
             </span>
             <span ng-show="canvas.getActiveGroup()">
                 <button type="button" class="btn  btn-danger btn-object-action bg-maroon " id="remove-selected-group" ng-click="removeSelected()"><i class="fa fa-trash"></i>&nbsp;&nbsp;删除</button>
@@ -122,7 +122,7 @@
         <div class="box box-info">
         <div class="box-header text-center">
             <h3>已存在的标注和检测（刷新页面以重新加载新的标注）</h3>
-            <h4>显示/隐藏 全部<input type="checkbox" ng-checked="{[ visible_all ]}" ng-click="toggle_all()"></h4>
+            <h4>显示/隐藏 全部 <input type="checkbox" ng-checked="{[ visible_all ]}" ng-click="toggle_all()"></h4>
         </div>
         <div class="box-body text-center" >
         <table class="table table-bordered">
