@@ -3,11 +3,13 @@
 {% block breadcrumbs %}<div class="breadcrumbs"><a href="{% url 'admin:index' %}">{% trans 'Home' %}</a></div>{% endblock %}
 
 {% block page_content %}
+<section class="content">
+<div class="row large-margin">
+	<p>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
 
-<p>{% trans "Thanks for spending some quality time with the Web site today." %}</p>
-
-<p><a href="{% url 'login' %}">{% trans 'Log in again' %}</a></p>
-
+	<p><a href="{% url 'login' %}">{% trans 'Log in again' %}</a></p>
+</div>
+</section>
 {% endblock %}
 
 
