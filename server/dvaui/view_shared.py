@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os, json, requests, shutil, zipfile, cStringIO, base64, uuid
 from copy import deepcopy
 from dvaapp.models import Video, TEvent,  Label, RegionLabel, TrainedModel, Retriever, DVAPQL, Region, Frame, \
