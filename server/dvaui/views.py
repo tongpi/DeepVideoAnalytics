@@ -918,7 +918,7 @@ def retry_task(request):
     p = DVAPQLProcess()
     p.create_from_json(spec)
     p.launch()
-    return redirect('/process/')
+    return redirect('/processes/')
 
 
 @user_passes_test(user_check)
