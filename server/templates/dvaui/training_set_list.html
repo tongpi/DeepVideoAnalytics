@@ -38,9 +38,9 @@
                     <th class="text-center">名称</th>
                     <th class="text-center">实例</th>
                     <th class="text-center">任务</th>
-                    <th class="text-center">created</th>
-                    <th class="text-center">built</th>
-                    <th class="text-center">build event</th>
+                    <th class="text-center">创建时间</th>
+                    <th class="text-center">已完成</th>
+                    <th class="text-center">创建详情</th>
                     <th class="text-center">详情</th>
                 </tr>
                 </thead>
@@ -50,9 +50,9 @@
                         <td>{{ t.name }} </td>
                         <td>{{ t.get_instance_type_display }} </td>
                         <td>{{ t.get_training_task_type_display }} </td>
-                        <td>{{ t.created|timesince }} ago</td>
+                        <td>{{ t.created|timesince }} 之前</td>
                         <td>{{ t.built }} </td>
-                        <td class="text-center">{% if t.event %}<a href="/task_detail/{{ t.event_id }}">build event</a> {% endif %}</td>
+                        <td class="text-center">{% if t.event %}<a href="/task_detail/{{ t.event_id }}">创建详情</a> {% endif %}</td>
                         <td class="text-center"><a  href="/training_sets/{{ t.pk }}">详情</a></td>
                     </tr>
                 {% endfor %}
