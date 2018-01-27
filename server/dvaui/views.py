@@ -1,4 +1,6 @@
 ﻿# -*- coding: utf-8 -*-
+reload(sys)   
+sys.setdefaultencoding('utf8')
 import functools
 import warnings
 from django.utils.deprecation import (
