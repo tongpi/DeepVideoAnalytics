@@ -257,6 +257,7 @@ GLOBAL_MODEL = 'qglobal_model'  # if a model specific queue does not exists then
 GLOBAL_RETRIEVER = 'qglobal_retriever' # if a retriever specific queue does not exists then the task ends up here
 
 TASK_NAMES_TO_QUEUE = {
+    "perform_training_set_creation":Q_EXTRACTOR,
     "perform_region_import":Q_EXTRACTOR,
     "perform_model_import":Q_EXTRACTOR,
     "perform_video_segmentation":Q_EXTRACTOR,
@@ -269,6 +270,6 @@ TASK_NAMES_TO_QUEUE = {
     "perform_sync":Q_EXTRACTOR,
     "perform_detector_import":Q_EXTRACTOR,
     "perform_import":Q_EXTRACTOR,
-    "perform_detector_training": Q_TRAINER,
+    "perform_training": Q_TRAINER,
     "perform_video_decode_lambda": Q_LAMBDA
 }

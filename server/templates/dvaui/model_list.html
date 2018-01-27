@@ -44,12 +44,10 @@
                     <th class="text-center">类型</th>
                     <th class="text-center">子类型</th>
                     <th>模式</th>
-                    <th>权重文件校验码</th>
-                    <th>标签</th>
-                    <th>文本</th>
-                    <th>元数据</th>
+                    <th class="text-center">Shasum</th>
+                    <th class="text-center">训练集</th>
+                    <th class="text-center">训练项</th>
                     <th class="text-center">详情</th>
-
                 </tr>
                 </thead>
                 <tbody>
@@ -60,10 +58,9 @@
                         <td>{{ i.get_detector_type_display }} </td>
                         <td>{{ i.get_mode_display }} </td>
                         <td>{{ i.shasum }}</td>
-                        <td>{{ i.produces_labels }}</td>
-                        <td>{{ i.produces_text }}</td>
-                        <td>{{ i.produces_json }}</td>
-                        <td class="text-center"><a href="/models/{{ d.pk }}">详情</a></td>
+                        <td class="text-center">{% if i.training_set %}<a href="/training_sets/{{ i.training_set.pk }}">训练集</a>{% endif %}</td>
+                        <td class="text-center">{% if i.event %}<a href="/task_detail/{{ i.event_id }}">训练项</a>{% endif %}</td>
+                        <td class="text-center"><a href="/models/{{ i.pk }}">details</a></td>
                     </tr>
                 {% endfor %}
                 </tbody>

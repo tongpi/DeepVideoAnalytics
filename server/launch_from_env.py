@@ -56,7 +56,7 @@ if __name__ == '__main__':
                 queue_name = k.split('_')[-1]
                 _ = subprocess.Popen(shlex.split(('./startq.py {}'.format(queue_name))))
     if os.environ.get("LAUNCH_NOTEBOOK", False):
-        _ = subprocess.Popen(['./run_jupyter.sh','--allow-root','--notebook-dir=/root/DVA/docs/tutorial'],cwd="/")
+        _ = subprocess.Popen(['./run_jupyter.sh','--allow-root','--notebook-dir=/root/DVA/docs/'],cwd="/")
     if os.environ.get("LAUNCH_SCHEDULER", False):
         # Should be launched only once per deployment
         _ = subprocess.Popen(['./start_scheduler.py'])
@@ -66,7 +66,7 @@ if __name__ == '__main__':
         _ = subprocess.Popen(shlex.split('./startq.py {}'.format(settings.Q_MANAGER)))
     if 'LAUNCH_SERVER' in os.environ:
         subprocess.check_output(["python", "manage.py", "collectstatic", "--no-input"])
-        p = subprocess.Popen(['python', 'manage.py', 'runserver', '0.0.0.0:8000'])
+        p = subprocess.Popen(['python', 'manage.py', 'runserver', '0.0.0.0:80'])
         p.wait()
     elif 'LAUNCH_SERVER_NGINX' in os.environ:
         subprocess.check_output(["chmod", "0777", "-R", "/tmp"])
@@ -74,24 +74,24 @@ if __name__ == '__main__':
         subprocess.check_output(["chmod", "0777", "-R", "dva/staticfiles/"])
         # subprocess.check_output(["chmod","0777","-R","/root/media/"])
         try:
-            subprocess.check_output(["mv", "../configs/nginx.conf", "/etc/nginx/"])
+            subprocess.check_output(["cp", "../configs/nginx.conf", "/etc/nginx/"])
         except:
             print "warning assuming that the config was already moved"
             pass
         if 'ENABLE_BASICAUTH' in os.environ:
             try:
-                subprocess.check_output(["mv", "../configs/nginx-app_password.conf", "/etc/nginx/sites-available/default"])
+                subprocess.check_output(["cp", "../configs/nginx-app_password.conf", "/etc/nginx/sites-available/default"])
             except:
                 print "warning assuming that the config was already moved"
                 pass
         else:
             try:
-                subprocess.check_output(["mv", "../configs/nginx-app.conf", "/etc/nginx/sites-available/default"])
+                subprocess.check_output(["cp", "../configs/nginx-app.conf", "/etc/nginx/sites-available/default"])
             except:
                 print "warning assuming that the config was already moved"
                 pass
         try:
-            subprocess.check_output(["mv", "../configs/supervisor-app.conf", "/etc/supervisor/conf.d/"])
+            subprocess.check_output(["cp", "../configs/supervisor-app.conf", "/etc/supervisor/conf.d/"])
         except:
             print "warning assuming that the config was already moved"
             pass

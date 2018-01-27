@@ -6,7 +6,15 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h2>在{{object.frames_count}}图像上使用{{object.algorithm}}和{{object.boxes_count}}框对自定义检测器{{object.name}}进行训练</h2>
+            <h2>
+            <div style="float:right">
+                <form action="/shortcuts" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ object.pk }}" name="model_pk" />
+                    <button class="btn btn-success" name="op" value="export_model" type="submit"><i class="fa fa-download"></i> 导出训练模型</button>
+                </form>
+            </div>
+            训练模型 {{ object.name }} </h2>
         </div>
     </div>
 </div>
@@ -23,26 +31,25 @@
                 <textarea class="form-control" readonly="readonly"  rows="10">{{ object.arguments }}</textarea>
             </div>
             <div class="box-footer">
-                <a href="{{ MEDIA_URL }}exports/{{ object.pk }}.dva_detector.zip" class="btn btn-primary" ><i class="fa fa-download"></i> 下载训练模型</a>
             </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="box box-primary">
-            <div class="box-header with-border"><h3>类别分布</h3></div>
+            <div class="box-header with-border"><h3>文件</h3></div>
             <div class="box-body">
                 <table class="table dataTables-dict">
                     <thead>
                         <tr>
-                            <th>对象</th>
-                            <th>数量</th>
+                            <th>文件名称</th>
+                            <th>路径</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for k,v in class_distribution %}
+                        {% for f in object.files %}
                             <tr>
-                                <td>{{ k }}</td>
-                                <td class="text-right">{{ v }}</td>
+                                <td>{{ f.filename }}</td>
+                                <td>{{ f.url }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -54,51 +61,15 @@
     <div class="row">
         <div class="col-md-6">
             <div class="box box-primary">
-            <div class="box-header with-border"><h3>第一阶段损失</h3></div>
+            <div class="box-header with-border"><h3>训练集</h3></div>
             <div class="box-body">
-                <table class="table dataTables-dict">
-                    <thead>
-                        <tr>
-                            <th>时间</th>
-                            <th>训练损失</th>
-                            <th>验证损失的损失</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for k in phase_1_log %}
-                            <tr>
-                                <td class="text-center">{{ k.0 }}</td>
-                                <td class="text-right">{{ k.1 }}</td>
-                                <td class="text-right">{{ k.2 }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
             </div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="box box-primary">
-            <div class="box-header with-border"><h3>第二阶段损失</h3></div>
+            <div class="box-header with-border"><h3>训练项</h3></div>
             <div class="box-body">
-                    <table class="table dataTables-dict">
-                    <thead>
-                        <tr>
-                            <th>时间</th>
-                            <th>训练损失</th>
-                            <th>验证损失的损失</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for k in phase_2_log %}
-                            <tr>
-                                <td class="text-center">{{ k.0 }}</td>
-                                <td class="text-right">{{ k.1 }}</td>
-                                <td class="text-right">{{ k.2 }}</td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
             </div>
             </div>
         </div>

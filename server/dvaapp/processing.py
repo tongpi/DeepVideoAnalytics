@@ -27,11 +27,12 @@ SYNC_TASKS = {
     'perform_indexing':[{'operation': 'perform_sync', 'arguments': {'dirname': 'indexes'}},],
     'perform_index_approximation':[{'operation': 'perform_sync', 'arguments': {'dirname': 'indexes'}},],
     'perform_import':[{'operation': 'perform_sync', 'arguments': {}},],
-    'perform_detector_training':[],
+    'perform_training':[],
     'perform_detector_import':[],
 }
 
 ANALYER_NAME_TO_PK = {}
+APPROXIMATOR_NAME_TO_PK = {}
 INDEXER_NAME_TO_PK = {}
 APPROXIMATOR_SHASUM_TO_PK = {}
 RETRIEVER_NAME_TO_PK = {}
@@ -54,6 +55,12 @@ def get_queues():
 
 
 def get_model_specific_queue_name(operation,args):
+    """
+    TODO simplify this mess by using model_selector
+    :param operation:
+    :param args:
+    :return:
+    """
     if 'detector_pk' in args:
         queue_name = "q_detector_{}".format(args['detector_pk'])
     elif 'indexer_pk' in args:
@@ -78,6 +85,12 @@ def get_model_specific_queue_name(operation,args):
             APPROXIMATOR_SHASUM_TO_PK[ashasum] = TrainedModel.objects.get(shasum=ashasum,
                                                                           model_type=TrainedModel.APPROXIMATOR).pk
         queue_name = 'q_approximator_{}'.format(APPROXIMATOR_SHASUM_TO_PK[ashasum])
+    elif 'approximator' in args:
+        ashasum= args['approximator']
+        if args['approximator'] not in APPROXIMATOR_NAME_TO_PK:
+            APPROXIMATOR_NAME_TO_PK[ashasum] = TrainedModel.objects.get(name=args['approximator'],
+                                                                          model_type=TrainedModel.APPROXIMATOR).pk
+        queue_name = 'q_approximator_{}'.format(APPROXIMATOR_NAME_TO_PK[args['approximator']])
     elif 'analyzer' in args:
         if args['analyzer'] not in ANALYER_NAME_TO_PK:
             ANALYER_NAME_TO_PK[args['analyzer']] = TrainedModel.objects.get(name=args['analyzer'],model_type=TrainedModel.ANALYZER).pk
@@ -223,7 +236,12 @@ def launch_tasks(k, dt, inject_filters, map_filters = None, launch_type = ""):
         args = perform_substitution(k['arguments'], dt, inject_filters, f)
         logging.info("launching {} -> {} with args {} as specified in {}".format(dt.operation, op, args, launch_type))
         q, op = get_queue_name_and_operation(k['operation'], args)
-        next_task = TEvent.objects.create(video=v, operation=op, arguments=args, parent=dt, parent_process=p, queue=q)
+        if "video_selector" in k and v is None:
+            video_per_task = Video.objects.get(**k['video_selector'])
+        else:
+            video_per_task = v
+        next_task = TEvent.objects.create(video=video_per_task, operation=op, arguments=args, parent=dt,
+                                          parent_process=p, queue=q)
         tids.append(app.send_task(k['operation'], args=[next_task.pk, ], queue=q).id)
     return tids
 

@@ -2,7 +2,7 @@
 import os, json, requests, shutil, zipfile, cStringIO, base64, uuid
 from copy import deepcopy
 from dvaapp.models import Video, TEvent,  Label, RegionLabel, TrainedModel, Retriever, DVAPQL, Region, Frame, \
-    QueryRegion, QueryRegionResults,QueryResults
+    QueryRegion, QueryRegionResults, QueryResults, TrainingSet
 from django.conf import settings
 from django_celery_results.models import TaskResult
 from collections import defaultdict
@@ -543,3 +543,50 @@ def get_retrieval_event_name(r,rids_to_names):
             indexer = TrainedModel.objects.get(pk=r.retrieval_event.parent.arguments['indexer_pk'])
         rids_to_names[r.retrieval_event_id] = get_sequence_name(indexer, retriever)
     return rids_to_names[r.retrieval_event_id]
+
+
+def create_approximator_training_set(name,indexer_shasum,video_pks,user=None):
+    spec = {
+        'process_type': DVAPQL.PROCESS,
+        'create': [
+            {
+                "MODEL":"TrainingSet",
+                "spec":{
+                    "name":name,
+                    "training_task_type":TrainingSet.LOPQINDEX,
+                    "instance_type":TrainingSet.INDEX,
+                    "source_filters": {
+                        "indexer_shasum": indexer_shasum,
+                        "video_id__in":video_pks,
+                    }
+                },
+                "tasks":[
+                    {
+                        "operation":"perform_training_set_creation",
+                        "arguments":{"training_set_pk":'__pk__'}
+                    }
+                ]
+            }
+        ]
+    }
+    p = DVAPQLProcess()
+    p.create_from_json(spec, user)
+    p.launch()
+
+
+def perform_training(training_set_pk,args,user=None):
+    args['selector'] = {"pk": training_set_pk}
+    spec = {
+        'process_type': DVAPQL.PROCESS,
+        'tasks': [
+
+                    {
+                        "operation":"perform_training",
+                        "arguments":args
+                    }
+                ]
+    }
+    p = DVAPQLProcess()
+    p.create_from_json(spec, user)
+    p.launch()
+    return p.process.pk
