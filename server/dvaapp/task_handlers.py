@@ -63,11 +63,13 @@ def handle_perform_index_approximation(start):
         approx, da = approximation.Approximators.get_approximator_by_pk(args['approximator_pk'])
     elif 'approximator_shasum' in args:
         approx, da = approximation.Approximators.get_approximator_by_shasum(args['approximator_shasum'])
+    elif 'approximator' in args:
+        approx, da = approximation.Approximators.get_approximator_by_name(args['approximator'])
     else:
         raise ValueError("Could not find approximator {}".format(args))
     if args['target'] == 'index_entries':
         queryset, target = task_shared.build_queryset(args, start.video_id, start.parent_process_id)
-        approximation.Approximators.approximate_queryset(approx, da, queryset, start.video_id, start.pk)
+        approximation.Approximators.approximate_queryset(approx, da, queryset, start.pk)
     else:
         raise ValueError("Target {} not allowed, only index_entries are allowed".format(args['target']))
     return True

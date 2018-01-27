@@ -334,18 +334,6 @@ class TrainedModelDetail(UserPassesTestMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(TrainedModelDetail, self).get_context_data(**kwargs)
-        classdist = context['object'].class_distribution.strip()
-        context['class_distribution'] = json.loads(classdist) if classdist else {}
-        context['phase_1_log'] = []
-        context['phase_2_log'] = []
-        for k in context['object'].phase_1_log.split('\n')[1:]:
-            if k.strip():
-                epoch,train_loss,val_loss = k.strip().split(',')
-                context['phase_1_log'].append((epoch,round(float(train_loss),2),round(float(val_loss),2)))
-        for k in context['object'].phase_2_log.split('\n')[1:]:
-            if k.strip():
-                epoch,train_loss,val_loss = k.strip().split(',')
-                context['phase_2_log'].append((epoch,round(float(train_loss),2),round(float(val_loss),2)))
         return context
 
     def test_func(self):
@@ -357,8 +345,24 @@ class TrainingSetList(UserPassesTestMixin, ListView):
     template_name = "dvaui/training_set_list.html"
     paginate_by = 50
 
+    class Meta:
+        ordering = ["-created"]
+
     def get_context_data(self, **kwargs):
         context = super(TrainingSetList, self).get_context_data(**kwargs)
+        return context
+
+    def test_func(self):
+        return user_check(self.request.user)
+
+
+class TrainingSetDetail(UserPassesTestMixin, DetailView):
+    model = TrainingSet
+    template_name = "dvaui/training_set_detail.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(TrainingSetDetail, self).get_context_data(**kwargs)
+        context['trained_model_set'] = TrainedModel.objects.filter(training_set=context['object'])
         return context
 
     def test_func(self):
@@ -408,6 +412,7 @@ class StoredProcessList(UserPassesTestMixin, ListView):
         context['models'] = TrainedModel.objects.filter(model_type__in=[TrainedModel.INDEXER,TrainedModel.DETECTOR,
                                                                         TrainedModel.ANALYZER])
         context["videos"] = Video.objects.all()
+        context["lopq_training_sets"] = TrainingSet.objects.filter(training_task_type=TrainingSet.LOPQINDEX, built=True)
         return context
 
     def test_func(self):
@@ -976,6 +981,25 @@ def shortcuts(request):
                 algorithm = Retriever.EXACT
             _ = view_shared.create_retriever(name,algorithm,filters,indexer_shasum,approximator_shasum,user)
             return redirect('retriever_list')
+        elif request.POST.get('op') == 'create_approximator_training_set':
+            name = request.POST.get('name')
+            video_pks = request.POST.getlist('video_pk')
+            indexer_shasum = request.POST.get('indexer_shasum')
+            _ = view_shared.create_approximator_training_set(name,indexer_shasum,video_pks,user)
+            return redirect('training_set_list')
+        elif request.POST.get('op') == 'perform_approximator_training':
+            training_set_pk = request.POST.get('lopq_training_set_pk')
+            dt = TrainingSet.objects.get(pk=training_set_pk)
+            args = {}
+            args['trainer'] = "LOPQ"
+            args['name'] = request.POST.get('name')
+            args['indexer_shasum'] = dt.source_filters['indexer_shasum']
+            args['components'] = request.POST.get('components')
+            args['m'] = request.POST.get('m')
+            args['v'] = request.POST.get('v')
+            args['sub'] = request.POST.get('sub')
+            process_pk = view_shared.perform_training(training_set_pk,args,user)
+            return redirect('process_detail',process_pk)
         else:
             raise NotImplementedError(request.POST.get('op'))
     else:

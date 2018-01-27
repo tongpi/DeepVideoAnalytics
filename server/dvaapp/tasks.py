@@ -1,5 +1,5 @@
 from __future__ import absolute_import
-import subprocess, os, logging, io, sys, json, tempfile, gzip
+import subprocess, os, logging, io, sys, json, tempfile, gzip, copy
 from urlparse import urlparse
 from collections import defaultdict
 from PIL import Image
@@ -9,6 +9,7 @@ from . import models
 from .operations.retrieval import Retrievers
 from .operations.decoding import VideoDecoder
 from .operations.dataset import DatasetCreator
+from .operations.training import train_lopq
 from .processing import process_next, mark_as_completed
 from . import global_model_retriever
 from . import task_handlers
@@ -491,6 +492,36 @@ def perform_training_set_creation(task_id):
     else:
         start.started = True
         start.save()
+    args = start.arguments
+    if 'training_set_pk'in args:
+        dt = models.TrainingSet.objects.get(pk=args['training_set_pk'])
+    elif 'training_set_selector'in args:
+        dt = models.TrainingSet.objects.get(**args['training_set_selector'])
+    else:
+        raise ValueError("Could not find training set {}".format(args))
+    if dt.event:
+        raise ValueError("Training set has been already built or failed to build, please clone instead of rebuilding.")
+    if dt.training_task_type == models.TrainingSet.LOPQINDEX:
+        file_list = []
+        filters = copy.deepcopy(dt.source_filters)
+        filters['approximate'] = False
+        queryset, target = task_shared.build_queryset(args=args,target="index_entries",filters=filters)
+        total_count = 0
+        for di in queryset:
+            file_list.append({
+                "path": di.npy_path(""),
+                "count": di.count,
+                "pk": di.pk
+            })
+            total_count += di.count
+        dt.built = True
+        dt.count = total_count
+        dt.files = file_list
+        dt.event = start
+        dt.save()
+    else:
+        raise NotImplementedError
+    process_next(start.pk)
     mark_as_completed(start)
     return 0
 
@@ -507,15 +538,21 @@ def perform_training(task_id):
     else:
         start.started = True
         start.save()
-    train_detector = subprocess.Popen(['fab', 'train_yolo:{}'.format(start.pk)],
-                                      cwd=os.path.join(os.path.abspath(__file__).split('tasks.py')[0], '../'))
-    train_detector.wait()
-    if train_detector.returncode != 0:
-        start.errored = True
-        start.error_message = "fab train_yolo:{} failed with return code {}".format(start.pk, train_detector.returncode)
-        start.duration = (timezone.now() - start.start_ts).total_seconds()
-        start.save()
-        raise ValueError(start.error_message)
+    args = start.arguments
+    trainer = args['trainer']
+    if trainer == 'LOPQ':
+        train_lopq(start,args)
+    elif trainer == 'YOLO':
+        train_detector = subprocess.Popen(['fab', 'train_yolo:{}'.format(start.pk)],
+                                          cwd=os.path.join(os.path.abspath(__file__).split('tasks.py')[0], '../'))
+        train_detector.wait()
+        if train_detector.returncode != 0:
+            start.errored = True
+            start.error_message = "fab train_yolo:{} failed with return code {}".format(start.pk, train_detector.returncode)
+            start.duration = (timezone.now() - start.start_ts).total_seconds()
+            start.save()
+            raise ValueError(start.error_message)
+    process_next(start.pk)
     mark_as_completed(start)
     return 0
 
