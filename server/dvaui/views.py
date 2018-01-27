@@ -1,6 +1,4 @@
 ﻿# -*- coding: utf-8 -*-
-reload(sys)   
-sys.setdefaultencoding('utf8')
 import functools
 import warnings
 from django.utils.deprecation import (
@@ -140,7 +138,7 @@ class TEventList(UserPassesTestMixin, ListView):
         context['header'] = ""
         if self.kwargs.get('pk',None):
             context['video'] = Video.objects.get(pk=self.kwargs['pk'])
-            context['header'] = "video/dataset : {}".format(context['video'].name)
+            context['header'] = "video/dataset : {}".format(context['video'].name.encode('utf-8'))
         if self.kwargs.get('process_pk',None):
             process_pk = self.kwargs.get('process_pk',None)
             context['header'] = "process : {}".format(process_pk)
