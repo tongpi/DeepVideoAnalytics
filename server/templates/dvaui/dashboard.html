@@ -122,13 +122,8 @@
                             <div class="col-xs-7 text-center"><a class="btn btn-primary" href="/external" ><i class="fa fa-globe"></i> 外部模型，数据集，脚本</a></div>
                         </div>
                         <div class="row m-t">
-<<<<<<< HEAD
                             <div class="col-xs-5 text-center"><a class="btn btn-success" href="/stored_process/"><i class="fa fa-play"></i> 运行DVAPQL脚本</a></div>
-                            <div class="col-xs-7 text-center"><a class="btn btn-primary" href="/process/"><i class="fa fa-list"></i> 监视运行的进程</a></div>
-=======
-                            <div class="col-xs-5 text-center"><a class="btn btn-success" href="/stored_process/"><i class="fa fa-play"></i> Run DVAPQL script</a></div>
-                            <div class="col-xs-7 text-center"><a class="btn btn-success" href="/stored_process/#shortcuts"> <i class="fa fa-plus"></i> Create/Apply/Train models</a></div>
->>>>>>> upstream/master
+                            <div class="col-xs-7 text-center"><a class="btn btn-success" href="/stored_process/#shortcuts"> <i class="fa fa-plus"></i> 创建/应用/训练 模型</a></div>
                         </div>
                         <div class="modal fade" tabindex="-1" role="dialog" id="allowed">
                         <div class="modal-dialog" role="document">
@@ -212,16 +207,11 @@
                             <div class="col-xs-3 text-center">
                                 <h4 style="margin: 18px auto">任务状态</h4>
                             </div>
-<<<<<<< HEAD
-                            <div class="col-xs-offset-6 col-xs-3 text-center">
-                                <a class="btn btn-primary" href="{% url 'tasks' %}" style="margin: 10px auto" > <i class="fa fa-list"></i> 所有任务</a>
-=======
                             <div class="col-xs-offset-3 col-xs-3 text-center">
-                                <a class="btn btn-primary" href="/process/" style="margin: 10px auto">All processes</a>
+                                <a class="btn btn-primary" href="/process/" style="margin: 10px auto">全部进程</a>
                             </div>
                             <div class="col-xs-3 text-center">
-                                <a class="btn btn-primary" href="{% url 'tasks' %}" style="margin: 10px auto" >All tasks</a>
->>>>>>> upstream/master
+                                <a class="btn btn-primary" href="{% url 'tasks' %}" style="margin: 10px auto" >全部任务</a>
                             </div>
                         </div>
                     </div>
@@ -248,12 +238,6 @@
                             <div class="col-xs-3 text-center">
                                 <h4 style="margin-top:18px">对象面板</h4>
                             </div>
-<<<<<<< HEAD
-                            <div class="col-xs-9 text-center">
-                                <a class="btn btn-success" href="/stored_process/#shortcuts" style="margin: 10px auto" > <i class="fa fa-plus"></i> 导入/应用模型，创建训练集，训练模型</a>
-                            </div>
-=======
->>>>>>> upstream/master
                         </div>
                     </div>
                     <div class="box-body">
@@ -273,11 +257,7 @@
                         </div>
                         <div class="row">
                             <div class="col-xs-3">
-<<<<<<< HEAD
-                                <a class="btn" href="/models/" style="margin: 10px auto" > <i class="fa fa-play"></i> {{ models_count }} 深度模型</a>
-=======
                                 <a class="btn" href="/models/" style="margin: 10px auto" > <i class="fa fa-play"></i> {{ models_count }} trained models</a>
->>>>>>> upstream/master
                             </div>
                             <div class="col-xs-3">
                                 <a class="btn" href="/tasks/" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ task_events_count }}  任务 </a>
