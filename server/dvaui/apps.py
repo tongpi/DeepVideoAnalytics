@@ -5,4 +5,5 @@ from django.apps import AppConfig
 
 
 class DvauiConfig(AppConfig):
-    name = 'dvaui'
+    #name = 'dvaui'
+    name = '视频分析界面'
