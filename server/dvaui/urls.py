@@ -28,6 +28,7 @@ urlpatterns = [
     url(r'^process/(?P<pk>\d+)/$', views.ProcessDetail.as_view(), name='process_detail'),
     url(r'^training_sets/$', views.TrainingSetList.as_view(), name='training_sets'),
     url(r'^models/$', views.TrainedModelList.as_view(), name='models'),
+	 url(r'^models/(?P<pk>\d+)/$', views.TrainedModelDetail.as_view(), name='models_detail'),
     url(r'^indexes/$', views.IndexEntryList.as_view(), name='indexes'),
     url(r'^stored_process/$', views.StoredProcessList.as_view(), name='stored_process_list'),
     url(r'^stored_process/(?P<pk>\d+)/$', views.StoredProcessDetail.as_view(), name='stored_process_detail'),
