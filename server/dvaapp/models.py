@@ -63,7 +63,7 @@ class Video(models.Model):
     segments = models.IntegerField(default=0, verbose_name="段数量")
     url = models.TextField(default="", verbose_name="网址")
     youtube_video = models.BooleanField(default=False, verbose_name="youtube视频")
-    parent_process = models.ForeignKey(DVAPQL,null=True , verbose_name="父进程")
+    parent_process = models.ForeignKey(DVAPQL,null=True, verbose_name="父进程")
 
     def __unicode__(self):
         return u'{}'.format(self.name)
@@ -103,13 +103,13 @@ class Video(models.Model):
 
 
 class IngestEntry(models.Model):
-    video = models.ForeignKey(Video)
+    video = models.ForeignKey(Video, verbose_name="视频")
     ingest_index = models.IntegerField()
     ingest_filename = models.CharField(max_length=500)
-    start_segment_index = models.IntegerField(null=True)
-    start_frame_index = models.IntegerField(null=True)
-    segments = models.IntegerField(null=True)
-    frames = models.IntegerField(null=True)
+    start_segment_index = models.IntegerField(null=True, verbose_name="开始段索引")
+    start_frame_index = models.IntegerField(null=True, verbose_name="开始帧索引")
+    segments = models.IntegerField(null=True, verbose_name="段")
+    frames = models.IntegerField(null=True, verbose_name="帧")
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
 
     class Meta:
