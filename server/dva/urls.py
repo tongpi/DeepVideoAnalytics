@@ -17,11 +17,11 @@ from django.conf.urls import url,include
 from django.contrib import admin
 from django.conf.urls.static import static
 from django.conf import settings
-from django.contrib.auth import views as auth_views
+from ..dvaui import urls as as_urls
+
 admin.autodiscover()
 
-urlpatterns = [url(r'^login/$', auth_views.login, name='login'),
-			   url(r'^admin/login$', auth_views.login, name='login'),
+urlpatterns = [url(r'^login/', as_urls.urls, name='login'),
 			   url(r'^admin/', admin.site.urls),
                url(r'^api/', include('dvaapp.urls')),
                url(r'', include('dvaui.urls'))]+\

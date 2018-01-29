@@ -1,3 +1,4 @@
+from functools import update_wrapper
 from django.conf.urls import url, include
 import views
 from django.conf import settings
@@ -69,3 +70,29 @@ urlpatterns = [
     url(r'^password_reset/$', auth_views.password_reset, name='password_reset'),
     url(r'^accounts/profile/$', views.index, name='profile'),
 ]
+
+    def get_urls(self):
+        from django.conf.urls import url, include
+        # Since this module gets imported in the application's root package,
+        # it cannot import models from other applications at the module level,
+        # and django.contrib.contenttypes.views imports ContentType.
+        from django.contrib.contenttypes import views as contenttype_views
+
+        def wrap(view, cacheable=False):
+            def wrapper(*args, **kwargs):
+                return self.admin_view(view, cacheable)(*args, **kwargs)
+            wrapper.admin_site = self
+            return update_wrapper(wrapper, view)
+
+        # Admin-site-wide views.
+        urlpatterns = [
+            url(r'^$', wrap(self.index), name='index'),
+            url(r'^login/$', self.login, name='login'),
+            url(r'^logout/$', wrap(self.logout), name='logout'),
+        ]
+          
+        return urlpatterns
+
+    @property
+    def urls(self):
+        return self.get_urls(), 'accounts', self.name
