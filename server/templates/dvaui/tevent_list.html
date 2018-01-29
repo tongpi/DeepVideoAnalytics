@@ -75,7 +75,7 @@
                                 {% elif e.duration < 0 and not e.started %}
                                     <a href="/task_detail/{{ e.pk }}" class="btn btn-warning btn-block">{% if e.imported %}导入{% endif %} 暂停</a>
                                 {% elif e.duration < 0 and e.started and not e.completed%}
-                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-primary btn-block">{% if e.imported %}导入{% endif %} 正在进行中</a>
+                                    <a href="/task_detail/{{ e.pk }}" class="btn btn-primary btn-block">{% if e.imported %}导入{% endif %} 运行中</a>
                                 {% elif e.completed%}
                                     <a href="/task_detail/{{ e.pk }}" class="btn btn-success btn-block">{% if e.imported %}导入{% endif %} 完成</a>
                                 {% else %}
