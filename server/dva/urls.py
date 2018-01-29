@@ -20,7 +20,7 @@ from django.conf import settings
 from django.contrib.auth import views as auth_views
 admin.autodiscover()
 
-urlpatterns = [url(r'^login/$', auth_views.login, name='login'),
+urlpatterns = [url(r'^admin/login$', auth_views.login, name='login'),
 			   url(r'^admin/', admin.site.urls),
                url(r'^api/', include('dvaapp.urls')),
                url(r'', include('dvaui.urls'))]+\
