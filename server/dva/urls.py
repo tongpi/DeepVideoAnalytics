@@ -21,10 +21,10 @@ from .dvaui import urls as as_urls
 
 admin.autodiscover()
 
-urlpatterns = [url(r'^login/', as_urls.urls, name='login'),
+urlpatterns = [url(r'', include('dvaui.urls')),
 			   url(r'^admin/', admin.site.urls),
-               url(r'^api/', include('dvaapp.urls')),
-               url(r'', include('dvaui.urls'))]+\
+               url(r'^api/', include('dvaapp.urls'))
+               ]+\
               static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if settings.DVA_PRIVATE_ENABLE:
