@@ -466,8 +466,8 @@ def index(request, query_pk=None, frame_pk=None, detection_pk=None):
     for i in TrainedModel.objects.filter(model_type=TrainedModel.INDEXER):
         for r in Retriever.objects.all():
             if  i.shasum and r.indexer_shasum == i.shasum:
-                context['indexer_retrievers'].append(('{} > {} retriever {} (pk:{})'.format(i.name.encode('utf-8'),
-                                                      r.get_algorithm_display(),r.name,r.pk),
+                context['indexer_retrievers'].append(('{} > {} retriever {} (pk:{})'.format(i.name,
+                                                      r.get_algorithm_display().encode('utf-8'),r.name,r.pk),
                                                       '{}_{}'.format(i.pk,r.pk)))
     if query_pk:
         previous_query = DVAPQL.objects.get(pk=query_pk)
