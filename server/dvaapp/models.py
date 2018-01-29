@@ -142,29 +142,29 @@ class TrainingSet(models.Model):
     LOPQINDEX = 'A'
     CLASSIFICATION = 'C'
     TRAIN_TASK_TYPES = (
-        (DETECTION, 'Detection'),
-        (INDEXING, 'Indexing'),
-        (LOPQINDEX, 'LOPQ Approximation'),
-        (CLASSIFICATION, 'Classification')
+        (DETECTION, '检测器'),
+        (INDEXING, '索引器'),
+        (LOPQINDEX, 'LOPQ 相似器'),
+        (CLASSIFICATION, '分类器')
     )
     IMAGES = 'I'
     VIDEOS = 'V'
     INDEX = 'X'
     INSTANCE_TYPES = (
-        (IMAGES, 'images'),
-        (INDEX, 'index'),
-        (VIDEOS, 'videos'),
+        (IMAGES, '图像'),
+        (INDEX, '索引'),
+        (VIDEOS, '视频'),
     )
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
-    event = models.ForeignKey(TEvent,null=True)
-    source_filters = JSONField(blank=True,null=True)
-    training_task_type = models.CharField(max_length=1,choices=TRAIN_TASK_TYPES,db_index=True,default=DETECTION)
-    instance_type = models.CharField(max_length=1,choices=INSTANCE_TYPES,db_index=True,default=IMAGES)
-    count = models.IntegerField(null=True)
-    name = models.CharField(max_length=500,default="")
-    files = JSONField(blank=True,null=True)
-    built = models.BooleanField(default=False)
-    created = models.DateTimeField('date created', auto_now_add=True)
+    event = models.ForeignKey(TEvent,null=True, verbose_name="事件")
+    source_filters = JSONField(blank=True,null=True, verbose_name="源过滤器")
+    training_task_type = models.CharField(max_length=1,choices=TRAIN_TASK_TYPES,db_index=True,default=DETECTION, verbose_name="训练任务类型")
+    instance_type = models.CharField(max_length=1,choices=INSTANCE_TYPES,db_index=True,default=IMAGES, verbose_name="实例类型")
+    count = models.IntegerField(null=True, verbose_name="数量")
+    name = models.CharField(max_length=500,default="", verbose_name="名称")
+    files = JSONField(blank=True,null=True, verbose_name="文件")
+    built = models.BooleanField(default=False, verbose_name="已完成")
+    created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
 
 
 class TrainedModel(models.Model):
@@ -189,11 +189,11 @@ class TrainedModel(models.Model):
     ANALYZER = 'A'
     SEGMENTER = 'S'
     MTYPE = (
-        (APPROXIMATOR, 'Approximator'),
-        (INDEXER, 'Indexer'),
-        (DETECTOR, 'Detector'),
-        (ANALYZER, 'Analyzer'),
-        (SEGMENTER, 'Segmenter'),
+        (APPROXIMATOR, '相似器'),
+        (INDEXER, '索引器'),
+        (DETECTOR, '检测器'),
+        (ANALYZER, '分析器'),
+        (SEGMENTER, '切割器'),
     )
     YOLO = "Y"
     TFD = "T"
@@ -201,25 +201,25 @@ class TrainedModel(models.Model):
         (TFD, 'Tensorflow'),
         (YOLO, 'YOLO V2'),
     )
-    detector_type = models.CharField(max_length=1,choices=DETECTOR_TYPES,db_index=True,null=True)
-    mode = models.CharField(max_length=1,choices=MODES,db_index=True,default=TENSORFLOW)
-    model_type = models.CharField(max_length=1,choices=MTYPE,db_index=True,default=INDEXER)
-    name = models.CharField(max_length=100)
-    algorithm = models.CharField(max_length=100,default="")
+    detector_type = models.CharField(max_length=1,choices=DETECTOR_TYPES,db_index=True,null=True, verbose_name="检测器类型")
+    mode = models.CharField(max_length=1,choices=MODES,db_index=True,default=TENSORFLOW, verbose_name="模型")
+    model_type = models.CharField(max_length=1,choices=MTYPE,db_index=True,default=INDEXER, verbose_name="模型类型")
+    name = models.CharField(max_length=100, verbose_name="名称")
+    algorithm = models.CharField(max_length=100,default="", verbose_name="算法")
     shasum = models.CharField(max_length=40,null=True,unique=True)
-    model_filename = models.CharField(max_length=200,default="",null=True)
+    model_filename = models.CharField(max_length=200,default="",null=True, verbose_name="模型文件名称")
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
-    arguments = JSONField(null=True,blank=True)
-    event = models.ForeignKey(TEvent, null=True)
-    trained = models.BooleanField(default=False)
-    training_set = models.ForeignKey(TrainingSet,null=True)
-    url = models.CharField(max_length=200,default="")
-    files = JSONField(null=True,blank=True)
-    produces_labels = models.BooleanField(default=False)
-    produces_json = models.BooleanField(default=False)
-    produces_text = models.BooleanField(default=False)
+    arguments = JSONField(null=True,blank=True, verbose_name="参数")
+    event = models.ForeignKey(TEvent, null=True, verbose_name="事件")
+    trained = models.BooleanField(default=False, verbose_name="已训练")
+    training_set = models.ForeignKey(TrainingSet,null=True, verbose_name="训练集")
+    url = models.CharField(max_length=200,default="", verbose_name="网址")
+    files = JSONField(null=True,blank=True, verbose_name="文件")
+    produces_labels = models.BooleanField(default=False, verbose_name="生成标签")
+    produces_json = models.BooleanField(default=False, verbose_name="生成json格式")
+    produces_text = models.BooleanField(default=False, verbose_name="生成文本格式")
     # Following allows us to have a hierarchy of models (E.g. inception pretrained -> inception fine tuned)
-    parent = models.ForeignKey('self', null=True)
+    parent = models.ForeignKey('self', null=True, verbose_name="父模型")
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
 
     def create_directory(self,create_subdirs=True):
@@ -306,19 +306,19 @@ class Retriever(models.Model):
     LOPQ = 'L'
     MODES = (
         (LOPQ, 'LOPQ'),
-        (EXACT, 'Exact'),
+        (EXACT, '精确'),
     )
-    algorithm = models.CharField(max_length=1,choices=MODES,db_index=True,default=EXACT)
-    name = models.CharField(max_length=200,default="")
-    indexer_shasum = models.CharField(max_length=40,null=True)
-    approximator_shasum = models.CharField(max_length=40,null=True)
-    source_filters = JSONField()
+    algorithm = models.CharField(max_length=1,choices=MODES,db_index=True,default=EXACT, verbose_name="算法")
+    name = models.CharField(max_length=200,default="", verbose_name="名称")
+    indexer_shasum = models.CharField(max_length=40,null=True, verbose_name="索引器 shasum")
+    approximator_shasum = models.CharField(max_length=40,null=True, verbose_name="相似器 shasum")
+    source_filters = JSONField(verbose_name="源过滤器")
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
 
 
 class Frame(models.Model):
     video = models.ForeignKey(Video, verbose_name="视频")
-    event = models.ForeignKey(TEvent,null=True)
+    event = models.ForeignKey(TEvent,null=True, verbose_name="事件")
     frame_index = models.IntegerField(verbose_name="帧索引")
     name = models.CharField(max_length=200,null=True, verbose_name="名称")
     subdir = models.TextField(default="", verbose_name="子目录") # Retains information if the source is a dataset for labeling
@@ -352,7 +352,7 @@ class Segment(models.Model):
     segment_index = models.IntegerField(verbose_name="段索引")
     start_time = models.FloatField(default=0.0, verbose_name="开始时间")
     end_time = models.FloatField(default=0.0, verbose_name="结束时间")
-    event = models.ForeignKey(TEvent,null=True)
+    event = models.ForeignKey(TEvent,null=True, verbose_name="事件")
     metadata = models.TextField(default="{}", verbose_name="元数据")
     frame_count = models.IntegerField(default=0, verbose_name="帧数量")
     start_index = models.IntegerField(default=0, verbose_name="开始索引")
@@ -391,15 +391,15 @@ class Region(models.Model):
     REGION_TYPES = (
         (ANNOTATION, '标注'),
         (DETECTION, '检测'),
-        (POLYGON, 'Polygon'),
-        (SEGMENTATION, 'Segmentation'),
-        (TRANSFORM, 'Transform'),
+        (POLYGON, '多边形'),
+        (SEGMENTATION, '分割'),
+        (TRANSFORM, '转换'),
     )
     region_type = models.CharField(max_length=1,choices=REGION_TYPES,db_index=True, verbose_name="区域类型")
     video = models.ForeignKey(Video, verbose_name="视频")
     user = models.ForeignKey(User,null=True, verbose_name="用户")
     frame = models.ForeignKey(Frame,null=True, verbose_name="帧")
-    event = models.ForeignKey(TEvent, null=True)  # TEvent that created this region
+    event = models.ForeignKey(TEvent, null=True, verbose_name="事件")  # TEvent that created this region
     frame_index = models.IntegerField(default=-1, verbose_name="帧索引")
     segment_index = models.IntegerField(default=-1,null=True, verbose_name="段索引")
     text = models.TextField(default="", verbose_name="文本")
@@ -458,11 +458,11 @@ class QueryRegion(models.Model):
         (DETECTION, '检测'),
         (POLYGON, '多边形'),
         (SEGMENTATION, '分割'),
-        (TRANSFORM, '变换'),
+        (TRANSFORM, '转换'),
     )
     region_type = models.CharField(max_length=1,choices=REGION_TYPES,db_index=True, verbose_name="区域类型")
     query = models.ForeignKey(DVAPQL, verbose_name="查询")
-    event = models.ForeignKey(TEvent, null=True)  # TEvent that created this region
+    event = models.ForeignKey(TEvent, null=True, verbose_name="事件")  # TEvent that created this region
     text = models.TextField(default="", verbose_name="文本")
     metadata = JSONField(blank=True,null=True, verbose_name="元数据")
     full_frame = models.BooleanField(default=False, verbose_name="全帧")
@@ -479,25 +479,25 @@ class QueryRegion(models.Model):
 
 class QueryResults(models.Model):
     query = models.ForeignKey(DVAPQL, verbose_name="查询")
-    retrieval_event = models.ForeignKey(TEvent,null=True)
+    retrieval_event = models.ForeignKey(TEvent,null=True, verbose_name="检索事件")
     video = models.ForeignKey(Video, verbose_name="视频")
     frame = models.ForeignKey(Frame, verbose_name="帧")
-    detection = models.ForeignKey(Region,null=True)
-    rank = models.IntegerField()
+    detection = models.ForeignKey(Region,null=True, verbose_name="检测器")
+    rank = models.IntegerField(verbose_name="秩")
     algorithm = models.CharField(max_length=100, verbose_name="算法")
-    distance = models.FloatField(default=0.0)
+    distance = models.FloatField(default=0.0, verbose_name="距离")
 
 
 class QueryRegionResults(models.Model):
-    query = models.ForeignKey(DVAPQL)
+    query = models.ForeignKey(DVAPQL, verbose_name="查询" )
     query_region = models.ForeignKey(QueryRegion, verbose_name="被查询区域")
-    retrieval_event = models.ForeignKey(TEvent,null=True)
+    retrieval_event = models.ForeignKey(TEvent,null=True, verbose_name="检索事件")
     video = models.ForeignKey(Video, verbose_name="视频")
     frame = models.ForeignKey(Frame, verbose_name="帧")
-    detection = models.ForeignKey(Region,null=True)
-    rank = models.IntegerField()
+    detection = models.ForeignKey(Region,null=True, verbose_name="检测器")
+    rank = models.IntegerField(verbose_name="秩")
     algorithm = models.CharField(max_length=100, verbose_name="算法")
-    distance = models.FloatField(default=0.0)
+    distance = models.FloatField(default=0.0, verbose_name="距离")
 
 
 class IndexEntries(models.Model):
@@ -514,7 +514,7 @@ class IndexEntries(models.Model):
     contains_frames = models.BooleanField(default=False, verbose_name="包含帧")
     contains_detections = models.BooleanField(default=False, verbose_name="包含检测")
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
-    event = models.ForeignKey(TEvent, null=True)
+    event = models.ForeignKey(TEvent, null=True, verbose_name="事件")
 
     class Meta:
         unique_together = ('video', 'entries_file_name',)
@@ -592,7 +592,7 @@ class FrameLabel(models.Model):
     segment_index = models.IntegerField(null=True, verbose_name="段索引")
     frame = models.ForeignKey(Frame, verbose_name="帧")
     label = models.ForeignKey(Label, verbose_name="标签")
-    event = models.ForeignKey(TEvent,null=True)
+    event = models.ForeignKey(TEvent,null=True, verbose_name="事件")
 
     def clean(self):
         if self.frame_index == -1 or self.frame_index is None:
@@ -615,7 +615,7 @@ class RegionLabel(models.Model):
     segment_index = models.IntegerField(null=True, verbose_name="段索引")
     region = models.ForeignKey(Region, verbose_name="区域")
     label = models.ForeignKey(Label, verbose_name="标签")
-    event = models.ForeignKey(TEvent,null=True)
+    event = models.ForeignKey(TEvent,null=True, verbose_name="事件")
 
     def clean(self):
         if self.frame_index == -1 or self.frame_index is None:
@@ -636,7 +636,7 @@ class SegmentLabel(models.Model):
     segment_index = models.IntegerField(default=-1, verbose_name="段索引")
     segment = models.ForeignKey(Segment, verbose_name="段")
     label = models.ForeignKey(Label, verbose_name="标签")
-    event = models.ForeignKey(TEvent, null=True)
+    event = models.ForeignKey(TEvent, null=True, verbose_name="事件")
 
     def clean(self):
         if self.segment_index == -1 or self.segment_index is None:
@@ -652,13 +652,13 @@ class TubeLabel(models.Model):
     video = models.ForeignKey(Video,null=True, verbose_name="视频")
     tube = models.ForeignKey(Tube)
     label = models.ForeignKey(Label, verbose_name="标签")
-    event = models.ForeignKey(TEvent, null=True)
+    event = models.ForeignKey(TEvent, null=True, verbose_name="事件")
 
 
 class VideoLabel(models.Model):
     video = models.ForeignKey(Video, verbose_name="视频")
     label = models.ForeignKey(Label, verbose_name="标签")
-    event = models.ForeignKey(TEvent, null=True)
+    event = models.ForeignKey(TEvent, null=True, verbose_name="事件")
 
 
 class DeletedVideo(models.Model):
@@ -675,11 +675,11 @@ class DeletedVideo(models.Model):
 
 class ManagementAction(models.Model):
     parent_task = models.CharField(max_length=500, default="", verbose_name="父任务")
-    op = models.CharField(max_length=500, default="")
+    op = models.CharField(max_length=500, default="", verbose_name="操作")
     host = models.CharField(max_length=500, default="", verbose_name="主机")
     message = models.TextField(verbose_name="信息")
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
-    ping_index = models.IntegerField(null=True)
+    ping_index = models.IntegerField(null=True, verbose_name="Ping 索引")
 
 
 class SystemState(models.Model):
@@ -695,7 +695,7 @@ class SystemState(models.Model):
 
 
 class QueryRegionIndexVector(models.Model):
-    event = models.ForeignKey(TEvent)
+    event = models.ForeignKey(TEvent, verbose_name="事件")
     query_region = models.ForeignKey(QueryRegion, verbose_name="被查询区域")
     vector = models.BinaryField()
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
