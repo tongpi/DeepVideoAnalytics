@@ -519,7 +519,7 @@ def get_frame_url(r):
 
 
 def get_sequence_name(i,r):
-    return "Indexer {} -> {} {} retriever".format(i.name,r.get_algorithm_display(),r.name)
+    return "Indexer {} -> {} {} retriever".format(i.name,r.get_algorithm_display().encode('utf-8'),r.name)
 
 
 def get_result_json(r):
