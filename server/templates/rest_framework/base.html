@@ -12,7 +12,7 @@
       <meta name="robots" content="NONE,NOARCHIVE" />
     {% endblock %}
 
-    <title>{% block title %}深度视频分析{% endblock %}</title>
+    <title>{% block title %}深度视频分析平台{% endblock %}</title>
 
     {% block style %}
       {% block bootstrap_theme %}
@@ -37,7 +37,7 @@
           <span>
             {% block branding %}
               <a class='navbar-brand' href='/'>
-                  深度视频分析
+                  深度视频分析平台
               </a>
             {% endblock %}
           </span>
@@ -59,9 +59,9 @@
         <ul class="breadcrumb">
           {% for breadcrumb_name, breadcrumb_url in breadcrumblist %}
             {% if forloop.last %}
-              <li class="active"><a href="{{ breadcrumb_url }}">{{ breadcrumb_name }}</a></li>
+              <li class="active">1<a href="{{ breadcrumb_url }}">{{ breadcrumb_name }}</a></li>
             {% else %}
-              <li><a href="{{ breadcrumb_url }}">{{ breadcrumb_name }}</a></li>
+              <li>2<a href="{{ breadcrumb_url }}">{{ breadcrumb_name }}</a></li>
             {% endif %}
           {% endfor %}
         </ul>
