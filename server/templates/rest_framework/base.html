@@ -43,7 +43,7 @@
           </span>
           <ul class="nav navbar-nav pull-right">
             {% block userlinks %}
-			  {% with loginValue=10%}
+			  {%with loginValue=10%}
 			 
               {% if user.is_authenticated %}
                 {% optional_logout request user %}
@@ -53,7 +53,7 @@
 				  <!--{% optional_login request %}-->注销
 				{% endifequal %}
               {% endif %}
-			   {% with %}
+			   {%with%}
             {% endblock %}
           </ul>
         </div>
