@@ -43,7 +43,7 @@
           </span>
           <ul class="nav navbar-nav pull-right">
             {% block userlinks %}
-			  {%with loginValue=10%}
+			  {%with loginValue=optional_login request%}
 			 		 
               {% if user.is_authenticated %}
                 {% optional_logout request user %}
