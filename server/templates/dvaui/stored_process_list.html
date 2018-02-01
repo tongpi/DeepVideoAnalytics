@@ -290,7 +290,9 @@
 </section>
 {% endblock %}
 {% block page_js%}
+<script src={% static 'dvaapp/static/select2/js/i18n/zh-CN.js' %}></script>
 <script>
+	
     $(document).ready(function() {
         InitializeTables();
         // Run script
@@ -337,7 +339,7 @@
         $("#selected_approximators").select2({theme: "bootstrap"});
         $("#apply_target").select2({theme: "bootstrap"});
         $("#apply_model_pk").select2({theme: "bootstrap"});
-        $("#lopq_training_set_pk").select2({theme: "bootstrap"});
+        $("#lopq_training_set_pk").select2({theme: "bootstrap",language:'zh-CN'});
         $("#apply_video_pk").select2({theme: "bootstrap",multiple:true});
         $("#approximator_training_video_pk").select2({theme: "bootstrap",multiple:true});
     })
