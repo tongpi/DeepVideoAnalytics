@@ -405,8 +405,12 @@
 		detector_s.each(function(index, obj) {
 				if($(obj).val() == 'face'){
 				   $(obj).val('人脸')
+				}else if($(obj).name == 'textbox'){
+				 $(obj).val('文字')
+				}else if($(obj).name == 'coco'){
+				$(obj).val('图片')
 				}else{
-				 $(obj).val('其他')
+				$(obj).val('其他')
 				}
 				
 				//if($(obj).name == 'textbox')
