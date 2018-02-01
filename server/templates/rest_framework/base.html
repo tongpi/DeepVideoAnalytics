@@ -1,6 +1,6 @@
 {% load staticfiles %}
 {% load rest_framework %}
-{% load i18n %}
+{% load i18n static%}
 
 <!DOCTYPE html>
 <html>
@@ -43,20 +43,12 @@
           </span>
           <ul class="nav navbar-nav pull-right">
             {% block userlinks %}
-			  {%with loginValue=optional_login request %}
-			 		 
-              {% if user.is_authenticated %}
+			  {% if user.is_authenticated %}
                 {% optional_logout request user %}
               {% else %}
-				{% optional_login request %}{{loginValue}}
-				{% ifequal loginValue 'Log out' %}
-					1
-				{% endifequal%}
-				{% ifequal loginValue 'Log in' %}
-					2
-				{% endifequal%}
-              {% endif %}
-			   {%endwith%}
+				{% optional_login request %}
+				{% endif %}
+			   
 			  {% endblock %}
           </ul>
         </div>
