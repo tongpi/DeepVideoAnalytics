@@ -48,10 +48,10 @@
               {% else %}
 			    {% ifequal optional_login 'Log in' %}
                   <!--{% optional_login request %}-->登录 
-				{% endif %}
+				{% endifequal %}
 				{% ifequal optional_login 'Log out' %}
 				  注销
-				{% endif %}
+				{% endifequal %}
               {% endif %}
             {% endblock %}
           </ul>
