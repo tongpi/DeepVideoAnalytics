@@ -402,14 +402,14 @@
 	$(document).ready(function() {
 	var detector_s = $("#detector_list");
 		detector_s.each(function(index, obj) {
-				if($(obj).innerHTML() == 'face'){
-				   $(obj).innerHTML('人脸')
+				if($(obj).innerText() == 'face'){
+				   $(obj).innerText('人脸')
 				}
-				if($(obj).innerHTML() == 'textbox'){
-				   $(obj).innerHTML('文字')
+				if($(obj).innerText() == 'textbox'){
+				   $(obj).innerText('文字')
 				}
-				if($(obj).innerHTML() == 'coco'){
-				   $(obj).innerHTML('图片')
+				if($(obj).innerText() == 'coco'){
+				   $(obj).innerText('图片')
 				}
 				//if($(obj).name == 'textbox')
 				//if($(obj).name == 'coco')
