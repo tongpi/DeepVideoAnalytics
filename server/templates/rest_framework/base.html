@@ -44,17 +44,14 @@
           <ul class="nav navbar-nav pull-right">
             {% block userlinks %}
 			  {%with loginValue=10%}
-			 
+			 		 
               {% if user.is_authenticated %}
                 {% optional_logout request user %}
               {% else %}
-			  {% optional_login request %}{{loginValue}}
-			 	{% ifequal loginValue 'Log out' %}
-				  <!--{% optional_login request %}-->注销
-				{% endifequal %}
+				{% optional_login request %}{{loginValue}}
               {% endif %}
-			  
-            {% endblock %}
+			   {%endwith%}
+			  {% endblock %}
           </ul>
         </div>
       </div>
