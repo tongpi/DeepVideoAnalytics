@@ -46,7 +46,12 @@
               {% if user.is_authenticated %}
                 {% optional_logout request user %}
               {% else %}
-                {% optional_login request %}
+			    {% ifequal optional_login 'Log in' %}
+                  <!--{% optional_login request %}-->登录 
+				{% endif %}
+				{% ifequal optional_login 'Log out' %}
+				  注销
+				{% endif %}
               {% endif %}
             {% endblock %}
           </ul>
@@ -59,9 +64,9 @@
         <ul class="breadcrumb">
           {% for breadcrumb_name, breadcrumb_url in breadcrumblist %}
             {% if forloop.last %}
-              <li class="active"><a href="{{ breadcrumb_url }}">{{ breadcrumb_name }}</a></li>2
+              <li class="active"><a href="{{ breadcrumb_url }}">{{ breadcrumb_name }}</a></li>
             {% else %}
-              <li><a href="{{ breadcrumb_url }}">{{ breadcrumb_name }}</a></li>3
+              <li><a href="{{ breadcrumb_url }}">{{ breadcrumb_name }}</a></li>
             {% endif %}
           {% endfor %}
         </ul>
