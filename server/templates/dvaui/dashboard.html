@@ -383,8 +383,6 @@
 </div>
 </section>
 {% endblock %}
-
-
 {% block page_js %}
     <script>
         var annotation_mode = false;
@@ -400,6 +398,20 @@
     indexer_selector.select2({theme: "bootstrap",language:'zh-CN'});
     var detector_selector = $("#detector_list");
     detector_selector.select2({theme: "bootstrap",language:'zh-CN'});
+	detector_selector.each(function(index, obj) {
+		if($(obj).text() == 'face'){
+		   $(obj).text('人脸')
+		}
+		if($(obj).name == 'textbox'){
+		   $(obj).text('文字')
+		}
+		if($(obj).text() == 'coco'){
+		   $(obj).text('图片')
+		}
+		//if($(obj).name == 'textbox')
+		//if($(obj).name == 'coco')
+    });
+	
     var video_name = $("#video_name");
     video_name.select2({theme: "bootstrap",language:'zh-CN'});
     </script>
