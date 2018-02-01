@@ -384,6 +384,7 @@
 </section>
 {% endblock %}
 {% block page_js %}
+<script src={% static '/select2/js/i18n/zh-CN.js' %}></script>
     <script>
         var annotation_mode = false;
         var status = "请添加需要搜索或上传的图片。";
@@ -402,10 +403,10 @@
 	//$(document).ready(function() {
 	var detector_s = $("#detector_list");
 		detector_s.each(function(index, obj) {
-				if($(obj).text() == 'face'){
-				   $(obj).text('人脸')
+				if($(obj).val() == 'face'){
+				   $(obj).val('人脸')
 				}else{
-				 $(obj).text('其他')
+				 $(obj).val('其他')
 				}
 				
 				//if($(obj).name == 'textbox')
@@ -429,7 +430,7 @@
     <script src={% static 'app/app_config.js' %}></script>
     <script src={% static 'app/controller.js' %}></script>
     <script src={% static 'app/app.js' %}></script>
-	<script src={% static '/select2/js/i18n/zh-CN.js' %}></script>
+	
 {% endblock %}
 {% block ngblock %}ng-app="cveditor"{% endblock %}
 {% block page_css %}
