@@ -46,12 +46,9 @@
               {% if user.is_authenticated %}
                 {% optional_logout request user %}
               {% else %}
-			    {% ifequal optional_login 'Log in' %}
-                  <!--{% optional_login request %}-->登录 
-				{% endifequal %}
-				{% ifequal optional_login 'Log out' %}
-				  注销
-				{% endifequal %}
+			 	{% ifequal optional_login request 'Log out' %}
+				  <!--{% optional_login request %}-->注销
+				{% endif %}
               {% endif %}
             {% endblock %}
           </ul>
