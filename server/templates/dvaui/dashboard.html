@@ -398,19 +398,23 @@
     indexer_selector.select2({theme: "bootstrap",language:'zh-CN'});
     var detector_selector = $("#detector_list");
     detector_selector.select2({theme: "bootstrap",language:'zh-CN'});
-	detector_selector.each(function(index, obj) {
-		if($(obj).text() == 'face'){
-		   $(obj).text('人脸')
-		}
-		if($(obj).name == 'textbox'){
-		   $(obj).text('文字')
-		}
-		if($(obj).text() == 'coco'){
-		   $(obj).text('图片')
-		}
-		//if($(obj).name == 'textbox')
-		//if($(obj).name == 'coco')
-    });
+	
+	$(document).ready(function() {
+	var detector_s = $("#detector_list");
+		detector_s.each(function(index, obj) {
+				if($(obj).innerHTML() == 'face'){
+				   $(obj).innerHTML('人脸')
+				}
+				if($(obj).innerHTML() == 'textbox'){
+				   $(obj).innerHTML('文字')
+				}
+				if($(obj).innerHTML() == 'coco'){
+				   $(obj).innerHTML('图片')
+				}
+				//if($(obj).name == 'textbox')
+				//if($(obj).name == 'coco')
+			});
+	});
 	
     var video_name = $("#video_name");
     video_name.select2({theme: "bootstrap",language:'zh-CN'});
