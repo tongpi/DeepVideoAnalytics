@@ -399,22 +399,19 @@
     var detector_selector = $("#detector_list");
     detector_selector.select2({theme: "bootstrap",language:'zh-CN'});
 	
-	$(document).ready(function() {
+	//$(document).ready(function() {
 	var detector_s = $("#detector_list");
 		detector_s.each(function(index, obj) {
-				if($(obj).innerText() == 'face'){
-				   $(obj).innerText('人脸')
+				if($(obj).text() == 'face'){
+				   $(obj).text('人脸')
+				}else{
+				 $(obj).text('其他')
 				}
-				if($(obj).innerText() == 'textbox'){
-				   $(obj).innerText('文字')
-				}
-				if($(obj).innerText() == 'coco'){
-				   $(obj).innerText('图片')
-				}
+				
 				//if($(obj).name == 'textbox')
 				//if($(obj).name == 'coco')
 			});
-	});
+	//});
 	
     var video_name = $("#video_name");
     video_name.select2({theme: "bootstrap",language:'zh-CN'});
