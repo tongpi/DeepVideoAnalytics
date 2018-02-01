@@ -334,14 +334,14 @@
           textarea2.val(editor2.getSession().getValue());
         });
         //
-        $("#selected_indexers").select2({theme: "bootstrap"});
-        $("#approximator_training_indexers").select2({theme: "bootstrap"});
-        $("#selected_approximators").select2({theme: "bootstrap"});
-        $("#apply_target").select2({theme: "bootstrap"});
-        $("#apply_model_pk").select2({theme: "bootstrap"});
+        $("#selected_indexers").select2({theme: "bootstrap",language:'zh-CN'});
+        $("#approximator_training_indexers").select2({theme: "bootstrap",language:'zh-CN'});
+        $("#selected_approximators").select2({theme: "bootstrap",language:'zh-CN'});
+        $("#apply_target").select2({theme: "bootstrap",language:'zh-CN'});
+        $("#apply_model_pk").select2({theme: "bootstrap",language:'zh-CN'});
         $("#lopq_training_set_pk").select2({theme: "bootstrap",language:'zh-CN'});
-        $("#apply_video_pk").select2({theme: "bootstrap",multiple:true});
-        $("#approximator_training_video_pk").select2({theme: "bootstrap",multiple:true});
+        $("#apply_video_pk").select2({theme: "bootstrap",multiple:true,language:'zh-CN'});
+        $("#approximator_training_video_pk").select2({theme: "bootstrap",multiple:true,language:'zh-CN'});
     })
 </script>
 {% endblock %}

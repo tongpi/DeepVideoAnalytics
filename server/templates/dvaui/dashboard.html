@@ -397,11 +397,11 @@
             var initial_url=null;
         {% endif %}
     var indexer_selector = $("#indexer_list");
-    indexer_selector.select2({theme: "bootstrap"});
+    indexer_selector.select2({theme: "bootstrap",language:'zh-CN'});
     var detector_selector = $("#detector_list");
-    detector_selector.select2({theme: "bootstrap"});
+    detector_selector.select2({theme: "bootstrap",language:'zh-CN'});
     var video_name = $("#video_name");
-    video_name.select2({theme: "bootstrap"});
+    video_name.select2({theme: "bootstrap",language:'zh-CN'});
     </script>
     <script src={% static 'plugins/jquery.mousewheel.min.js' %}></script>
     <script src={% static 'plugins/underscore-min.js' %}></script>
@@ -416,6 +416,7 @@
     <script src={% static 'app/app_config.js' %}></script>
     <script src={% static 'app/controller.js' %}></script>
     <script src={% static 'app/app.js' %}></script>
+	<script src={% static '/select2/js/i18n/zh-CN.js' %}></script>
 {% endblock %}
 {% block ngblock %}ng-app="cveditor"{% endblock %}
 {% block page_css %}

@@ -204,11 +204,12 @@
 </section>
 {% endblock %}
 {% block page_js%}
+<script src={% static '/select2/js/i18n/zh-CN.js' %}></script>
 <script>
     $(document).ready(function() {
         InitializeTables();
         var selected_video_id = $("#video_pk");
-        selected_video_id.select2({theme: "bootstrap"});
+        selected_video_id.select2({theme: "bootstrap",language:'zh-CN'});
 
     })
 </script>
