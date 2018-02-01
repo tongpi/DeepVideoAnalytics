@@ -49,6 +49,12 @@
                 {% optional_logout request user %}
               {% else %}
 				{% optional_login request %}{{loginValue}}
+				{% ifequal loginValue 'Log out' %}
+					1
+				{% endifequal%}
+				{% ifequal loginValue 'Log in' %}
+					2
+				{% endifequal%}
               {% endif %}
 			   {%endwith%}
 			  {% endblock %}
