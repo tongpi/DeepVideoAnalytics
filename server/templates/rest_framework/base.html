@@ -1,7 +1,6 @@
 {% load staticfiles %}
 {% load rest_framework %}
 {% load i18n %}
-{% load set_var %}
 
 <!DOCTYPE html>
 <html>
@@ -44,7 +43,7 @@
           </span>
           <ul class="nav navbar-nav pull-right">
             {% block userlinks %}
-			  {% set loginValue = optional_login request %}
+			  {% with loginValue = optional_login request %}
               {% if user.is_authenticated %}
                 {% optional_logout request user %}
               {% else %}
@@ -52,6 +51,7 @@
 				  <!--{% optional_login request %}-->注销
 				{% endifequal %}
               {% endif %}
+			  {% endwith %}
             {% endblock %}
           </ul>
         </div>
