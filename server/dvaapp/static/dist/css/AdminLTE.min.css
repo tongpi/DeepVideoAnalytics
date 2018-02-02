@@ -145,19 +145,58 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	right:402px;
 }
 .logo_title_up{
+	margin:0px auto;
 	width:159px;
 	height:39px;
 	background: url('../img/rj_logo.png') no-repeat;
 }
 .lgog_line{
+	margin:0px auto;
 	width:330px;
-	height:28	px;
+	height:28px;
 	background: url('../img/logo_line.png') no-repeat;
 }
 .logo_title_bottom{
+	margin:0px auto;
 	width:158px;
 	height:29px;
 	background: url('../img/logo_title.png') no-repeat;
+}
+
+.user_input{
+	margin:0px;
+	padding:0px;
+	width:279px;
+	height:40px;
+	line-height:40px;
+}
+.password_input{
+	margin:0px;
+	padding:0px;
+	width:279px;
+	height:40px;
+	line-height:40px;
+}
+
+.user_input{
+	margin:0px;
+	padding:0px;
+	position:relative;
+}
+.user_input_icon{
+	margin:0px;
+	padding:0px;
+	width:80px;
+	display:inline-block;
+	position: absolute;
+    top: 10px;
+    color: #000000;
+    z-index: 999;
+}
+.user_input input{
+	width:279px;
+	height:40px;
+	text-indent:120px;
 }
 
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
@@ -2430,7 +2469,7 @@ a:hover,a:active,a:focus {
 }
 
 .btn-primary {
-	background-color: #3c8dbc;
+	background-color: #08d5da;
 	border-color: #367fa9
 }
 
