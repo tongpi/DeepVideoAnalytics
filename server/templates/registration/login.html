@@ -2,6 +2,7 @@
 
 {% block page_content %}
 <div class="content-wrapper-loginbg">
+<div class="content-bg-box">
 <section class="content-header">
 <div class="row  border-bottom white-bg dashboard-header">
 </div>
@@ -36,11 +37,11 @@
             <span style="display: inline-block">{{ form.username }}</span>
         </div>
         <div class="password_input">
-            <span>密码：</span>
+            <span class="password_input_icon">密码：</span>
             <span style="display: inline-block">{{ form.password }}</span>
         </div>
 
-        <div><button type="submit" class="btn btn-primary block full-width" style="margin-top: 10px;margin-bottom: 15px; width:279px;">登录</button></div>
+        <div class="login_button"><button type="submit" class="btn btn-primary block full-width" style="margin-top: 10px;margin-bottom: 15px; width:279px;">登录</button></div>
         <input type="hidden" class="" name="next" value="{{ next }}" />
 {#        <div><a style="margin-top:15px" href="{% url 'password_reset' %}">忘记密码？</a></div>#}
         </form>
@@ -49,5 +50,6 @@
         </div>
 </div>
 </section>
+</div>
 </div>
 {% endblock %}

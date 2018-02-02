@@ -75,7 +75,16 @@ body {
 @media (min-width:768px) {
 .content-wrapper-loginbg{
 		background: url('../img/boxed-bg.jpg') no-repeat;
+		position:absolute;
+		top:0px;
+		bottom:0px;
 	}
+}
+
+.content-bg-box{
+	margin:0px auto;
+	padding:0px;
+	width:1280px;
 }
 
 @media (max-width:767px) {
@@ -89,7 +98,8 @@ body {
 
 .content-wrapper,.right-side {
 	min-height: 100%;
-	background: url('../img/boxed-bg.jpg') no-repeat;
+/*	background: url('../img/boxed-bg.jpg') no-repeat;*/
+	background:#dddddd;
 	z-index: 800
 }
 
@@ -164,25 +174,14 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 }
 
 .user_input{
-	margin:0px;
+	margin:0px auto;
 	padding:0px;
 	width:279px;
 	height:40px;
 	line-height:40px;
-}
-.password_input{
-	margin:0px;
-	padding:0px;
-	width:279px;
-	height:40px;
-	line-height:40px;
-}
-
-.user_input{
-	margin:0px;
-	padding:0px;
 	position:relative;
 }
+
 .user_input_icon{
 	margin:0px;
 	padding:0px;
@@ -197,9 +196,14 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 .password_input{
 	margin:0px;
 	padding:0px;
+	width:279px;
+	height:40px;
+	line-height:40px;
 	position:relative;
-	margin-top:30px;
+	margin-top:20px;
 }
+
+
 .password_input_icon{
 	margin:0px;
 	padding:0px;
@@ -218,6 +222,12 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	text-indent:40ssssspx;
 }
 
+
+.login_button{
+	margin:0px;
+	padding:0px;
+	margin-top:20px;
+}
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	font-family: 'Source Sans Pro',sans-serif
 }
