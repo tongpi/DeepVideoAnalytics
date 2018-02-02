@@ -1,11 +1,12 @@
 {% extends "dvaui/base.html" %}
 
 {% block page_content %}
+<div class="content-wrapper-loginbg">
 <section class="content-header">
 <div class="row  border-bottom white-bg dashboard-header">
 </div>
 </section>
-<section class="content">
+<section class="content_login">
 <div class="middle-box text-center loginscreen">
 
 		<div class="logo_title">
@@ -31,11 +32,11 @@
         {% csrf_token %}
 
         <div class="user_input">
-            <span class="user_input_icon"></span>
-            <span style="display: inline-block">用户名：{{ form.username }}</span>
+            <span class="user_input_icon">用户名：</span>
+            <span style="display: inline-block">{{ form.username }}</span>
         </div>
         <div class="password_input">
-            <span style="width:80px;display: inline-block">密码：</span>
+            <span>密码：</span>
             <span style="display: inline-block">{{ form.password }}</span>
         </div>
 
@@ -48,4 +49,5 @@
         </div>
 </div>
 </section>
+</div>
 {% endblock %}
