@@ -82,9 +82,16 @@ body {
 }
 
 .content-bg-box{
-	margin:0px auto;
-	padding:0px;
-	width:1280px;
+	margin: 0px auto;
+    padding: 0px;
+    width: 1280px;
+    position: absolute;
+    bottom: 0px;
+    left: 50%;
+    top: 250px;
+	right:0px;
+    /* background: #dddddd; */
+    margin-left: -640px;
 }
 
 @media (max-width:767px) {
@@ -219,6 +226,14 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	margin:0px auto;
 	width:279px;
 	height:40px;
+	line-height:40px;
+	text-indent:40ssssspx;
+}
+.password_input_icon input{
+	margin:0px auto;
+	width:279px;
+	height:40px;
+	line-height:40px;
 	text-indent:40ssssspx;
 }
 
