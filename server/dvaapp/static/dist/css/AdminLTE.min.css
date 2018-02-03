@@ -2591,6 +2591,20 @@ a:hover,a:active,a:focus {
 	border:1px #05dde2 solid;
 }
 
+
+.btn-panner {
+	background-color: #ffffff;
+	border-color: #e5e5e5;
+	color:#4f4f4f;
+	border-radius:25px;
+}
+
+.btn-panner :hover,.btn-panner :active,.btn-panner .hover {
+	background-color: #05dde2
+	border:1px #05dde2 solid;
+}
+
+
 .btn-outline {
 	border: 1px solid #fff;
 	background: transparent;
@@ -5362,11 +5376,18 @@ table.text-center,table.text-center td,table.text-center th {
 
 
 
+
+
 /**************检索器样式*************/
+.no-row{
+	padding:0px !important;
+}
+
 .jsq_cont{
 	margin:0px;
 	padding:0px;
 	background:#ffffff;
+	margin-left:5px;
 }
 .jsq_title{
 	margin-bottom:5px; 
@@ -5396,14 +5417,3 @@ table.text-center,table.text-center td,table.text-center th {
 
 
 /*****************对象面板按钮样式**************************/
-.btn-panner {
-	background-color: #ffffff;
-	border:1px #e5e5e5 solid;
-	padding:10px;
-	border-radius:25px;
-	color:#4f4f4f;
-}
-
-.btn-panner :hover,.btn-panner :active,.btn-panner .hover {
-	background-color: #05dde2
-}

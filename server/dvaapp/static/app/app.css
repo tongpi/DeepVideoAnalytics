@@ -64,6 +64,7 @@ canvas
 @media (min-width: 1370px) {
     .uploadmenu{
     width: 700px;
+	margin-left:140px;
 }
 }
 
@@ -240,6 +241,7 @@ input[type=color] {
 #canvas-wrapper{
     position:relative;
     margin: auto;
+	margin-left:140px;
 }
 
 
