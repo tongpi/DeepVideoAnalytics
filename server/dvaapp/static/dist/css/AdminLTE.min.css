@@ -1961,7 +1961,9 @@ a:hover,a:active,a:focus {
 }
 
 .box-header.with-border {
-	border-bottom: 1px solid #f4f4f4
+	border-bottom: 1px solid #efefef;
+	border-left:3px #05dce1 solid;
+	background:#f9f9f9;
 }
 
 .collapsed-box .box-header.with-border {
@@ -2537,52 +2539,62 @@ a:hover,a:active,a:focus {
 .btn-primary {
 	background-color: #ffffff;
 	border-color: #e5e5e5;
+	color:#4f4f4f;
 }
 
 .btn-primary:hover,.btn-primary:active,.btn-primary.hover {
 	background-color: #05dde2;
+	border:1px #05dde2 solid;
 }
 
 .btn-success {
 	background-color: #ffffff;
 	border-color: #e5e5e5;
+	color:#4f4f4f;
 }
 
 .btn-success:hover,.btn-success:active,.btn-success.hover {
-	background-color: #05dde2
+	background-color: #05dde2;
+	border:1px #05dde2 solid;
 }
 
 .btn-info {
 	background-color: #ffffff;
 	border-color: #e5e5e5;
+	color:#4f4f4f;
 }
 
 .btn-info:hover,.btn-info:active,.btn-info.hover {
 	background-color: #05dde2;
+	border:1px #05dde2 solid;
 }
 
 .btn-danger {
 	background-color: #ffffff;
 	border-color: #e5e5e5;
+	color:#4f4f4f;
 }
 
 .btn-danger:hover,.btn-danger:active,.btn-danger.hover {
 	background-color: #05dde2;
+	border:1px #05dde2 solid;
 }
 
 .btn-warning {
 	background-color: #ffffff;
 	border-color: #e5e5e5;
+	color:#4f4f4f;
 }
 
 .btn-warning:hover,.btn-warning:active,.btn-warning.hover {
 	background-color: #05dde2;
+	border:1px #05dde2 solid;
 }
 
 .btn-outline {
 	border: 1px solid #fff;
 	background: transparent;
-	color: #fff
+	color: #fff;
 }
 
 .btn-outline:hover,.btn-outline:focus,.btn-outline:active {
@@ -5370,6 +5382,8 @@ table.text-center,table.text-center td,table.text-center th {
 
 .with_border{
 	position:relative;
+	padding:0px;
+	padding-bottom:35px;
 }
 .width_border_left{
 	pointer:absolute;
@@ -5384,9 +5398,10 @@ table.text-center,table.text-center td,table.text-center th {
 /*****************对象面板按钮样式**************************/
 .btn-panner {
 	background-color: #ffffff;
-	border-color:1px #e5e5e5 solid;
+	border:1px #e5e5e5 solid;
 	padding:10px;
 	border-radius:25px;
+	color:#4f4f4f;
 }
 
 .btn-panner :hover,.btn-panner :active,.btn-panner .hover {
