@@ -78,6 +78,8 @@ body {
 		position:absolute;
 		top:0px;
 		bottom:0px;
+		left:0px;
+		right:0px;
 	}
 }
 
@@ -88,7 +90,7 @@ body {
     position: absolute;
     bottom: 0px;
     left: 50%;
-    top: 250px;
+    top: 200px;
 	right:0px;
     /* background: #dddddd; */
     margin-left: -640px;
@@ -158,8 +160,13 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	height:421px;
 	background: url('../img/login_bg.png') no-repeat;
 	position:absolute;
-	top:340px;
-	right:402px;
+	top:100px;
+	right:100px;
+}
+.logo_title{
+	margin:0px;
+	padding:0px;
+	margin-top:30px;
 }
 .logo_title_up{
 	margin:0px auto;
@@ -171,6 +178,7 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	margin:0px auto;
 	width:330px;
 	height:28px;
+	margin:20px 0px;
 	background: url('../img/logo_line.png') no-repeat;
 }
 .logo_title_bottom{
@@ -185,7 +193,7 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	padding:0px;
 	width:279px;
 	height:40px;
-	line-height:40px;
+	margin-top:15px;
 	position:relative;
 }
 
@@ -205,9 +213,8 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	padding:0px;
 	width:279px;
 	height:40px;
-	line-height:40px;
+	margin-top:5px;
 	position:relative;
-	margin-top:20px;
 }
 
 
@@ -227,14 +234,14 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	width:279px;
 	height:40px;
 	line-height:40px;
-	text-indent:40ssssspx;
+	text-indent:40px;
 }
-.password_input_icon input{
+.password_input input{
 	margin:0px auto;
 	width:279px;
 	height:40px;
 	line-height:40px;
-	text-indent:40ssssspx;
+	text-indent:40px;
 }
 
 
@@ -243,6 +250,14 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	padding:0px;
 	margin-top:20px;
 }
+
+.login_button button{
+	margin-top: 10px;
+	margin-bottom: 15px; 
+	width:279px;
+	height:40px;
+}
+
 h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
 	font-family: 'Source Sans Pro',sans-serif
 }
