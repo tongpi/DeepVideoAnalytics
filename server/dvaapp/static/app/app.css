@@ -59,7 +59,7 @@ canvas
 
 
 .uploadmenu{
-    width: 550px;
+    width: 600px;
 }
 @media (min-width: 1370px) {
     .uploadmenu{
@@ -87,7 +87,8 @@ input[type=color] {
 
 #side_options{
     width:120px;
-    padding-left: 3px;
+    padding-left: 9px;
+	margin-top:0px;
 }
 
 #center_options .btn-app {
@@ -99,7 +100,7 @@ input[type=color] {
 .btn-move{
     display: block;
     width: 100%;
-    margin-bottom: 7px;
+    margin-bottom: 2px;
 
 }
 .output, .input{
@@ -107,7 +108,7 @@ input[type=color] {
 }
 
 .input {
-    width: 530px !important;
+    width: 670px !important;
 }
 
 #search_quick{
@@ -204,7 +205,7 @@ input[type=color] {
 }
 
 #clear_mask{
-    margin-top: 10px;
+    margin-top: 2px;
 }
 .content {
     padding-top: 0 !important;

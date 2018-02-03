@@ -5380,7 +5380,8 @@ table.text-center,table.text-center td,table.text-center th {
 
 /**************检索器样式*************/
 .no-row{
-	padding:0px !important;
+	margin-left:0px !important;
+	margin-right:0px !important; 
 }
 
 .jsq_cont{
@@ -5417,3 +5418,10 @@ table.text-center,table.text-center td,table.text-center th {
 
 
 /*****************对象面板按钮样式**************************/
+
+
+
+/*************************/
+.select2-container--bootstrap .select2-selection--multiple{
+		min-height:100px;
+}
