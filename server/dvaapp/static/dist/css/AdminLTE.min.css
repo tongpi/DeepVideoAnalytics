@@ -593,7 +593,7 @@ a:hover,a:active,a:focus {
 .sidebar {
 	padding-bottom: 10px;
 	margin-top:10px;
-	border-top:1px #dddddd solid;
+	background: url('../img/left_line.png') no-repeat center top;
 }
 
 .sidebar-form input:focus {
