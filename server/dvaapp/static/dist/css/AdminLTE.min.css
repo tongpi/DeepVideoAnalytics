@@ -178,7 +178,7 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	margin:0px auto;
 	width:330px;
 	height:28px;
-	margin:20px 0px;
+	margin:10px 0px;
 	background: url('../img/logo_line.png') no-repeat;
 }
 .logo_title_bottom{
@@ -209,7 +209,7 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 }
 
 .password_input{
-	margin:0px;
+	margin:0px auto;
 	padding:0px;
 	width:279px;
 	height:40px;

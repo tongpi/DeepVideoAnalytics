@@ -25,7 +25,7 @@
             {% if user.is_authenticated %}
             <p>您的帐户无权访问此页面。继续，请使用有权访问的帐户登录。</p>
             {% else %}
-            <h3>查看此页面，请登录。</h3>
+            <!--<h3>查看此页面，请登录。</h3>-->
             {% endif %}
         {% endif %}
 
@@ -41,7 +41,7 @@
             <span style="display: inline-block">{{ form.password }}</span>
         </div>
 
-        <div class="login_button"><button type="submit" class="btn btn-primary block full-width" style="margin-top: 10px;margin-bottom: 15px; width:279px;">登录</button></div>
+        <div class="login_button"><button type="submit" class="btn btn-primary block full-width" >登录</button></div>
         <input type="hidden" class="" name="next" value="{{ next }}" />
 {#        <div><a style="margin-top:15px" href="{% url 'password_reset' %}">忘记密码？</a></div>#}
         </form>
