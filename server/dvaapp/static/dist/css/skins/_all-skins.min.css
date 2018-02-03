@@ -371,12 +371,11 @@
 
 .skin-black .main-header .navbar .sidebar-toggle:hover {
 	color: #999;
-	background: #fff
+	background: #565e6b;
 }
 
 .skin-black .main-header .navbar>.sidebar-toggle {
-	color: #333;
-	border-right: 1px solid #eee
+	color: #05dce2;
 }
 
 .skin-black .main-header .navbar .navbar-nav>li>a {
