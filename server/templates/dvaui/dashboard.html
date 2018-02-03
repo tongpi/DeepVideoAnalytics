@@ -67,9 +67,10 @@
         <div id="canvas-wrapper">
             <canvas id="canvas"  width="500" height="500"></canvas>
         </div>
+		<div class="jsq_cont">
         <div class="m-t row">
-            <div class="col-xs-12" style="margin-bottom:5px">
-                <h5 style="font-weight:bold" class="pull-left">选择需要的检索器</h5>
+            <div class="col-xs-12 jsq_title">
+                <span style="font-weight:bold" class="pull-left">选择需要的检索器</span>
             </div>
             <div class="col-xs-12">
             <select class="js-example-basic-multiple" multiple="multiple" id="indexer_list" style="width:100%">
@@ -107,12 +108,14 @@
         <div style="width:70%;margin: 5px auto;text-align: center">
             <button href="" class="btn btn-primary btn-block" id="search_quick" ng-click="search(false)"><i class="fa fa-search"></i>&nbsp;&nbsp; 搜索图片</button>
         </div>
+		</div>
     </div>
     <div class=" col-xs-12 col-sm-12 col-md-6 col-lg-4 m-t uploadmenu">
             <div class="row">
             <div class="col-lg-12">
                 <div class="box box-primary">
                     <div class="box-body with_border">
+						<div class="width_border_left"></div>
                         <div class="row">
                             <div class="col-xs-5 text-center"><a class="btn btn-primary" data-toggle="modal" data-target="#allowed" href="#" ><i class="fa fa-upload"></i> 上传视频，数据集等</a></div>
                             <div class="col-xs-7 text-center"><a class="btn btn-primary" data-toggle="modal" data-target="#ytdisclaimer" href="#" ><i class="fa fa-film"></i> 提交媒体资源库</a></div>
@@ -205,13 +208,13 @@
                     <div class="box-header with-border">
                         <div class="row">
                             <div class="col-xs-3 text-center">
-                                <h4 style="margin: 18px auto">任务状态</h4>
+                                <h4 style="margin: 12px auto">任务状态</h4>
                             </div>
                             <div class="col-xs-offset-3 col-xs-3 text-center">
-                                <a class="btn btn-primary" href="/process/" style="margin: 10px auto">全部进程</a>
+                                <a class="btn btn-primary" href="/process/" style="margin: 4px auto">全部进程</a>
                             </div>
                             <div class="col-xs-3 text-center">
-                                <a class="btn btn-primary" href="{% url 'tasks' %}" style="margin: 10px auto" >全部任务</a>
+                                <a class="btn btn-primary" href="{% url 'tasks' %}" style="margin: 4px auto" >全部任务</a>
                             </div>
                         </div>
                     </div>
@@ -236,51 +239,51 @@
                     <div class="box-header with-border">
                         <div class="row">
                             <div class="col-xs-3 text-center">
-                                <h4 style="margin-top:18px">对象面板</h4>
+                                <h4 style="margin-top:12px auto">对象面板</h4>
                             </div>
                         </div>
                     </div>
                     <div class="box-body">
                         <div class="row">
                             <div class="col-xs-3">
-                                <a class="btn" href="/videos/" style="margin: 10px auto" > <i class="fa fa-video-camera"></i> {{ video_count }} 视频/数据集</a>
+                                <a class="btn btn-panner" href="/videos/" style="margin: 2px auto" > <i class="fa fa-video-camera"></i> {{ video_count }} 视频/数据集</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/videos/" style="margin: 10px auto" > <i class="fa fa-picture-o"></i> {{ frame_count }} 帧索引</a>
+                                <a class="btn btn-panner" href="/videos/" style="margin: 2px auto" > <i class="fa fa-picture-o"></i> {{ frame_count }} 帧索引</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/queries/" style="margin: 10px auto" > <i class="fa fa-search"></i> {{ query_count }} 查询</a>
+                                <a class="btn btn-panner" href="/queries/" style="margin: 2px auto" > <i class="fa fa-search"></i> {{ query_count }} 查询</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/indexes/" style="margin: 10px auto" > <i class="fa fa-list"></i> {{ index_entries_count }} 索引</a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <a class="btn" href="/models/" style="margin: 10px auto" > <i class="fa fa-play"></i> {{ models_count }} 模型</a>
-                            </div>
-                            <div class="col-xs-3">
-                                <a class="btn" href="/tasks/" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ task_events_count }}  任务 </a>
-                            </div>
-                            <div class="col-xs-3">
-                                <a class="btn" href="/process/" style="margin: 10px auto" > <i class="fa fa-list"></i> {{ process_count }} 进程</a>
-                            </div>
-                            <div class="col-xs-3">
-                                <a class="btn" href="/stored_process/" style="margin: 10px auto" > <i class="fa fa-newspaper-o"></i> {{ script_count }} 脚本</a>
+                                <a class="btn btn-panner" href="/indexes/" style="margin: 2px auto" > <i class="fa fa-list"></i> {{ index_entries_count }} 索引</a>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xs-3">
-                                <a class="btn" href="/training_sets/" style="margin: 10px auto" > <i class="fa fa-circle"></i> {{ training_set_count }} 训练集</a>
+                                <a class="btn btn-panner" href="/models/" style="margin: 10px auto" > <i class="fa fa-play"></i> {{ models_count }} 模型</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/retrievers/" style="margin: 10px auto" > <i class="fa fa-backward"></i> {{ retriever_counts }}  检索器 </a>
+                                <a class="btn btn-panner" href="/tasks/" style="margin: 10px auto" > <i class="fa fa-clock-o"></i> {{ task_events_count }}  任务 </a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/external/" style="margin: 10px auto" > <i class="fa fa-globe"></i> {{ external_server_count }} 外部服务器</a>
+                                <a class="btn btn-panner" href="/process/" style="margin: 10px auto" > <i class="fa fa-list"></i> {{ process_count }} 进程</a>
                             </div>
                             <div class="col-xs-3">
-                                <a class="btn" href="/management/" style="margin: 10px auto" > <i class="fa fa-gears"></i> {{ worker_count }} 工作进程</a>
+                                <a class="btn btn-panner" href="/stored_process/" style="margin: 10px auto" > <i class="fa fa-newspaper-o"></i> {{ script_count }} 脚本</a>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <a class="btn btn-panner" href="/training_sets/" style="margin: 10px auto" > <i class="fa fa-circle"></i> {{ training_set_count }} 训练集</a>
+                            </div>
+                            <div class="col-xs-3">
+                                <a class="btn btn-panner" href="/retrievers/" style="margin: 10px auto" > <i class="fa fa-backward"></i> {{ retriever_counts }}  检索器 </a>
+                            </div>
+                            <div class="col-xs-3">
+                                <a class="btn btn-panner" href="/external/" style="margin: 10px auto" > <i class="fa fa-globe"></i> {{ external_server_count }} 外部服务器</a>
+                            </div>
+                            <div class="col-xs-3">
+                                <a class="btn btn-panner" href="/management/" style="margin: 10px auto" > <i class="fa fa-gears"></i> {{ worker_count }} 工作进程</a>
                             </div>
                         </div>
                     </div>
