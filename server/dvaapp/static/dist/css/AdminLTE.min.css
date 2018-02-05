@@ -92,7 +92,7 @@ body {
     left: 50%;
     top: 200px;
 	right:0px;
-    /* background: #dddddd; */
+	background: url('../img/cont_box_cont.png') no-repeat;
     margin-left: -640px;
 }
 
@@ -160,7 +160,7 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	height:421px;
 	background: url('../img/login_bg.png') no-repeat;
 	position:absolute;
-	top:136px;
+	top:46px;
 	right:100px;
 }
 .logo_title{
@@ -1960,6 +1960,12 @@ a:hover,a:active,a:focus {
 	padding: 0px;
 	position: relative;
 	height:44px;
+}
+.box-header h2{
+	font-size:16px;
+	font-weight:bolder;
+	margin-top:10px;
+	text-indent:10px;
 }
 
 .box-header.with-border {
