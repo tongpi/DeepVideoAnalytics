@@ -61,7 +61,7 @@
     </div>
     <div class="col-lg-6">
         <div class="box box-primary">
-            <div class="box-header"><h4> 整个帧/图片的标注</h4></div>
+            <div class="box-header with-border"><h4> 整个帧/图片的标注</h4></div>
             <div class="box-body">
                 {% if annotation_list %}
                 <table class="table">
@@ -92,7 +92,7 @@
             </div>
         </div>
         <div class="box box-primary">
-            <div class="box-header"><h4>边界框标注</h4></div>
+            <div class="box-header with-border"><h4>边界框标注</h4></div>
             <div class="box-body">
                 {% if annotation_list %}
                 <table class="table">
@@ -127,7 +127,7 @@
                 </div>
             </div>
             <div class="box box-primary">
-            <div class="box-header"><h4>检测器</h4></div>
+            <div class="box-header with-border"><h4>检测器</h4></div>
             <div class="box-body">
                 <table class="table">
                 <thead>
@@ -159,7 +159,7 @@
 </div>
 <div class="row">
     <div class="box box-primary">
-        <div class="box-header">
+        <div class="box-header with-border">
             <h3>被检测对象：</h3>
         </div>
     </div>
@@ -167,7 +167,7 @@
     {% for d in detection_list %}
     <div class="col-sm-3">
     <div class="box box-primary">
-        <div class="box-header">
+        <div class="box-header with-border">
             <h4>{{ d.object_name }}</h4>
         </div>
         <div class="box-body text-center">
