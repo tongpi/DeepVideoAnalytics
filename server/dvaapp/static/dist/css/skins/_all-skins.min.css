@@ -372,7 +372,7 @@
 .skin-black .main-header .navbar .sidebar-toggle:hover {
 	color: #999;
 	background: #565e6b;
-	margin-top:3px;
+	height:60px;
 }
 
 .skin-black .main-header .navbar>.sidebar-toggle {

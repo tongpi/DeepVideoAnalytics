@@ -1967,8 +1967,9 @@ a:hover,a:active,a:focus {
 	margin-top:5px;
 }
 .box-header h2 .box-header-title{
-	margin-top:14px;
-	text-indent:10px;
+	height:30px;
+	line-height:30px;
+	padding-left:10px;
 }
 
 .box-header.with-border {
@@ -1976,6 +1977,10 @@ a:hover,a:active,a:focus {
 	border-left:3px #05dce1 solid;
 	background:#f9f9f9;
 	text-indent:10px;
+}
+.box-header.with-border h3{
+	font-size:16px;
+	margin-top:14px;
 }
 
 .collapsed-box .box-header.with-border {
@@ -2593,6 +2598,10 @@ a:hover,a:active,a:focus {
 	background-color: #05dde2;
 	border:1px #05dde2 solid;
 }
+.btn-danger.focus,.btn-danger:focus{
+	background-color: #05dde2;
+	border:1px #05dde2 solid;
+}
 
 .btn-warning {
 	background-color: #ffffff;
@@ -2602,6 +2611,10 @@ a:hover,a:active,a:focus {
 }
 
 .btn-warning:hover,.btn-warning:active,.btn-warning.hover {
+	background-color: #05dde2;
+	border:1px #05dde2 solid;
+}
+.btn-warning.focus,.btn-warning:focus{
 	background-color: #05dde2;
 	border:1px #05dde2 solid;
 }
@@ -5440,4 +5453,34 @@ table.text-center,table.text-center td,table.text-center th {
 /*************************/
 .select2-container--bootstrap .select2-selection--multiple{
 		min-height:100px !important;
+}
+
+
+
+/****************input range 样式美化*********************/
+input[type=range] {
+    -webkit-appearance: none;
+    width: 300px;
+    border-radius: 10px; /*这个属性设置使填充进度条时的图形为圆角*/
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+} 
+input[type=range]::-webkit-slider-runnable-track {
+    height: 15px;
+    border-radius: 10px; /*将轨道设为圆角的*/
+    box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
+}
+input[type=range]:focus {
+    outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 25px;
+    width: 25px;
+    margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+    background: #ffffff; 
+    border-radius: 50%; /*外观设置为圆形*/
+    border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
+    box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
 }
