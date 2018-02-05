@@ -90,7 +90,7 @@ body {
     position: absolute;
     bottom: 0px;
     left: 50%;
-    top: 200px;
+    top: 0px;
 	right:0px;
 	background: url('../img/cont_box_cont.png') no-repeat;
     margin-left: -640px;
@@ -160,7 +160,7 @@ body.hold-transition .content-wrapper,body.hold-transition .right-side,body.hold
 	height:421px;
 	background: url('../img/login_bg.png') no-repeat;
 	position:absolute;
-	top:46px;
+	top:240px;
 	right:100px;
 }
 .logo_title{
@@ -1964,7 +1964,10 @@ a:hover,a:active,a:focus {
 .box-header h2{
 	font-size:16px;
 	font-weight:bolder;
-	margin-top:10px;
+	margin-top:5px;
+}
+.box-header h2 .box-header-title{
+	margin-top:14px;
 	text-indent:10px;
 }
 
@@ -1972,6 +1975,7 @@ a:hover,a:active,a:focus {
 	border-bottom: 1px solid #efefef;
 	border-left:3px #05dce1 solid;
 	background:#f9f9f9;
+	text-indent:10px;
 }
 
 .collapsed-box .box-header.with-border {
