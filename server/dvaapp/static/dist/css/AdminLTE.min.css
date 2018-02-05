@@ -5488,5 +5488,6 @@ input[type=range]::-webkit-slider-thumb {
     border-radius: 50%; /*外观设置为圆形*/
 /*    border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
 /*    box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
-	background: url('../img/hk_pic.png') no-border;
+/*	background: url('../img/hk_pic.png') no-border;*/
+	background:#05dce2;
 }
