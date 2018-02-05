@@ -5457,7 +5457,7 @@ table.text-center,table.text-center td,table.text-center th {
 
 /*************************/
 .select2-container--bootstrap .select2-selection--multiple{
-		min-height:100px !important;
+		min-height:60px !important;
 }
 
 
@@ -5484,8 +5484,7 @@ input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 16px;
     width: 16px;
-    margin-top: -8px; /*使滑块超出轨道部分的偏移量相等*/
-    background: #ffffff; 
+    margin-top: -4px; /*使滑块超出轨道部分的偏移量相等*/
     border-radius: 50%; /*外观设置为圆形*/
 /*    border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/
 /*    box-shadow: 0 .125em .125em #3b4547; /*添加底部阴影*/
