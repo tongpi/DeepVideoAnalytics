@@ -396,6 +396,7 @@
 {% endblock %}
 {% block page_js %}
 <script src={% static '/select2/js/i18n/zh-CN.js' %}></script>
+<script src={% static '/dist/js/RangeSlider.js' %}></script>
     <script>
         var annotation_mode = false;
         var status = "请添加需要搜索或上传的图片。";
@@ -412,7 +413,15 @@
     detector_selector.select2({theme: "bootstrap",language:'zh-CN'});
 	var video_name = $("#video_name");
     video_name.select2({theme: "bootstrap",language:'zh-CN'});
-    </script>
+   
+		var change = function($input) {
+			/*内容可自行定义*/
+			console.log("123");
+		}
+
+		$('input').RangeSlider({ min: 0,   max: 100,  step: 0.1,  callback: change});
+
+        </script>
     <script src={% static 'plugins/jquery.mousewheel.min.js' %}></script>
     <script src={% static 'plugins/underscore-min.js' %}></script>
     <script src={% static 'fabric/fabric.js' %}></script>
