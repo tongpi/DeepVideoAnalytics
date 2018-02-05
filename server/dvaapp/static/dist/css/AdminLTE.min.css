@@ -4825,8 +4825,13 @@ table.text-center,table.text-center td,table.text-center th {
 	background-color: #dd4b39 !important
 }
 
+#color-opacity-controls h5{
+	margin-bottom:5px;
+}
+
 .bg-yellow,.callout.callout-warning,.alert-warning,.label-warning,.modal-warning .modal-body {
-	background-color: #f39c12 !important
+	background-color: #f39c12 !important;
+	margin-top:20px;
 }
 
 .bg-aqua,.callout.callout-info,.alert-info,.label-info,.modal-info .modal-body {
@@ -5470,7 +5475,7 @@ input[type=range]::-webkit-slider-runnable-track {
     height: 5px;
     border-radius: 10px; /*将轨道设为圆角的*/
 /*    box-shadow: 0 1px 1px #def3f8, inset 0 .125em .125em #0d1112; /*轨道内置阴影效果*/
-	background:#fb554d;
+	/*background:#373d46;*/
 }
 input[type=range]:focus {
     outline: none;
@@ -5479,7 +5484,7 @@ input[type=range]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 18px;
     width: 18px;
-    margin-top: -5px; /*使滑块超出轨道部分的偏移量相等*/
+    margin-top: -8px; /*使滑块超出轨道部分的偏移量相等*/
     background: #ffffff; 
     border-radius: 50%; /*外观设置为圆形*/
     border: solid 0.125em rgba(205, 224, 230, 0.5); /*设置边框*/

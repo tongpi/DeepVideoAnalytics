@@ -55,10 +55,10 @@
             <button id="send-to-back" class="btn btn-info  btn-object-action btn-move"  ng-click="sendToBack()"><i class="fa fa-backward"></i>&nbsp;&nbsp;置于底层</button>
             <button id="bring-to-front" class="btn btn-info  btn-object-action btn-move"  ng-click="bringToFront()"><i class="fa fa-forward"></i>&nbsp;&nbsp;置于顶层</button>
             <h5 style="text-align: center">缩放</h5>
-            <input value="100" max="200" type="range" bind-value-to="scale">
+            <input id="hk_line" value="100" max="200" type="range" bind-value-to="scale">
             <div id="color-opacity-controls" ng-show="canvas.getActiveObject()">
                 <h5 style="text-align: center">不透明度</h5>
-                <input value="100" type="range" bind-value-to="opacity">
+                <input id="hk_line_opacity" value="100" type="range" bind-value-to="opacity">
             </div>
             <button type="button" class="btn  btn-object-action bg-yellow btn-move" id="deselect" ng-click="deselect()"><i class="fa fa-minus"></i>&nbsp;&nbsp;取消选择</button>
         </div>
@@ -419,7 +419,8 @@
 			console.log("123");
 		}
 
-		$('input').RangeSlider({ min: 0,   max: 100,  step: 0.1,  callback: change});
+		$('#hk_line_opacity').RangeSlider({ min: 0,   max: 100,  step: 0.1,  callback: change});
+		$('#hk_line').RangeSlider({ min: 0,   max: 100,  step: 0.1,  callback: change});
 
         </script>
     <script src={% static 'plugins/jquery.mousewheel.min.js' %}></script>
