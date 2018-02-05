@@ -18,7 +18,7 @@ $.fn.RangeSlider = function(cfg){
 
     $input.bind("input", function(e){
         $input.attr('value', this.value);
-        $input.css( 'background', 'linear-gradient(to right, #565e6b, #565e6b' + this.value + '%, #565e6b)' );
+        $input.css( 'background', 'linear-gradient(to right, #565e6b, #565e6b' + this.value + '%, #ffffff)' );
 
         if ($.isFunction(callback)) {
             callback(this);
