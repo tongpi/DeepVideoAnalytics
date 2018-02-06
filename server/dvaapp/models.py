@@ -13,6 +13,7 @@ except ImportError:
     pass
 from uuid import UUID
 from json import JSONEncoder
+from django.utils.translation import ugettext_lazy as _
 JSONEncoder_old = JSONEncoder.default
 
 
@@ -31,6 +32,9 @@ class Worker(models.Model):
     alive = models.BooleanField(default=True, verbose_name="激活")
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
 
+    class Meta:
+        verbose_name = _("workers")
+        verbose_name_plural = _("workers")
 
 class DVAPQL(models.Model):
     SCHEDULE = 'S'
@@ -45,6 +49,10 @@ class DVAPQL(models.Model):
     results_available = models.BooleanField(default=False, verbose_name="结果集有效")
     completed = models.BooleanField(default=False, verbose_name="已完成")
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+
+    class Meta:
+        verbose_name = _("dvapqls")
+        verbose_name_plural = _("dvapqls")
 
 
 class Video(models.Model):
@@ -64,6 +72,10 @@ class Video(models.Model):
     url = models.TextField(default="", verbose_name="网址")
     youtube_video = models.BooleanField(default=False, verbose_name="youtube视频")
     parent_process = models.ForeignKey(DVAPQL,null=True, verbose_name="父进程")
+
+    class Meta:
+        verbose_name = _("videos")
+        verbose_name_plural = _("videos")
 
     def __unicode__(self):
         return u'{}'.format(self.name)
@@ -135,7 +147,10 @@ class TEvent(models.Model):
     imported = models.BooleanField(default=False, verbose_name="已导入")
     task_group_id = models.IntegerField(default=-1)
 
-	
+    class Meta:
+        verbose_name = _("t events")
+        verbose_name_plural = _("t events")
+
 class TrainingSet(models.Model):
     DETECTION = 'D'
     INDEXING = 'I'
@@ -166,6 +181,9 @@ class TrainingSet(models.Model):
     built = models.BooleanField(default=False, verbose_name="已完成")
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
 
+    class Meta:
+        verbose_name = _("training sets")
+        verbose_name_plural = _("training sets")
 
 class TrainedModel(models.Model):
     """
@@ -221,6 +239,10 @@ class TrainedModel(models.Model):
     # Following allows us to have a hierarchy of models (E.g. inception pretrained -> inception fine tuned)
     parent = models.ForeignKey('self', null=True, verbose_name="父模型")
     uuid = models.UUIDField(default=uuid.uuid4, editable=False, unique=True)
+
+    class Meta:
+        verbose_name = _("trained models")
+        verbose_name_plural = _("trained models")
 
     def create_directory(self,create_subdirs=True):
         if not os.path.isdir('{}/models/'.format(settings.MEDIA_ROOT)):
@@ -315,6 +337,9 @@ class Retriever(models.Model):
     source_filters = JSONField(verbose_name="源过滤器")
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
 
+    class Meta:
+        verbose_name = _("retrievers")
+        verbose_name_plural = _("retrievers")
 
 class Frame(models.Model):
     video = models.ForeignKey(Video, verbose_name="视频")
@@ -330,6 +355,8 @@ class Frame(models.Model):
 
     class Meta:
         unique_together = (("video", "frame_index"),)
+        verbose_name = _("frames")
+        verbose_name_plural = _("frames")
 
     def __unicode__(self):
         return u'{}:{}'.format(self.video_id, self.frame_index)
@@ -361,6 +388,8 @@ class Segment(models.Model):
 
     class Meta:
         unique_together = (("video", "segment_index"),)
+        verbose_name = _("segments")
+        verbose_name_plural = _("segments")
 
     def __unicode__(self):
         return u'{}:{}'.format(self.video_id, self.segment_index)
@@ -415,6 +444,10 @@ class Region(models.Model):
     confidence = models.FloatField(default=0.0, verbose_name="置信度")
     materialized = models.BooleanField(default=False)
     png = models.BooleanField(default=False, verbose_name="png格式")
+
+    class Meta:
+        verbose_name = _("regions")
+        verbose_name_plural = _("regions")
 
     def clean(self):
         if self.frame_index == -1 or self.frame_index is None:
@@ -476,6 +509,9 @@ class QueryRegion(models.Model):
     confidence = models.FloatField(default=0.0, verbose_name="置信度")
     png = models.BooleanField(default=False, verbose_name="png格式")
 
+    class Meta:
+        verbose_name = _("query regions")
+        verbose_name_plural = _("query regions")
 
 class QueryResults(models.Model):
     query = models.ForeignKey(DVAPQL, verbose_name="查询")
@@ -487,6 +523,9 @@ class QueryResults(models.Model):
     algorithm = models.CharField(max_length=100, verbose_name="算法")
     distance = models.FloatField(default=0.0, verbose_name="距离")
 
+    class Meta:
+        verbose_name = _("query resultss")
+        verbose_name_plural = _("query resultss")
 
 class QueryRegionResults(models.Model):
     query = models.ForeignKey(DVAPQL, verbose_name="查询" )
@@ -499,6 +538,9 @@ class QueryRegionResults(models.Model):
     algorithm = models.CharField(max_length=100, verbose_name="算法")
     distance = models.FloatField(default=0.0, verbose_name="距离")
 
+    class Meta:
+        verbose_name = _("query region resultss")
+        verbose_name_plural = _("query region resultss")
 
 class IndexEntries(models.Model):
     video = models.ForeignKey(Video, verbose_name="视频")
@@ -518,6 +560,8 @@ class IndexEntries(models.Model):
 
     class Meta:
         unique_together = ('video', 'entries_file_name',)
+        verbose_name = _("index entriess")
+        verbose_name_plural = _("index entriess")
 
     def __unicode__(self):
         return "{} in {} index by {}".format(self.detection_name, self.algorithm, self.video.name)
@@ -571,6 +615,9 @@ class Tube(models.Model):
     metadata = JSONField(blank=True,null=True, verbose_name="元数据")
     source = models.ForeignKey(TEvent,null=True, verbose_name="资源")
 
+    class Meta:
+        verbose_name = _("tubes")
+        verbose_name_plural = _("tubes")
 
 class Label(models.Model):
     name = models.CharField(max_length=200, verbose_name="名称")
@@ -581,6 +628,8 @@ class Label(models.Model):
 
     class Meta:
         unique_together = (("name", "set"),)
+        verbose_name = _("labels")
+        verbose_name_plural = _("labels")
 
     def __unicode__(self):
         return u'{}:{}'.format(self.name, self.set)
@@ -593,6 +642,10 @@ class FrameLabel(models.Model):
     frame = models.ForeignKey(Frame, verbose_name="帧")
     label = models.ForeignKey(Label, verbose_name="标签")
     event = models.ForeignKey(TEvent,null=True, verbose_name="事件")
+
+    class Meta:
+        verbose_name = _("frame labels")
+        verbose_name_plural = _("frame labels")
 
     def clean(self):
         if self.frame_index == -1 or self.frame_index is None:
@@ -617,6 +670,10 @@ class RegionLabel(models.Model):
     label = models.ForeignKey(Label, verbose_name="标签")
     event = models.ForeignKey(TEvent,null=True, verbose_name="事件")
 
+    class Meta:
+        verbose_name = _("region labels")
+        verbose_name_plural = _("region labels")
+
     def clean(self):
         if self.frame_index == -1 or self.frame_index is None:
             self.frame_index = self.frame.frame_index
@@ -638,6 +695,10 @@ class SegmentLabel(models.Model):
     label = models.ForeignKey(Label, verbose_name="标签")
     event = models.ForeignKey(TEvent, null=True, verbose_name="事件")
 
+    class Meta:
+        verbose_name = _("segment labels")
+        verbose_name_plural = _("segment labels")
+
     def clean(self):
         if self.segment_index == -1 or self.segment_index is None:
             self.segment_index = self.segment.segment_index
@@ -654,11 +715,18 @@ class TubeLabel(models.Model):
     label = models.ForeignKey(Label, verbose_name="标签")
     event = models.ForeignKey(TEvent, null=True, verbose_name="事件")
 
+    class Meta:
+        verbose_name = _("tube labels")
+        verbose_name_plural = _("tube labels")
 
 class VideoLabel(models.Model):
     video = models.ForeignKey(Video, verbose_name="视频")
     label = models.ForeignKey(Label, verbose_name="标签")
     event = models.ForeignKey(TEvent, null=True, verbose_name="事件")
+
+    class Meta:
+        verbose_name = _("video labels")
+        verbose_name_plural = _("video labels")
 
 
 class DeletedVideo(models.Model):
@@ -668,6 +736,10 @@ class DeletedVideo(models.Model):
     url = models.TextField(default="", verbose_name="网址")
     deleter = models.ForeignKey(User,related_name="user_deleter",null=True, verbose_name="删除人")
     original_pk = models.IntegerField(verbose_name="原始主键")
+
+    class Meta:
+        verbose_name = _("deleted videos")
+        verbose_name_plural = _("deleted videos")
 
     def __unicode__(self):
         return u'Deleted {}'.format(self.name)
@@ -681,6 +753,9 @@ class ManagementAction(models.Model):
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
     ping_index = models.IntegerField(null=True, verbose_name="Ping 索引")
 
+    class Meta:
+        verbose_name = _("management actions")
+        verbose_name_plural = _("management actions")
 
 class SystemState(models.Model):
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
@@ -693,6 +768,9 @@ class SystemState(models.Model):
     queues = JSONField(blank=True,null=True, verbose_name="队列")
     hosts = JSONField(blank=True,null=True, verbose_name="主机")
 
+    class Meta:
+        verbose_name = _("system states")
+        verbose_name_plural = _("system states")
 
 class QueryRegionIndexVector(models.Model):
     event = models.ForeignKey(TEvent, verbose_name="事件")
@@ -700,4 +778,7 @@ class QueryRegionIndexVector(models.Model):
     vector = models.BinaryField()
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
 
+    class Meta:
+        verbose_name = _("query region index vectors")
+        verbose_name_plural = _("query region index vectors")
 

@@ -4,6 +4,7 @@ import subprocess, os, json, logging, tempfile, shutil
 from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.postgres.fields import JSONField
+from django.utils.translation import ugettext_lazy as _
 
 
 class ExternalServer(models.Model):
@@ -61,5 +62,10 @@ class StoredDVAPQL(models.Model):
     description = models.TextField(blank=True,default="", verbose_name="描述")
     server = models.ForeignKey(ExternalServer,null=True, verbose_name="服务器")
     script = JSONField(blank=True, null=True, verbose_name="脚本")
+	class Meta:
+        verbose_name = _("Stored dvapqls")
+        verbose_name_plural = _("Stored dvapqls")
+        
+
 
 

@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-02-06 14:03+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\dvaapp\apps.py:8
+msgid "dvaapp"
+msgstr ""
+
+#: .\dvaapp\models.py:36 .\dvaapp\models.py:37
+msgid "workers"
+msgstr "工作进程"
+
+#: .\dvaapp\models.py:54 .\dvaapp\models.py:55
+msgid "dvapqls"
+msgstr "dva过程查询语言"
+
+#: .\dvaapp\models.py:77 .\dvaapp\models.py:78
+msgid "videos"
+msgstr "视频"
+
+#: .\dvaapp\models.py:151 .\dvaapp\models.py:152
+msgid "t events"
+msgstr "任务事件"
+
+#: .\dvaapp\models.py:185 .\dvaapp\models.py:186
+msgid "training sets"
+msgstr "训练集"
+
+#: .\dvaapp\models.py:244 .\dvaapp\models.py:245
+msgid "trained models"
+msgstr "训练模型"
+
+#: .\dvaapp\models.py:341 .\dvaapp\models.py:342
+msgid "retrievers"
+msgstr "检索器"
+
+#: .\dvaapp\models.py:358 .\dvaapp\models.py:359
+msgid "frames"
+msgstr "帧"
+
+#: .\dvaapp\models.py:391 .\dvaapp\models.py:392
+msgid "segments"
+msgstr "段"
+
+#: .\dvaapp\models.py:449 .\dvaapp\models.py:450
+msgid "regions"
+msgstr "区域"
+
+#: .\dvaapp\models.py:513 .\dvaapp\models.py:514
+msgid "query regions"
+msgstr "查询区域"
+
+#: .\dvaapp\models.py:527 .\dvaapp\models.py:528
+msgid "query resultss"
+msgstr "查询结果"
+
+#: .\dvaapp\models.py:542 .\dvaapp\models.py:543
+msgid "query region resultss"
+msgstr "查询区域结果"
+
+#: .\dvaapp\models.py:563 .\dvaapp\models.py:564
+msgid "index entriess"
+msgstr "索引条目"
+
+#: .\dvaapp\models.py:619 .\dvaapp\models.py:620
+msgid "tubes"
+msgstr "通道"
+
+#: .\dvaapp\models.py:631 .\dvaapp\models.py:632
+msgid "labels"
+msgstr "标签"
+
+#: .\dvaapp\models.py:647 .\dvaapp\models.py:648
+msgid "frame labels"
+msgstr "帧标签"
+
+#: .\dvaapp\models.py:674 .\dvaapp\models.py:675
+msgid "region labels"
+msgstr "区域标签"
+
+#: .\dvaapp\models.py:699 .\dvaapp\models.py:700
+msgid "segment labels"
+msgstr "段标签"
+
+#: .\dvaapp\models.py:719 .\dvaapp\models.py:720
+msgid "tube labels"
+msgstr "通道标签"
+
+#: .\dvaapp\models.py:728 .\dvaapp\models.py:729
+msgid "video labels"
+msgstr "视频标签"
+
+#: .\dvaapp\models.py:741 .\dvaapp\models.py:742
+msgid "deleted videos"
+msgstr "需要删除的视频"
+
+#: .\dvaapp\models.py:757 .\dvaapp\models.py:758
+msgid "management actions"
+msgstr "行为管理"
+
+#: .\dvaapp\models.py:772 .\dvaapp\models.py:773
+msgid "system states"
+msgstr "系统状态"
+
+#: .\dvaapp\models.py:782 .\dvaapp\models.py:783
+msgid "query region index vectors"
+msgstr "查询区域索引向量"
+
+#: .\dvaui\apps.py:9
+msgid "dvaui"
+msgstr "dva用户界面"
+
+#: .\dvaui\models.py:66 .\dvaui\models.py:67
+msgid "Stored dvapqls"
+msgstr "dva存储过程查询"
+
+#: .\templates\registration\base.html:30
+msgid "Welcome,"
+msgstr ""
+
+#: .\templates\registration\base.html:35
+msgid "View site"
+msgstr ""
+
+#: .\templates\registration\base.html:40
+msgid "Documentation"
+msgstr ""
+
+#: .\templates\registration\base.html:44
+msgid "Change password"
+msgstr ""
+
+#: .\templates\registration\base.html:46
+msgid "Log out"
+msgstr ""
+
+#: .\templates\registration\base.html:56
+#: .\templates\registration\logged_out.html:3
+msgid "Home"
+msgstr ""
+
+#: .\templates\registration\logged_out.html:7
+msgid "Thanks for spending some quality time with the Web site today."
+msgstr ""
+
+#: .\templates\registration\logged_out.html:8
+msgid "Log in again"
+msgstr ""
+
+#: .\templates\rest_framework\admin.html:118
+#: .\templates\rest_framework\base.html:129
+msgid "Filters"
+msgstr ""

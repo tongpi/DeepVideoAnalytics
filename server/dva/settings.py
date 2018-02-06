@@ -69,7 +69,9 @@ INSTALLED_APPS = [
                      'django.contrib.messages',
                      'django.contrib.staticfiles',
                      'dvaapp',
+                     'dvaapp.apps.DvaappConfig',
                      'dvaui',
+                     'dvaui.apps.DvauiConfig',
                      'django.contrib.humanize',
                      'django.contrib.postgres',
                      'django_celery_results',
@@ -93,6 +95,10 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, 'locale'),
+)
 
 if DEV_ENV and DEBUG:
     MIDDLEWARE_CLASSES = ['debug_toolbar.middleware.DebugToolbarMiddleware',] +MIDDLEWARE_CLASSES
