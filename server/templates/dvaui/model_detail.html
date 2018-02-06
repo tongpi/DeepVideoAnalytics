@@ -11,10 +11,11 @@
                 <form action="/shortcuts" method="post">
                     {% csrf_token %}
                     <input type="hidden" value="{{ object.pk }}" name="model_pk" />
-                    <button class="btn btn-success" name="op" value="export_model" type="submit"><i class="fa fa-download"></i> 导出训练模型</button>
+                    <!--<button class="btn btn-success" name="op" value="export_model" type="submit"><i class="fa fa-download"></i> 导出训练模型</button>-->
+					<button class="btn btn-success" name="op" value="export_model" type="button" onclick="devWarning();"><i class="fa fa-download"></i> 导出训练模型</button>
                 </form>
             </div>
-            训练模型 {{ object.name }} </h2>
+            <span class="box-header-title">训练模型 {{ object.name }}</span> </h2>
         </div>
     </div>
 </div>
@@ -81,5 +82,9 @@
     $(document).ready(function() {
         InitializeTables();
     })
+	
+	function devWarning(){
+		alert("正在开发中...");
+	}
 </script>
 {% endblock %}
