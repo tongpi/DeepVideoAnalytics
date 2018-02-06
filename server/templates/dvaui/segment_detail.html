@@ -16,8 +16,8 @@
     <div class="col-lg-6">
         <div class="box">
         <div class="box-header with-border text-center" >
-            {% if previous_segment_index is not None %}<a class="btn btn-info" href="/segments/by_index/{{ video.pk }}/{{ previous_segment_index }}" style="float:left"><i class="fa fa-backward"></i> 上一段</a>{% endif %}
-            {% if next_segment_index %}<a class="btn btn-info" href="/segments/by_index/{{ video.pk }}/{{ next_segment_index }}" style="float:right"><i class="fa fa-forward"></i> 下一段</a>{% endif %}
+            {% if previous_segment_index is not None %}<a class="btn btn-info" href="/segments/by_index/{{ video.pk }}/{{ previous_segment_index }}" style="float:left;margin:5px auto;"><i class="fa fa-backward"></i> 上一段</a>{% endif %}
+            {% if next_segment_index %}<a class="btn btn-info" href="/segments/by_index/{{ video.pk }}/{{ next_segment_index }}" style="float:right;margin:5px auto;"><i class="fa fa-forward"></i> 下一段</a>{% endif %}
             <h3 style="margin-top:5px">段{{ object.segment_index }}</h3>
         </div>
         <div class="box-body" style="text-align:center">
