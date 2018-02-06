@@ -20,7 +20,7 @@ msgstr ""
 
 #: .\dvaapp\apps.py:8
 msgid "dvaapp"
-msgstr ""
+msgstr "深度视频分析"
 
 #: .\dvaapp\models.py:36 .\dvaapp\models.py:37
 msgid "workers"
