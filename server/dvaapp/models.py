@@ -142,10 +142,10 @@ class TEvent(models.Model):
     duration = models.FloatField(default=-1, verbose_name="运行时长")
     arguments = JSONField(blank=True,null=True, verbose_name="算法")
     task_id = models.TextField(null=True, verbose_name="任务ID")
-    parent = models.ForeignKey('self',null=True)
+    parent = models.ForeignKey('self',null=True, verbose_name="父对象")
     parent_process = models.ForeignKey(DVAPQL,null=True, verbose_name="父进程")
     imported = models.BooleanField(default=False, verbose_name="已导入")
-    task_group_id = models.IntegerField(default=-1)
+    task_group_id = models.IntegerField(default=-1, verbose_name="进程组id")
 
     class Meta:
         verbose_name = _("t events")
@@ -442,7 +442,7 @@ class Region(models.Model):
     created = models.DateTimeField(verbose_name="创建时间", auto_now_add=True)
     object_name = models.CharField(max_length=100, verbose_name="对象名称")
     confidence = models.FloatField(default=0.0, verbose_name="置信度")
-    materialized = models.BooleanField(default=False)
+    materialized = models.BooleanField(default=False, verbose_name="实体化")
     png = models.BooleanField(default=False, verbose_name="png格式")
 
     class Meta:
@@ -711,7 +711,7 @@ class SegmentLabel(models.Model):
 
 class TubeLabel(models.Model):
     video = models.ForeignKey(Video,null=True, verbose_name="视频")
-    tube = models.ForeignKey(Tube)
+    tube = models.ForeignKey(Tube, verbose_name="通道")
     label = models.ForeignKey(Label, verbose_name="标签")
     event = models.ForeignKey(TEvent, null=True, verbose_name="事件")
 
