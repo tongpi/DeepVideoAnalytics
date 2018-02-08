@@ -20,10 +20,10 @@ RUN git clone -b devDva https://github.com/tongpi/DeepVideoAnalytics.git /root/D
 WORKDIR "/root/DVA"
 RUN pip install --upgrade cffi
 RUN pip install --no-deps keras
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && pip uninstall -y django-celery-results django-celery-beat && pip install --no-cache-dir git+https://github.com/tongpi/django-celery-results.git git+https://github.com/tongpi/django-celery-beat.git
 RUN pip install pip --upgrade
-RUN pip install --no-cache-dir http://download.pytorch.org/whl/cu80/torch-0.1.12.post2-cp27-none-linux_x86_64.whl
-RUN pip install --no-cache-dir mxnet-cu80==0.11.0
+RUN pip install http://download.pytorch.org/whl/cu80/torch-0.1.12.post2-cp27-none-linux_x86_64.whl
+RUN pip install mxnet-cu80==0.11.0
 RUN pip install torchvision
 RUN apt-get install -y libhdf5-dev
 RUN pip install --no-deps h5py
