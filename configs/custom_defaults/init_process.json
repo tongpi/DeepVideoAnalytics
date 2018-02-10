@@ -105,7 +105,7 @@
                 }
               }
             ],
-            "path": "http://192.168.200.106/download/citest.mp4"
+            "path": "http://192.168.15.100:8080/download/citest.mp4"
           }
         }
       ],
@@ -223,7 +223,7 @@
                 }
               }
             ],
-            "path": "http://192.168.200.106/download/exampledataset.zip"
+            "path": "http://192.168.15.100:8080/download/exampledataset.zip"
           }
         }
       ],
@@ -342,7 +342,7 @@
                 }
               }
             ],
-            "path": "http://192.168.200.106/download/crnn_test.zip"
+            "path": "http://192.168.15.100:8080/download/crnn_test.zip"
           }
         }
       ],
@@ -461,7 +461,7 @@
                 }
               }
             ],
-            "path": "http://192.168.200.106/download/coco_train2017_ci.zip"
+            "path": "http://192.168.15.100:8080/download/coco_train2017_ci.zip"
           }
         }
       ],

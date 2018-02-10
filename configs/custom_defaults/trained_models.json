@@ -7,7 +7,7 @@
         "filename": "coco_mobilenet.pb",
         "files": [
             {
-                "url": "http://192.168.200.106/download/coco_mobilenet.pb",
+                "url": "http://192.168.15.100:8080/download/coco_mobilenet.pb",
                 "filename": "coco_mobilenet.pb"
 
             }
@@ -102,19 +102,19 @@
         "name": "textbox",
         "files": [
             {
-                "url": "http://192.168.200.106/download/checkpoint",
+                "url": "http://192.168.15.100:8080/download/checkpoint",
                 "filename": "checkpoint"
             },
             {
-                "url": "http://192.168.200.106/download/VGGnet_fast_rcnn_iter_50000.ckpt.data-00000-of-00001",
+                "url": "http://192.168.15.100:8080/download/VGGnet_fast_rcnn_iter_50000.ckpt.data-00000-of-00001",
                 "filename": "VGGnet_fast_rcnn_iter_50000.ckpt.data-00000-of-00001"
             },
             {
-                "url": "http://192.168.200.106/download/VGGnet_fast_rcnn_iter_50000.ckpt.index",
+                "url": "http://192.168.15.100:8080/download/VGGnet_fast_rcnn_iter_50000.ckpt.index",
                 "filename": "VGGnet_fast_rcnn_iter_50000.ckpt.index"
             },
             {
-                "url": "http://192.168.200.106/download/VGGnet_fast_rcnn_iter_50000.ckpt.meta",
+                "url": "http://192.168.15.100:8080/download/VGGnet_fast_rcnn_iter_50000.ckpt.meta",
                 "filename": "VGGnet_fast_rcnn_iter_50000.ckpt.meta"
             }
         ],
@@ -135,7 +135,7 @@
         "filename": "network.pb",
         "files": [
             {
-                "url": "http://192.168.200.106/download/network.pb",
+                "url": "http://192.168.15.100:8080/download/network.pb",
                 "filename": "network.pb"
             }
         ],
@@ -147,7 +147,7 @@
         "name": "facenet",
         "files": [
             {
-                "url": "http://192.168.200.106/download/facenet.pb",
+                "url": "http://192.168.15.100:8080/download/facenet.pb",
                 "filename": "facenet.pb"
             }
         ],
@@ -159,7 +159,7 @@
         "name": "crnn",
         "files": [
             {
-                "url": "http://192.168.200.106/download/crnn.pth",
+                "url": "http://192.168.15.100:8080/download/crnn.pth",
                 "filename": "crnn.pth"
             }
         ],
@@ -171,19 +171,19 @@
         "name": "tagger",
         "files": [
             {
-                "url": "http://192.168.200.106/download/open_images.ckpt",
+                "url": "http://192.168.15.100:8080/download/open_images.ckpt",
                 "filename": "open_images.ckpt"
             },
             {
-                "url": "http://192.168.200.106/download/open_images.ckpt.meta",
+                "url": "http://192.168.15.100:8080/download/open_images.ckpt.meta",
                 "filename": "open_images.ckpt.meta"
             },
             {
-                "url": "http://192.168.200.106/download/open_images_labelmap.txt",
+                "url": "http://192.168.15.100:8080/download/open_images_labelmap.txt",
                 "filename": "open_images_labelmap.txt"
             },
             {
-                "url": "http://192.168.200.106/download/open_images_dict.csv",
+                "url": "http://192.168.15.100:8080/download/open_images_dict.csv",
                 "filename": "open_images_dict.csv"
             }
         ],
@@ -192,23 +192,23 @@
     {
         "files": [
             {
-                "url": "http://192.168.200.106/download/model.proto",
+                "url": "http://192.168.15.100:8080/download/model.proto",
                 "filename": "model.proto"
             },
             {
-                "url": "http://192.168.200.106/download/model.P.npy",
+                "url": "http://192.168.15.100:8080/download/model.P.npy",
                 "filename": "model.P.npy"
             },
             {
-                "url": "http://192.168.200.106/download/model.mu.npy",
+                "url": "http://192.168.15.100:8080/download/model.mu.npy",
                 "filename": "model.mu.npy"
             },
             {
-                "url": "http://192.168.200.106/download/model.pca.pkl",
+                "url": "http://192.168.15.100:8080/download/model.pca.pkl",
                 "filename": "model.pca.pkl"
             },
             {
-                "url": "http://192.168.200.106/download/model.permind.pkl",
+                "url": "http://192.168.15.100:8080/download/model.permind.pkl",
                 "filename": "model.permind.pkl"
             }
         ],
@@ -227,15 +227,15 @@
     {
         "files": [
             {
-                "url": "http://192.168.200.106/download/eigenvals.npy",
+                "url": "http://192.168.15.100:8080/download/eigenvals.npy",
                 "filename": "eigenvals.npy"
             },
             {
-                "url": "http://192.168.200.106/download/eigenvecs.npy",
+                "url": "http://192.168.15.100:8080/download/eigenvecs.npy",
                 "filename": "eigenvecs.npy"
             },
             {
-                "url": "http://192.168.200.106/download/mean.npy",
+                "url": "http://192.168.15.100:8080/download/mean.npy",
                 "filename": "mean.npy"
             }
         ],
