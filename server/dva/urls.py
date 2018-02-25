@@ -21,7 +21,7 @@ from django.conf import settings
 admin.autodiscover()
 
 urlpatterns = [url(r'', include('dvaui.urls')),
-			   url(r'^admin/', admin.site.urls),
+               url(r'^admin/', admin.site.urls),
                url(r'^api/', include('dvaapp.urls'))
                ]+\
               static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
