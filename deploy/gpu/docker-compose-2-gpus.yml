@@ -23,7 +23,7 @@
      volumes:
        - dvaredis:/bitnami       
    webserver:
-     image: akshayubhat/dva-auto:gpu
+     image: gds/dva-devgpu:v2
      env_file:
        - ../common.env
      environment:
@@ -32,8 +32,8 @@
        - INIT_PROCESS=/root/DVA/configs/custom_defaults/init_process.json
      command: bash -c "git pull && sleep 10 && ./start_container.py"
      ports:
-       - "127.0.0.1:8000:80"
-       - "127.0.0.1:8888:8888"
+       - "8000:80"
+       - "9999:8888"
      depends_on:
        - db
        - redis       
@@ -41,7 +41,7 @@
      volumes:
        - dvadata:/root/media
    non-gpu-workers:
-     image: akshayubhat/dva-auto:gpu
+     image: gds/dva-devgpu:v2
      env_file:
        - ../common.env
      environment:
@@ -58,7 +58,7 @@
      volumes:
        - dvadata:/root/media
    inception:
-     image: akshayubhat/dva-auto:gpu
+     image: gds/dva-devgpu:v2
      env_file:
        - ../common.env
      environment:
@@ -74,7 +74,7 @@
      volumes:
        - dvadata:/root/media
    crnn:
-     image: akshayubhat/dva-auto:gpu
+     image: gds/dva-devgpu:v2
      env_file:
        - ../common.env
      environment:
@@ -90,7 +90,7 @@
      volumes:
        - dvadata:/root/media
    coco:
-     image: akshayubhat/dva-auto:gpu
+     image: gds/dva-devgpu:v2
      env_file:
        - ../common.env
      environment:
@@ -106,7 +106,7 @@
      volumes:
        - dvadata:/root/media
    textbox:
-     image: akshayubhat/dva-auto:gpu
+     image: gds/dva-devgpu:v2
      env_file:
        - ../common.env
      environment:
@@ -122,7 +122,7 @@
      volumes:
        - dvadata:/root/media
    face:
-     image: akshayubhat/dva-auto:gpu
+     image: gds/dva-devgpu:v2
      env_file:
        - ../common.env
      environment:
@@ -138,7 +138,7 @@
      volumes:
        - dvadata:/root/media
    facenet:
-     image: akshayubhat/dva-auto:gpu
+     image: gds/dva-devgpu:v2
      env_file:
        - ../common.env
      environment:
@@ -154,7 +154,7 @@
      volumes:
        - dvadata:/root/media
    tagger:
-     image: akshayubhat/dva-auto:gpu
+     image: gds/dva-devgpu:v2
      env_file:
        - ../common.env
      environment:
@@ -170,7 +170,7 @@
      volumes:
        - dvadata:/root/media
    global-model:
-     image: akshayubhat/dva-auto:gpu
+     image: gds/dva-devgpu:v2
      env_file:
        - ../common.env
      environment:
