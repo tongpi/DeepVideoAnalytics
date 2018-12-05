@@ -53,8 +53,8 @@
                         <th>启动时间</th>
                         <th>持续时间</th>
                         <th class="text-center">状态和详情</th>
-                        <th class="text-center">重试任务</th>
-                        <th class="text-center">标记为失败</th>
+                        <!--<th class="text-center">重试任务</th>
+                        <th class="text-center">标记为失败</th>-->
                     </tr>
                     </thead>
                     <tbody>
@@ -82,17 +82,12 @@
                                     <a href="/task_detail/{{ e.pk }}" class="btn btn-info btn-block">未知</a>
                                 {% endif %}
                             </td>
-                            <td class="text-center">
-								<!--<button class="btn btn-warning" name="pk" formaction="/retry/" type="submit" value="{{ e.pk }}">请重试</button>-->
-								<button class="btn btn-warning" name="pk" formaction="#" type="button" value="{{ e.pk }} " 
-									onclick="devWarning();">请重试</button>
+                            <!--<td class="text-center">
+                                <button class="btn btn-warning" name="pk" formaction="/retry/" type="submit" value="{{ e.pk }}">请重试</button>
 							</td>
                             <td class="text-center">
-								<!--<button class="btn btn-warning" name="pk" formaction="/failed/"  type="submit" value="{{ e.pk }}" >标记为失败</button>-->
-								<button class="btn btn-warning" name="pk" formaction="#"  type="button" value="{{ e.pk }}" 
-									onclick="devWarning();">标记为失败</button>
-							
-							</td>
+								<button class="btn btn-warning" name="pk" formaction="/failed/"  type="submit" value="{{ e.pk }}" >标记为失败</button>
+							</td>-->
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -109,9 +104,5 @@
     $(document).ready(function() {
         InitializeTables();
     })
-	
-	function devWarning(){
-		alert("正在开发中...");
-	}
 </script>
 {% endblock %}
