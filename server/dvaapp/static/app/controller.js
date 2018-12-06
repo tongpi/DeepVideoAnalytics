@@ -440,7 +440,7 @@ $scope.search = function (approximate) {
     {
         if(canvas.getObjects().length != 1)
         {
-            alert("画布包含多个图片，要么只保留一个图片，要么取消选择发送全部图片选项。")
+            alert("画布包含多张图片，要么只保留一张图片，要么取消选择发送整张图片选项。")
             return null;
         }
         image_data = canvas.getObjects()[0].toDataURL();
