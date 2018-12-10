@@ -4,8 +4,10 @@
 {% block page_content %}
 <section class="content-header" style="padding-top:0px" xmlns="http://www.w3.org/1999/html">
 <div class="row">
-    <div><a class="btn btn-success" data-toggle="modal" data-target="#allowed" href="#" style="float:right;margin-top:5px;" ><i class="fa fa-upload"></i> 上传视频，数据集等</a></div>
-    <div class="modal fade" tabindex="-1" role="dialog" id="allowed">
+    
+    <div class="box box-info">
+            <div class="box-header">
+            <div class="modal fade" tabindex="-1" role="dialog" id="allowed">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -32,10 +34,8 @@
                             </div>
                         </div>
                         </div>
-    <div class="box box-info">
-            
-            <div class="box-header">
-            <h2><span class="box-header-title">视频和数据集列表</span></h2>
+            <h2><span class="box-header-title">视频和数据集列表</span>
+            <a class="btn btn-success" data-toggle="modal" data-target="#allowed" href="#" style="float:right;margin-top:5px;" ><i class="fa fa-upload"></i> 上传视频，数据集等</a></h2>
             {% if is_paginated %}
                 <div class="pagination text-center" style="width:100%">
                     <span class="page-links">
