@@ -4,27 +4,8 @@
 {% block page_content %}
 <section class="content-header" style="padding-top:0px" xmlns="http://www.w3.org/1999/html">
 <div class="row">
-    <div class="box box-info">
-            <a class="btn btn-warning " data-toggle="modal" data-target="#allowed" href="#" style="float:right;margin-top:5px;" ><i class="fa fa-upload"></i> 上传视频，数据集等</a>
-            <div class="box-header">
-            <h2><span class="box-header-title">视频和数据集列表</span></h2>
-            {% if is_paginated %}
-                <div class="pagination text-center" style="width:100%">
-                    <span class="page-links">
-                        {% if page_obj.has_previous %}
-                            <a class="btn btn-info" style="float:left" href=".?page={{ page_obj.previous_page_number }}"><i class="fa fa-backward"></i>  返回</a>
-                        {% endif %}
-                        <span class="page-current " style="font-size:24pt;font-weight:bold">
-                            {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
-                        </span>
-                        {% if page_obj.has_next %}
-                            <a class="btn btn-info" style="float:right" href=".?page={{ page_obj.next_page_number }}">加载更多  <i class="fa fa-forward"></i></a>
-                        {% endif %}
-                    </span>
-                </div>
-            {% endif %}
-        </div>
-        <div class="modal fade" tabindex="-1" role="dialog" id="allowed">
+    <div><a class="btn btn-success" data-toggle="modal" data-target="#allowed" href="#" style="float:right;margin-top:5px;" ><i class="fa fa-upload"></i> 上传视频，数据集等</a></div>
+    <div class="modal fade" tabindex="-1" role="dialog" id="allowed">
                         <div class="modal-dialog" role="document">
                             <div class="modal-content">
                             <div class="modal-header">
@@ -51,7 +32,28 @@
                             </div>
                         </div>
                         </div>
+    <div class="box box-info">
+            
+            <div class="box-header">
+            <h2><span class="box-header-title">视频和数据集列表</span></h2>
+            {% if is_paginated %}
+                <div class="pagination text-center" style="width:100%">
+                    <span class="page-links">
+                        {% if page_obj.has_previous %}
+                            <a class="btn btn-info" style="float:left" href=".?page={{ page_obj.previous_page_number }}"><i class="fa fa-backward"></i>  返回</a>
+                        {% endif %}
+                        <span class="page-current " style="font-size:24pt;font-weight:bold">
+                            {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                        </span>
+                        {% if page_obj.has_next %}
+                            <a class="btn btn-info" style="float:right" href=".?page={{ page_obj.next_page_number }}">加载更多  <i class="fa fa-forward"></i></a>
+                        {% endif %}
+                    </span>
+                </div>
+            {% endif %}
+        </div>
     </div>
+    
 </div>
 </section>
 <section class="content">
