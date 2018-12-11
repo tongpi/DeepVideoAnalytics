@@ -17,7 +17,7 @@
                                 <p>一个.mp4视频文件或一个包含多个图像的zip文件 或包含图像urls的json / gz文件，s3 / gcs路径 或 一个导出的“.dva_export.zip”。</p>
                                 <form role="form"  method="post" enctype="multipart/form-data" action="/" >
                                     <div class="form-group">
-                                    <input id="id_name" name="name" class="form-control" type="text" required="" placeholder="填写一个名称">.mp4
+                                    <input id="id_name" name="name" class="form-control" type="text" required="" placeholder="填写一个名称">
                                     </div>
                                     <div class="row">
                                     <div class="col-xs-10 col-xs-offset-1">
@@ -140,6 +140,7 @@
     $(document).ready(function() {
         InitializeTables();
     })
+    
     //校验上传文件类型
     function checkFileType(obj){
         var fileObj = $(obj);
@@ -149,9 +150,9 @@
         if (acceptType.indexOf(fileType) > -1) {
             return true;
         } else {
-            fileObj.val();
+            fileObj.val("");
             alert('请上传'+acceptType+'类型文件');
-            return;
+            return false;
         }
 }
 </script>
