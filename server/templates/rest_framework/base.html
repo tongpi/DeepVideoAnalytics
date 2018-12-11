@@ -12,7 +12,7 @@
       <meta name="robots" content="NONE,NOARCHIVE" />
     {% endblock %}
 
-    <title>{% block title %}深度视频分析平台{% endblock %}</title>
+    <title>{% block title %}人工智能服务平台{% endblock %}</title>
 
     {% block style %}
       {% block bootstrap_theme %}
@@ -37,7 +37,7 @@
           <span>
             {% block branding %}
               <a class='navbar-brand' href='/'>
-                  深度视频分析平台
+                  人工智能服务平台
               </a>
             {% endblock %}
           </span>
@@ -75,7 +75,7 @@
             <fieldset>
               {% if api_settings.URL_FORMAT_OVERRIDE %}
                 <div class="btn-group format-selection">
-                  <a class="btn btn-primary js-tooltip" href="{{ request.get_full_path }}" rel="nofollow" title="在{{name}}资源上发起GET请求">GET</a>
+                  <a class="btn btn-primary js-tooltip" href="{{ request.get_full_path }}" rel="nofollow" title="在{{name}}资源上发起GET请求">GET 方法</a>
 
                   <button class="btn btn-primary dropdown-toggle js-tooltip" data-toggle="dropdown" title="指定GET请求的格式">
                     <span class="caret"></span>
@@ -83,13 +83,13 @@
                   <ul class="dropdown-menu">
                     {% for format in available_formats %}
                       <li>
-                        <a class="js-tooltip format-option" href="{% add_query_param request api_settings.URL_FORMAT_OVERRIDE format %}" rel="nofollow" title="在格式设置为`{{ format }}`的{{name}}资源上发出GET请求">{{ format }}</a>
+                        <a class="js-tooltip format-option" href="{% add_query_param request api_settings.URL_FORMAT_OVERRIDE format %}" rel="nofollow" title="在格式设置为`{{ format }}`的{{name}}资源上发出GET请求">{{ format }} 格式</a>
                       </li>
                     {% endfor %}
                   </ul>
                 </div>
               {% else %}
-                <a class="btn btn-primary js-tooltip" href="{{ request.get_full_path }}" rel="nofollow" title="在{{name}}资源上发起GET请求">GET</a>
+                <a class="btn btn-primary js-tooltip" href="{{ request.get_full_path }}" rel="nofollow" title="在{{name}}资源上发起GET请求">GET 方法</a>
               {% endif %}
             </fieldset>
           </form>
@@ -97,7 +97,7 @@
 
         {% if options_form %}
           <form class="button-form" action="{{ request.get_full_path }}" data-method="OPTIONS">
-            <button class="btn btn-primary js-tooltip" title="在{{name}}资源上发起OPTIONS请求">OPTIONS</button>
+            <button class="btn btn-primary js-tooltip" title="在{{name}}资源上发起OPTIONS请求">OPTIONS 方法</button>
           </form>
         {% endif %}
 
@@ -181,7 +181,7 @@
                             {% csrf_token %}
                             {{ post_form }}
                             <div class="form-actions">
-                              <button class="btn btn-primary" title="在{{name}}资源上发起POST请求">POST</button>
+                              <button class="btn btn-primary" title="在{{name}}资源上发起POST请求">POST 方法</button>
                             </div>
                           </fieldset>
                         </form>
@@ -195,7 +195,7 @@
                         <fieldset>
                           {% include "rest_framework/raw_data_form.html" %}
                           <div class="form-actions">
-                            <button class="btn btn-primary" title="在{{name}}资源上发起POST请求">POST</button>
+                            <button class="btn btn-primary" title="在{{name}}资源上发起POST请求">POST 方法</button>
                           </div>
                         </fieldset>
                       </form>
@@ -225,7 +225,7 @@
                         <fieldset>
                           {{ put_form }}
                           <div class="form-actions">
-                            <button class="btn btn-primary js-tooltip" title="在{{name}}资源上发起PUT请求">PUT</button>
+                            <button class="btn btn-primary js-tooltip" title="在{{name}}资源上发起PUT请求">PUT 方法</button>
                           </div>
                         </fieldset>
                       </form>
@@ -239,10 +239,10 @@
                           {% include "rest_framework/raw_data_form.html" %}
                           <div class="form-actions">
                             {% if raw_data_put_form %}
-                              <button class="btn btn-primary js-tooltip" title="Make a PUT request on the {{ name }} resource">PUT</button>
+                              <button class="btn btn-primary js-tooltip" title="Make a PUT request on the {{ name }} resource">PUT 方法</button>
                             {% endif %}
                             {% if raw_data_patch_form %}
-                            <button data-method="PATCH" class="btn btn-primary js-tooltip" title="在{{name}}资源上发起PATCH请求">PATCH</button>
+                            <button data-method="PATCH" class="btn btn-primary js-tooltip" title="在{{name}}资源上发起PATCH请求">PATCH 方法</button>
                               {% endif %}
                           </div>
                         </fieldset>
