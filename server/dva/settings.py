@@ -33,13 +33,13 @@ INTERNAL_IPS = ['localhost','127.0.0.1']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if 'ENABLE_DEBUG' in os.environ:
-    DEBUG = True
+    DEBUG = False
     DEV_ENV = False
 elif sys.platform == 'darwin':
     DEV_ENV = True
     DEBUG = True
 else:
-    DEBUG = True
+    DEBUG = False
     DEV_ENV = False
 
 if 'ALLOWED_HOSTS' in os.environ:
