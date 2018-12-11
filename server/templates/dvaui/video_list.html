@@ -17,13 +17,14 @@
                                 <p>一个.mp4视频文件或一个包含多个图像的zip文件 或包含图像urls的json / gz文件，s3 / gcs路径 或 一个导出的“.dva_export.zip”。</p>
                                 <form role="form"  method="post" enctype="multipart/form-data" action="/" >
                                     <div class="form-group">
-                                    <input id="id_name" name="name" class="form-control" type="text" required="" placeholder="填写一个名称">
+                                    <input id="id_name" name="name" class="form-control" type="text" required="" placeholder="填写一个名称">.mp4
                                     </div>
                                     <div class="row">
                                     <div class="col-xs-10 col-xs-offset-1">
                                         <div class="form-group text-center">
                                         <label for="id_file" >视频(.mp4) 或 zip文件:</label>
-                                        <input style="margin: 10px auto 10px" id="id_file" name="file" class="btn bg-blue btn-file form-control" type="file" required="">
+                                        <input style="margin: 10px auto 10px" id="id_file" name="file" class="btn bg-blue btn-file form-control" accept=".mp4,.zip" 
+                                        onchange="checkFileType(this)" type="file" required="">
                                         </div>
                                     </div>
                                     </div>
@@ -139,5 +140,19 @@
     $(document).ready(function() {
         InitializeTables();
     })
+    //校验上传文件类型
+    function checkFileType(obj){
+        var fileObj = $(obj);
+        var acceptType = fileObj.attr('accept');
+        var selectedFile = fileObj.val();
+        var fileType = selectedFile.substring(selectedFile.indexOf('.') + 1, selectedFile.length);
+        if (acceptType.indexOf(fileType) > -1) {
+            return true;
+        } else {
+            fileObj.val();
+            alert('请上传'+acceptType+'类型文件');
+            return;
+        }
+}
 </script>
 {% endblock %}
