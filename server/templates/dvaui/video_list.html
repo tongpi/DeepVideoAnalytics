@@ -15,7 +15,7 @@
                                     <span aria-hidden="true">&times;</span></button><h4 class="modal-title">上传视频/数据集或图像列表或导出的zip文件。</h4></div>
                                 <div class="modal-body">
                                 <p>一个.mp4视频文件或一个包含多个图像的zip文件 或包含图像urls的json / gz文件，s3 / gcs路径 或 一个导出的“.dva_export.zip”。</p>
-                                <form role="form"  method="post" enctype="multipart/form-data" action="#" >
+                                <form role="form"  method="post" enctype="multipart/form-data" action="/" >
                                     <div class="form-group">
                                     <input id="id_name" name="name" class="form-control" type="text" required="" placeholder="填写一个名称">
                                     </div>
@@ -35,7 +35,7 @@
                         </div>
                         </div>
             <h2><span class="box-header-title">视频和数据集列表</span>
-            <a class="btn btn-success" data-toggle="modal" data-target="#allowed" href="#" style="float:right;margin-top:5px;" ><i class="fa fa-upload"></i> 上传视频，数据集等</a></h2>
+            <a class="btn btn-success" data-toggle="modal" data-target="#allowed" href="#" style="float:right;" ><i class="fa fa-upload"></i> 上传视频，数据集</a></h2>
             {% if is_paginated %}
                 <div class="pagination text-center" style="width:100%">
                     <span class="page-links">
