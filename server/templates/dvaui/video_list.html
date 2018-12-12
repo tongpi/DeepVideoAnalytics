@@ -146,7 +146,7 @@
         var fileObj = $(obj);
         var acceptType = fileObj.attr('accept');
         var selectedFile = fileObj.val();
-        var fileType = selectedFile.substring(selectedFile.indexOf('.') + 1, selectedFile.length);
+        var fileType = selectedFile.substring(selectedFile.indexOf('.') + 1, selectedFile.length).toLowerCase();
         if (acceptType.indexOf(fileType) > -1) {
             return true;
         } else {
