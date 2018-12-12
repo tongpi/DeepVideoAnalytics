@@ -6,7 +6,7 @@
 <div class="row">
     <div class="box box-info">
         <div class="box-header">
-            <h2><span class="box-header-title">全文检索和OCR标注</span></h2>
+            <h2><span class="box-header-title">全文检索</span></h2>
         </div>
     </div>
 </div>
@@ -30,7 +30,7 @@
                         <div class="col-md-1 form-group"><label for="frames" class="form-group text-center">帧<input type="checkbox" checked="checked"  class="" id="frames" name="frames"/></label></div>
                         <div class="col-md-6 form-group">
                             <select class="js-example-basic-single" id="video_pk" name="video_pk" style="width:100%">
-                                <option value="" selected="selected">搜索所有视频/数据集</option>
+                                <option value="" >搜索所有视频/数据集</option>
                             {% for v in videos %}
                                 <option value="{{ v.pk }}">{{ v.name }}</option>
                             {% endfor %}
