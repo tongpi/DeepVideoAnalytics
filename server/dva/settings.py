@@ -33,13 +33,13 @@ INTERNAL_IPS = ['localhost','127.0.0.1']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if 'ENABLE_DEBUG' in os.environ:
-    DEBUG = False
+    DEBUG = True
     DEV_ENV = False
 elif sys.platform == 'darwin':
     DEV_ENV = True
     DEBUG = True
 else:
-    DEBUG = False
+    DEBUG = True
     DEV_ENV = False
 
 if 'ALLOWED_HOSTS' in os.environ:
@@ -127,7 +127,7 @@ TEMPLATES = [
         'DIRS': [os.path.join(BASE_DIR, 'templates/'), ],
         'APP_DIRS': True,
         'OPTIONS': {
-            'debug': False,
+            'debug': True,
             'context_processors': [
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
