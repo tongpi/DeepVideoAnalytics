@@ -4,8 +4,8 @@ django==1.11.3
 jinja
 jinja2
 djangorestframework
-markdown
-django-filter
+markdown==2.6.11
+django-filter==1.1.0
 celery==4.0.2
 django-celery-results
 dj-database-url==0.4.0
@@ -13,7 +13,7 @@ raven
 psycopg2
 requests
 boto3
-protobuf
+protobuf==3.6.0
 humanize
 enum34
 scikit-learn
@@ -28,7 +28,7 @@ django-celery-beat==1.1.0
 cython
 easydict
 google-cloud-storage
-urllib3
+urllib3==1.23
 flask
 redis
 hiredis
