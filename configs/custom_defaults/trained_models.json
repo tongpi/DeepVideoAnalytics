@@ -99,7 +99,7 @@
     },
     {
         "model_type": "D",
-            "name": "inception",
+            "name": "inception_tensorflow",
             "detector_type": "T",
             "algorithm": "inception_ssd",
             "filename": "tensorflow_inception_graph.pb",
