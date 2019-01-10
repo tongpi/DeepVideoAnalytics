@@ -99,6 +99,54 @@
     },
     {
         "model_type": "D",
+            "name": "inception",
+            "detector_type": "T",
+            "algorithm": "inception_ssd",
+            "filename": "tensorflow_inception_graph.pb",
+            "files": [
+                {
+                    "url": "http://192.168.15.100:8080/download/tensorflow_inception_graph.pb",
+                    "filename": "tensorflow_inception_graph.pb"
+
+                }
+            ],
+            "mode": "T",
+            "arguments": {"class_index_to_string": { 
+                "1":"dummy",
+                "2": "kit fox",
+                "3": "English setter",
+                "4": "Siberian husky",
+                "5": "Australian terrier",
+                "6": "English springer",
+                "7": "grey whale",
+                "8": "lesser panda",
+                "9": "Egyptian cat",
+                "10": "ibex",
+                "11": "Persian cat",
+                "12": "cougar",
+                "13": "gazelle",
+                "14": "porcupine",
+                "15": "sea lion",
+                "16": "malamute",
+                "17": "badger",
+                "18": "Great Dane",
+                "19": "Walker hound",
+                "20": "Welsh springer spaniel",
+                "21": "whippet",
+                "22": "Scottish deerhound",
+                "23": "killer whale",
+                "24": "mink",
+                "25": "African elephant",
+                "26": "Weimaraner",
+                "27": "soft-coated wheaten terrier",
+                "28": "Dandie Dinmont",
+                "29": "red wolf",
+                "30": "Old English sheepdog"
+            }
+            }       
+    },
+    {
+        "model_type": "D",
         "name": "textbox",
         "files": [
             {
