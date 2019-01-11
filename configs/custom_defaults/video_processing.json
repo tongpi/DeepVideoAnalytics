@@ -31,7 +31,8 @@
         }
       ]
     }
-  },{
+  },
+  {
     "operation": "perform_detection",
     "arguments": {
       "filters": "__parent__",
